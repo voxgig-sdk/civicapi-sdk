@@ -1,0 +1,22 @@
+# BasicPollingFlow
+
+main: kit: flow: BasicPollingFlow:
+{
+  entity: "polling",
+  kind: "basic",
+  name: "BasicPollingFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "polling_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPollingFlow"
+}

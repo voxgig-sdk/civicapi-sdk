@@ -1,0 +1,26 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 3
+  metrics: count: path: 3
+  metrics: count: method: 3
+
+  entity: election: {
+    path: "/api/elections": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: polling: {
+    path: "/api/polling": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: result: {
+    path: "/api/results": {
+      op: list: method: *GET
+    }
+  }
+
+}

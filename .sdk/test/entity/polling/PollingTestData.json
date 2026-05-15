@@ -1,0 +1,46 @@
+{
+  "existing": {
+    "polling": {
+      "POLLING00": {
+        "end_date": "s46",
+        "margin_of_error": 71,
+        "poll_id": "POLL01",
+        "pollster": "s49",
+        "result": [],
+        "sample_size": "s4b",
+        "start_date": "s4c"
+      },
+      "POLLING01": {
+        "end_date": "s8c",
+        "margin_of_error": 141,
+        "poll_id": "POLL01",
+        "pollster": "s8f",
+        "result": [],
+        "sample_size": "s91",
+        "start_date": "s92"
+      },
+      "POLLING02": {
+        "end_date": "sd2",
+        "margin_of_error": 211,
+        "poll_id": "POLL01",
+        "pollster": "sd5",
+        "result": [],
+        "sample_size": "sd7",
+        "start_date": "sd8"
+      }
+    }
+  },
+  "new": {
+    "polling": {
+      "polling_ref01": {
+        "end_date": "s118",
+        "margin_of_error": 281,
+        "poll_id": "POLL01",
+        "pollster": "s11b",
+        "result": [],
+        "sample_size": "s11d",
+        "start_date": "s11e"
+      }
+    }
+  }
+}

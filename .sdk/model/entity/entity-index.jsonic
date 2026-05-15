@@ -1,0 +1,5 @@
+# Entity Models
+
+@"election.jsonic"
+@"polling.jsonic"
+@"result.jsonic"

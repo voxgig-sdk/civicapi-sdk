@@ -1,0 +1,41 @@
+{
+  "existing": {
+    "election": {
+      "ELECTION00": {
+        "date": "s3c",
+        "id": "ELECTION00",
+        "name": "s3e",
+        "state": "s3f",
+        "status": "s40",
+        "type": "s41"
+      },
+      "ELECTION01": {
+        "date": "s78",
+        "id": "ELECTION01",
+        "name": "s7a",
+        "state": "s7b",
+        "status": "s7c",
+        "type": "s7d"
+      },
+      "ELECTION02": {
+        "date": "sb4",
+        "id": "ELECTION02",
+        "name": "sb6",
+        "state": "sb7",
+        "status": "sb8",
+        "type": "sb9"
+      }
+    }
+  },
+  "new": {
+    "election": {
+      "election_ref01": {
+        "date": "sf0",
+        "name": "sf2",
+        "state": "sf3",
+        "status": "sf4",
+        "type": "sf5"
+      }
+    }
+  }
+}

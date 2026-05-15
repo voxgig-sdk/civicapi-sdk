@@ -1,0 +1,376 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "civicAPI",
+    "description": "civicAPI is a free API that provides real-time election results, polling data, and general election information. It's open to the public and does not require authentication, serving both personal and commercial needs with appropriate attribution.",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://civicapi.org/api-documentation/"
+    },
+    "license": {
+      "name": "Free with Attribution",
+      "url": "https://civicapi.org/api-documentation/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://civicapi.org",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/api/elections": {
+      "get": {
+        "summary": "Get election information",
+        "description": "Retrieves general election information including upcoming and past elections",
+        "operationId": "getElections",
+        "tags": [
+          "Elections"
+        ],
+        "parameters": [
+          {
+            "name": "year",
+            "in": "query",
+            "description": "Filter elections by year",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "example": 2024
+            }
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "description": "Filter elections by state",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "CA"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "Type of election (e.g., presidential, congressional, local)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "presidential",
+                "congressional",
+                "gubernatorial",
+                "local"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with election information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "elections": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "description": "Unique election identifier"
+                          },
+                          "name": {
+                            "type": "string",
+                            "description": "Election name"
+                          },
+                          "date": {
+                            "type": "string",
+                            "format": "date",
+                            "description": "Election date"
+                          },
+                          "type": {
+                            "type": "string",
+                            "description": "Type of election"
+                          },
+                          "state": {
+                            "type": "string",
+                            "description": "State or jurisdiction"
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "upcoming",
+                              "ongoing",
+                              "completed"
+                            ],
+                            "description": "Current status of the election"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid parameters"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/api/results": {
+      "get": {
+        "summary": "Get real-time election results",
+        "description": "Retrieves real-time election results for specified elections",
+        "operationId": "getElectionResults",
+        "tags": [
+          "Results"
+        ],
+        "parameters": [
+          {
+            "name": "electionId",
+            "in": "query",
+            "description": "Unique identifier for the election",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "2024-presidential"
+            }
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "description": "Filter results by state",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "CA"
+            }
+          },
+          {
+            "name": "county",
+            "in": "query",
+            "description": "Filter results by county",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "Los Angeles"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with election results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "electionId": {
+                      "type": "string",
+                      "description": "Election identifier"
+                    },
+                    "lastUpdated": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Timestamp of last update"
+                    },
+                    "reportingPercentage": {
+                      "type": "number",
+                      "format": "float",
+                      "description": "Percentage of precincts reporting"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "candidate": {
+                            "type": "string",
+                            "description": "Candidate name"
+                          },
+                          "party": {
+                            "type": "string",
+                            "description": "Political party"
+                          },
+                          "votes": {
+                            "type": "integer",
+                            "description": "Number of votes received"
+                          },
+                          "percentage": {
+                            "type": "number",
+                            "format": "float",
+                            "description": "Percentage of total votes"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - missing or invalid electionId"
+          },
+          "404": {
+            "description": "Election not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/api/polling": {
+      "get": {
+        "summary": "Get polling data",
+        "description": "Retrieves polling data for elections and candidates",
+        "operationId": "getPollingData",
+        "tags": [
+          "Polling"
+        ],
+        "parameters": [
+          {
+            "name": "electionId",
+            "in": "query",
+            "description": "Unique identifier for the election",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "2024-presidential"
+            }
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "description": "Filter polling data by state",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "CA"
+            }
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "description": "Start date for polling data range",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "example": "2024-01-01"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "description": "End date for polling data range",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "example": "2024-12-31"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with polling data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "polls": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "pollId": {
+                            "type": "string",
+                            "description": "Unique poll identifier"
+                          },
+                          "pollster": {
+                            "type": "string",
+                            "description": "Organization conducting the poll"
+                          },
+                          "startDate": {
+                            "type": "string",
+                            "format": "date",
+                            "description": "Poll start date"
+                          },
+                          "endDate": {
+                            "type": "string",
+                            "format": "date",
+                            "description": "Poll end date"
+                          },
+                          "sampleSize": {
+                            "type": "integer",
+                            "description": "Number of respondents"
+                          },
+                          "marginOfError": {
+                            "type": "number",
+                            "format": "float",
+                            "description": "Margin of error percentage"
+                          },
+                          "results": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "candidate": {
+                                  "type": "string",
+                                  "description": "Candidate name"
+                                },
+                                "party": {
+                                  "type": "string",
+                                  "description": "Political party"
+                                },
+                                "percentage": {
+                                  "type": "number",
+                                  "format": "float",
+                                  "description": "Polling percentage"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid parameters"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Elections",
+      "description": "General election information endpoints"
+    },
+    {
+      "name": "Results",
+      "description": "Real-time election results endpoints"
+    },
+    {
+      "name": "Polling",
+      "description": "Polling data endpoints"
+    }
+  ]
+}

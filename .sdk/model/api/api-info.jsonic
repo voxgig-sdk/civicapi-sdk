@@ -1,0 +1,27 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        url: "https://civicapi.org/api-documentation/"
+      }
+      description: "civicAPI is a free API that provides real-time election results, polling data, and general election information. It's open to the public and does not require authentication, serving both personal and commercial needs with appropriate attribution."
+      license: {
+        name: "Free with Attribution"
+        url: "https://civicapi.org/api-documentation/"
+      }
+      servers: [
+        {
+          description: "Production server"
+          url: "https://civicapi.org"
+        }
+      ]
+      title: "civicAPI"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

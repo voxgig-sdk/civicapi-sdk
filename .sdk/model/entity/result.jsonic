@@ -1,0 +1,88 @@
+# Entity: result
+
+main: kit: entity: result: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "candidate"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "party"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "percentage"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "vote"
+      req: false
+      type: "`$INTEGER`"
+    }
+  ]
+
+  name: "result"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "Los Angeles"
+                kind: "query"
+                name: "county"
+                orig: "county"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "2024-presidential"
+                kind: "query"
+                name: "election_id"
+                orig: "election_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                example: "CA"
+                kind: "query"
+                name: "state"
+                orig: "state"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/results"
+          parts: [
+            "api"
+            "results"
+          ]
+          select: {
+            exist: [
+              "county"
+              "election_id"
+              "state"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,112 @@
+# Entity: polling
+
+main: kit: entity: polling: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "end_date"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "margin_of_error"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "poll_id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "pollster"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "result"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "sample_size"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "start_date"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "polling"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "2024-presidential"
+                kind: "query"
+                name: "election_id"
+                orig: "election_id"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "2024-12-31"
+                kind: "query"
+                name: "end_date"
+                orig: "end_date"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "2024-01-01"
+                kind: "query"
+                name: "start_date"
+                orig: "start_date"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "CA"
+                kind: "query"
+                name: "state"
+                orig: "state"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/polling"
+          parts: [
+            "api"
+            "polling"
+          ]
+          select: {
+            exist: [
+              "election_id"
+              "end_date"
+              "start_date"
+              "state"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

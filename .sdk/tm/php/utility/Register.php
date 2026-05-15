@@ -1,0 +1,67 @@
+<?php
+declare(strict_types=1);
+
+// Civicapi SDK utility registration
+
+require_once __DIR__ . '/../core/UtilityType.php';
+require_once __DIR__ . '/Clean.php';
+require_once __DIR__ . '/Done.php';
+require_once __DIR__ . '/MakeError.php';
+require_once __DIR__ . '/FeatureAdd.php';
+require_once __DIR__ . '/FeatureHook.php';
+require_once __DIR__ . '/FeatureInit.php';
+require_once __DIR__ . '/Fetcher.php';
+require_once __DIR__ . '/MakeFetchDef.php';
+require_once __DIR__ . '/MakeContext.php';
+require_once __DIR__ . '/MakeOptions.php';
+require_once __DIR__ . '/MakeRequest.php';
+require_once __DIR__ . '/MakeResponse.php';
+require_once __DIR__ . '/MakeResult.php';
+require_once __DIR__ . '/MakePoint.php';
+require_once __DIR__ . '/MakeSpec.php';
+require_once __DIR__ . '/MakeUrl.php';
+require_once __DIR__ . '/Param.php';
+require_once __DIR__ . '/PrepareAuth.php';
+require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/PrepareHeaders.php';
+require_once __DIR__ . '/PrepareMethod.php';
+require_once __DIR__ . '/PrepareParams.php';
+require_once __DIR__ . '/PreparePath.php';
+require_once __DIR__ . '/PrepareQuery.php';
+require_once __DIR__ . '/ResultBasic.php';
+require_once __DIR__ . '/ResultBody.php';
+require_once __DIR__ . '/ResultHeaders.php';
+require_once __DIR__ . '/TransformRequest.php';
+require_once __DIR__ . '/TransformResponse.php';
+
+CivicapiUtility::setRegistrar(function (CivicapiUtility $u): void {
+    $u->clean = [CivicapiClean::class, 'call'];
+    $u->done = [CivicapiDone::class, 'call'];
+    $u->make_error = [CivicapiMakeError::class, 'call'];
+    $u->feature_add = [CivicapiFeatureAdd::class, 'call'];
+    $u->feature_hook = [CivicapiFeatureHook::class, 'call'];
+    $u->feature_init = [CivicapiFeatureInit::class, 'call'];
+    $u->fetcher = [CivicapiFetcher::class, 'call'];
+    $u->make_fetch_def = [CivicapiMakeFetchDef::class, 'call'];
+    $u->make_context = [CivicapiMakeContext::class, 'call'];
+    $u->make_options = [CivicapiMakeOptions::class, 'call'];
+    $u->make_request = [CivicapiMakeRequest::class, 'call'];
+    $u->make_response = [CivicapiMakeResponse::class, 'call'];
+    $u->make_result = [CivicapiMakeResult::class, 'call'];
+    $u->make_point = [CivicapiMakePoint::class, 'call'];
+    $u->make_spec = [CivicapiMakeSpec::class, 'call'];
+    $u->make_url = [CivicapiMakeUrl::class, 'call'];
+    $u->param = [CivicapiParam::class, 'call'];
+    $u->prepare_auth = [CivicapiPrepareAuth::class, 'call'];
+    $u->prepare_body = [CivicapiPrepareBody::class, 'call'];
+    $u->prepare_headers = [CivicapiPrepareHeaders::class, 'call'];
+    $u->prepare_method = [CivicapiPrepareMethod::class, 'call'];
+    $u->prepare_params = [CivicapiPrepareParams::class, 'call'];
+    $u->prepare_path = [CivicapiPreparePath::class, 'call'];
+    $u->prepare_query = [CivicapiPrepareQuery::class, 'call'];
+    $u->result_basic = [CivicapiResultBasic::class, 'call'];
+    $u->result_body = [CivicapiResultBody::class, 'call'];
+    $u->result_headers = [CivicapiResultHeaders::class, 'call'];
+    $u->transform_request = [CivicapiTransformRequest::class, 'call'];
+    $u->transform_response = [CivicapiTransformResponse::class, 'call'];
+});

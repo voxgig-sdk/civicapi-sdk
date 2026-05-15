@@ -1,0 +1,22 @@
+# BasicResultFlow
+
+main: kit: flow: BasicResultFlow:
+{
+  entity: "result",
+  kind: "basic",
+  name: "BasicResultFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "result_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicResultFlow"
+}

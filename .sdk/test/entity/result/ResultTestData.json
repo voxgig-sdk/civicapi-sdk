@@ -1,0 +1,34 @@
+{
+  "existing": {
+    "result": {
+      "RESULT00": {
+        "candidate": "s28",
+        "party": "s29",
+        "percentage": 42,
+        "vote": "s2b"
+      },
+      "RESULT01": {
+        "candidate": "s50",
+        "party": "s51",
+        "percentage": 82,
+        "vote": "s53"
+      },
+      "RESULT02": {
+        "candidate": "s78",
+        "party": "s79",
+        "percentage": 122,
+        "vote": "s7b"
+      }
+    }
+  },
+  "new": {
+    "result": {
+      "result_ref01": {
+        "candidate": "sa0",
+        "party": "sa1",
+        "percentage": 162,
+        "vote": "sa3"
+      }
+    }
+  }
+}
