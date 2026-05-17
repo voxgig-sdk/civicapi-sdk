@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/civicapi-sdk/core"
+import "github.com/voxgig-sdk/civicapi-sdk/go/core"
 
 func init() {
 	core.UtilityRegistrar = registerAll

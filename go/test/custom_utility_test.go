@@ -3,7 +3,7 @@ package sdktest
 import (
 	"testing"
 
-	sdk "github.com/voxgig-sdk/civicapi-sdk"
+	sdk "github.com/voxgig-sdk/civicapi-sdk/go"
 )
 
 func TestCustomUtility(t *testing.T) {

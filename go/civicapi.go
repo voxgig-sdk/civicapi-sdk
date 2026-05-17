@@ -1,10 +1,10 @@
 package voxgigcivicapisdk
 
 import (
-	"github.com/voxgig-sdk/civicapi-sdk/core"
-	"github.com/voxgig-sdk/civicapi-sdk/entity"
-	"github.com/voxgig-sdk/civicapi-sdk/feature"
-	_ "github.com/voxgig-sdk/civicapi-sdk/utility"
+	"github.com/voxgig-sdk/civicapi-sdk/go/core"
+	"github.com/voxgig-sdk/civicapi-sdk/go/entity"
+	"github.com/voxgig-sdk/civicapi-sdk/go/feature"
+	_ "github.com/voxgig-sdk/civicapi-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/civicapi-sdk"
-	"github.com/voxgig-sdk/civicapi-sdk/core"
+	sdk "github.com/voxgig-sdk/civicapi-sdk/go"
+	"github.com/voxgig-sdk/civicapi-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/civicapi-sdk/go/utility/struct"
 )
 
 func TestResultEntity(t *testing.T) {

@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/civicapi-sdk"
-	"github.com/voxgig-sdk/civicapi-sdk/core"
+	sdk "github.com/voxgig-sdk/civicapi-sdk/go"
+	"github.com/voxgig-sdk/civicapi-sdk/go/core"
 )
 
 func TestPollingDirect(t *testing.T) {

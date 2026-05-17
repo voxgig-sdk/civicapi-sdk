@@ -1,9 +1,9 @@
 package utility
 
 import (
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/civicapi-sdk/go/utility/struct"
 
-	"github.com/voxgig-sdk/civicapi-sdk/core"
+	"github.com/voxgig-sdk/civicapi-sdk/go/core"
 )
 
 const headerAuth = "authorization"
