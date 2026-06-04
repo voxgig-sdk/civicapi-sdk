@@ -61,14 +61,12 @@ def _polling_direct_setup(mockres):
     env = runner.env_override({
         "CIVICAPI_TEST_POLLING_ENTID": {},
         "CIVICAPI_TEST_LIVE": "FALSE",
-        "CIVICAPI_APIKEY": "NONE",
     })
 
     live = env.get("CIVICAPI_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("CIVICAPI_APIKEY"),
         }
         client = CivicapiSDK(merged_opts)
         return {

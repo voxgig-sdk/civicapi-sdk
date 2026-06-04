@@ -20,7 +20,19 @@
           }
         ],
         "title": "civicAPI",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "tagline": "Free, real-time election results, polling data, and race calls for elections around the world",
+        "homepage": "https://civicapi.org",
+        "docs_url": "https://civicapi.org/api-documentation/",
+        "license_short": "Free for personal and commercial use; attribution required for non-personal projects",
+        "license_md": "- Free for all personal, non-commercial, and commercial purposes\n- Attribution required for non-personal projects: link to `civicapi.org` or list the civicAPI name\n- No API key or authentication required\n- See [civicAPI documentation](https://civicapi.org/api-documentation/) for current terms",
+        "about_md": "[civicAPI](https://civicapi.org) is a free public API providing up-to-the-minute election results, polling data, and race calls for elections around the world. Coverage spans local contests such as school boards and town councils through statewide referendums and national presidential elections.\n\nWhat you get from the API:\n\n- Race lookups by identifier (e.g. `GET /api/v2/race/{id}`)\n- Race search by query string (e.g. `GET /api/v2/race/search?query=...`)\n- Service status checks (`GET /api/v2/status`)\n\nThe API is open to the public and does not require authentication. All endpoints live under `https://civicapi.org/api/v2/`. CORS is not enabled, so browser callers may need a proxy. Attribution is required for non-personal projects.",
+        "entity_desc": {
+          "election": "General election information and metadata covering local, regional, and national contests worldwide, accessed via the civicAPI v2 endpoints under `/api/v2/`.",
+          "polling": "Polling data associated with tracked elections and races, served alongside results through the civicAPI v2 endpoints.",
+          "result": "Real-time race results and race calls, available by race identifier at `/api/v2/race/{id}` and via search at `/api/v2/race/search?query=...`."
+        },
+        "auth": false
       },
       "config": {
         "auth": {
@@ -28,7 +40,15 @@
         },
         "headers": {
           "content-type": "application/json"
-        }
+        },
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ]
       },
       "entity": {
         "election": {

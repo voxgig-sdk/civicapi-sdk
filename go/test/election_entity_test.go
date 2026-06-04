@@ -119,7 +119,6 @@ func electionBasicSetup(extra map[string]any) *entityTestSetup {
 		"CIVICAPI_TEST_ELECTION_ENTID": idmap,
 		"CIVICAPI_TEST_LIVE":      "FALSE",
 		"CIVICAPI_TEST_EXPLAIN":   "FALSE",
-		"CIVICAPI_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["CIVICAPI_TEST_ELECTION_ENTID"])
@@ -130,7 +129,6 @@ func electionBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["CIVICAPI_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["CIVICAPI_APIKEY"],
 			},
 			extra,
 		})

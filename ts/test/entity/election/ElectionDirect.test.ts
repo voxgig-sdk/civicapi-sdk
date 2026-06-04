@@ -79,14 +79,12 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'CIVICAPI_TEST_ELECTION_ENTID': {},
     'CIVICAPI_TEST_LIVE': 'FALSE',
-    'CIVICAPI_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.CIVICAPI_TEST_LIVE
 
   if (live) {
     const client = new CivicapiSDK({
-      apikey: env.CIVICAPI_APIKEY,
     })
 
     let idmap: any = env['CIVICAPI_TEST_ELECTION_ENTID']
