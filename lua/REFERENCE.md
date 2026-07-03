@@ -30,12 +30,12 @@ Create a new SDK client instance.
 
 ### Static Methods
 
-#### `sdk.test(testopts, sdkopts)`
+#### `sdk.test(testopts?, sdkopts?)`
 
-Create a test client with mock features active. Both arguments may be `nil`.
+Create a test client with mock features active. Both arguments are optional.
 
 ```lua
-local client = sdk.test(nil, nil)
+local client = sdk.test()
 ```
 
 
@@ -113,7 +113,7 @@ local election = client:Election(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Election(nil):list(nil, nil)
+local results, err = client:Election():list()
 ```
 
 ### Common Methods
@@ -171,7 +171,7 @@ local polling = client:Polling(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Polling(nil):list(nil, nil)
+local results, err = client:Polling():list()
 ```
 
 ### Common Methods
@@ -226,7 +226,7 @@ local result = client:Result(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Result(nil):list(nil, nil)
+local results, err = client:Result():list()
 ```
 
 ### Common Methods

@@ -92,6 +92,7 @@ function election_basic_setup(extra)
     ["CIVICAPI_TEST_ELECTION_ENTID"] = idmap,
     ["CIVICAPI_TEST_LIVE"] = "FALSE",
     ["CIVICAPI_TEST_EXPLAIN"] = "FALSE",
+    ["CIVICAPI_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -103,6 +104,7 @@ function election_basic_setup(extra)
   if env["CIVICAPI_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
+        apikey = env["CIVICAPI_APIKEY"],
       },
       extra or {},
     })

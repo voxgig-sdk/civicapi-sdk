@@ -68,12 +68,14 @@ function result_direct_setup($mockres)
     $env = Runner::env_override([
         "CIVICAPI_TEST_RESULT_ENTID" => [],
         "CIVICAPI_TEST_LIVE" => "FALSE",
+        "CIVICAPI_APIKEY" => "NONE",
     ]);
 
     $live = $env["CIVICAPI_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
+            "apikey" => $env["CIVICAPI_APIKEY"],
         ];
         $client = new CivicapiSDK($merged_opts);
         return [

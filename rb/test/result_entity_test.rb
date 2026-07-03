@@ -83,6 +83,7 @@ def result_basic_setup(extra)
     "CIVICAPI_TEST_RESULT_ENTID" => idmap,
     "CIVICAPI_TEST_LIVE" => "FALSE",
     "CIVICAPI_TEST_EXPLAIN" => "FALSE",
+    "CIVICAPI_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,6 +95,7 @@ def result_basic_setup(extra)
   if env["CIVICAPI_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
+        "apikey" => env["CIVICAPI_APIKEY"],
       },
       extra || {},
     ])

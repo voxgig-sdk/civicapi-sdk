@@ -93,12 +93,14 @@ func resultDirectSetup(mockres any) *resultDirectSetupResult {
 	env := envOverride(map[string]any{
 		"CIVICAPI_TEST_RESULT_ENTID": map[string]any{},
 		"CIVICAPI_TEST_LIVE":    "FALSE",
+		"CIVICAPI_APIKEY":       "NONE",
 	})
 
 	live := env["CIVICAPI_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["CIVICAPI_APIKEY"],
 		}
 		client := sdk.NewCivicapiSDK(mergedOpts)
 

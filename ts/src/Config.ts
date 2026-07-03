@@ -38,6 +38,10 @@ class Config {
   options = {
     base: 'https://civicapi.org',
 
+    auth: {
+      prefix: 'Bearer',
+    },
+
     headers: {
       "content-type": "application/json"
     },
@@ -61,81 +65,83 @@ class Config {
     "election": {
       "fields": [
         {
+          "active": true,
           "name": "date",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 0
         },
         {
+          "active": true,
           "name": "id",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 1
         },
         {
+          "active": true,
           "name": "name",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 2
         },
         {
+          "active": true,
           "name": "state",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 3
         },
         {
+          "active": true,
           "name": "status",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 4
         },
         {
+          "active": true,
           "name": "type",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 5
         }
       ],
       "name": "election",
       "op": {
         "list": {
+          "input": "data",
           "name": "list",
           "points": [
             {
+              "active": true,
               "args": {
                 "query": [
                   {
+                    "active": true,
                     "example": "CA",
                     "kind": "query",
                     "name": "state",
                     "orig": "state",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "type",
                     "orig": "type",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   },
                   {
+                    "active": true,
                     "example": 2024,
                     "kind": "query",
                     "name": "year",
                     "orig": "year",
                     "reqd": false,
-                    "type": "`$INTEGER`",
-                    "active": true
+                    "type": "`$INTEGER`"
                   }
                 ]
               },
@@ -156,11 +162,9 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "list"
         }
       },
@@ -171,98 +175,100 @@ class Config {
     "polling": {
       "fields": [
         {
+          "active": true,
           "name": "end_date",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 0
         },
         {
+          "active": true,
           "name": "margin_of_error",
           "req": false,
           "type": "`$NUMBER`",
-          "active": true,
           "index$": 1
         },
         {
+          "active": true,
           "name": "poll_id",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 2
         },
         {
+          "active": true,
           "name": "pollster",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 3
         },
         {
+          "active": true,
           "name": "result",
           "req": false,
           "type": "`$ARRAY`",
-          "active": true,
           "index$": 4
         },
         {
+          "active": true,
           "name": "sample_size",
           "req": false,
           "type": "`$INTEGER`",
-          "active": true,
           "index$": 5
         },
         {
+          "active": true,
           "name": "start_date",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 6
         }
       ],
       "name": "polling",
       "op": {
         "list": {
+          "input": "data",
           "name": "list",
           "points": [
             {
+              "active": true,
               "args": {
                 "query": [
                   {
+                    "active": true,
                     "example": "2024-presidential",
                     "kind": "query",
                     "name": "election_id",
                     "orig": "election_id",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   },
                   {
+                    "active": true,
                     "example": "2024-12-31",
                     "kind": "query",
                     "name": "end_date",
                     "orig": "end_date",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   },
                   {
+                    "active": true,
                     "example": "2024-01-01",
                     "kind": "query",
                     "name": "start_date",
                     "orig": "start_date",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   },
                   {
+                    "active": true,
                     "example": "CA",
                     "kind": "query",
                     "name": "state",
                     "orig": "state",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -284,11 +290,9 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "list"
         }
       },
@@ -299,68 +303,70 @@ class Config {
     "result": {
       "fields": [
         {
+          "active": true,
           "name": "candidate",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 0
         },
         {
+          "active": true,
           "name": "party",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 1
         },
         {
+          "active": true,
           "name": "percentage",
           "req": false,
           "type": "`$NUMBER`",
-          "active": true,
           "index$": 2
         },
         {
+          "active": true,
           "name": "vote",
           "req": false,
           "type": "`$INTEGER`",
-          "active": true,
           "index$": 3
         }
       ],
       "name": "result",
       "op": {
         "list": {
+          "input": "data",
           "name": "list",
           "points": [
             {
+              "active": true,
               "args": {
                 "query": [
                   {
+                    "active": true,
                     "example": "Los Angeles",
                     "kind": "query",
                     "name": "county",
                     "orig": "county",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   },
                   {
+                    "active": true,
                     "example": "2024-presidential",
                     "kind": "query",
                     "name": "election_id",
                     "orig": "election_id",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   },
                   {
+                    "active": true,
                     "example": "CA",
                     "kind": "query",
                     "name": "state",
                     "orig": "state",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -381,11 +387,9 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "list"
         }
       },

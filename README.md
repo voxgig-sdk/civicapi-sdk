@@ -1,20 +1,8 @@
 # Civicapi SDK
 
-Free, real-time election results, polling data, and race calls for elections around the world
+civicAPI client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About civicAPI
-
-[civicAPI](https://civicapi.org) is a free public API providing up-to-the-minute election results, polling data, and race calls for elections around the world. Coverage spans local contests such as school boards and town councils through statewide referendums and national presidential elections.
-
-What you get from the API:
-
-- Race lookups by identifier (e.g. `GET /api/v2/race/{id}`)
-- Race search by query string (e.g. `GET /api/v2/race/search?query=...`)
-- Service status checks (`GET /api/v2/status`)
-
-The API is open to the public and does not require authentication. All endpoints live under `https://civicapi.org/api/v2/`. CORS is not enabled, so browser callers may need a proxy. Attribution is required for non-personal projects.
 
 ## Try it
 
@@ -48,29 +36,31 @@ gem install civicapi-sdk
 luarocks install civicapi-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { CivicapiSDK } from 'civicapi'
 
-const client = new CivicapiSDK({})
+const client = new CivicapiSDK({
+  apikey: process.env.CIVICAPI_APIKEY,
+})
 
 // List all elections
 const elections = await client.Election().list()
+console.log(elections.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -100,9 +90,9 @@ The API exposes 3 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Election** | General election information and metadata covering local, regional, and national contests worldwide, accessed via the civicAPI v2 endpoints under `/api/v2/`. | `/api/elections` |
-| **Polling** | Polling data associated with tracked elections and races, served alongside results through the civicAPI v2 endpoints. | `/api/polling` |
-| **Result** | Real-time race results and race calls, available by race identifier at `/api/v2/race/{id}` and via search at `/api/v2/race/search?query=...`. | `/api/results` |
+| **Election** |  | `/api/elections` |
+| **Polling** |  | `/api/polling` |
+| **Result** |  | `/api/results` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -112,12 +102,16 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from civicapi_sdk import CivicapiSDK
 
-client = CivicapiSDK({})
+client = CivicapiSDK({
+    "apikey": os.environ.get("CIVICAPI_APIKEY"),
+})
 
 # List all elections
-elections, err = client.Election(None).list(None, None)
+elections, err = client.Election().list()
+print(elections)
 ```
 
 ### PHP
@@ -126,10 +120,13 @@ elections, err = client.Election(None).list(None, None)
 <?php
 require_once 'civicapi_sdk.php';
 
-$client = new CivicapiSDK([]);
+$client = new CivicapiSDK([
+    "apikey" => getenv("CIVICAPI_APIKEY"),
+]);
 
 // List all elections
-[$elections, $err] = $client->Election(null)->list(null, null);
+[$elections, $err] = $client->Election()->list();
+print_r($elections);
 ```
 
 ### Golang
@@ -137,10 +134,13 @@ $client = new CivicapiSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/civicapi-sdk/go"
 
-client := sdk.NewCivicapiSDK(map[string]any{})
+client := sdk.NewCivicapiSDK(map[string]any{
+    "apikey": os.Getenv("CIVICAPI_APIKEY"),
+})
 
 // List all elections
 elections, err := client.Election(nil).List(nil, nil)
+fmt.Println(elections)
 ```
 
 ### Ruby
@@ -148,10 +148,13 @@ elections, err := client.Election(nil).List(nil, nil)
 ```ruby
 require_relative "Civicapi_sdk"
 
-client = CivicapiSDK.new({})
+client = CivicapiSDK.new({
+  "apikey" => ENV["CIVICAPI_APIKEY"],
+})
 
 # List all elections
-elections, err = client.Election(nil).list(nil, nil)
+elections, err = client.Election().list
+puts elections
 ```
 
 ### Lua
@@ -159,10 +162,13 @@ elections, err = client.Election(nil).list(nil, nil)
 ```lua
 local sdk = require("civicapi_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("CIVICAPI_APIKEY"),
+})
 
 -- List all elections
-local elections, err = client:Election(nil):list(nil, nil)
+local elections, err = client:Election():list()
+print(elections)
 ```
 
 ## Unit testing in offline mode
@@ -181,25 +187,21 @@ const result = await client.Election().load({ id: 'test01' })
 ### Python
 
 ```python
-client = CivicapiSDK.test(None, None)
-result, err = client.Election(None).load(
-    {"id": "test01"}, None
-)
+client = CivicapiSDK.test()
+result, err = client.Election().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = CivicapiSDK::test(null, null);
-[$result, $err] = $client->Election(null)->load(
-    ["id" => "test01"], null
-);
+$client = CivicapiSDK::test();
+[$result, $err] = $client->Election()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Election(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -208,19 +210,15 @@ result, err := client.Election(nil).Load(
 ### Ruby
 
 ```ruby
-client = CivicapiSDK.test(nil, nil)
-result, err = client.Election(nil).load(
-  { "id" => "test01" }, nil
-)
+client = CivicapiSDK.test
+result, err = client.Election().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Election(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Election():load({ id = "test01" })
 ```
 
 ## How it works
@@ -324,16 +322,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the civicAPI
-
-- Upstream: [https://civicapi.org](https://civicapi.org)
-- API docs: [https://civicapi.org/api-documentation/](https://civicapi.org/api-documentation/)
-
-- Free for all personal, non-commercial, and commercial purposes
-- Attribution required for non-personal projects: link to `civicapi.org` or list the civicAPI name
-- No API key or authentication required
-- See [civicAPI documentation](https://civicapi.org/api-documentation/) for current terms
 
 ---
 
