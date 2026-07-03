@@ -10,7 +10,7 @@ The Lua SDK for the Civicapi API — an entity-oriented client using Lua convent
 
 ## Install
 ```bash
-luarocks install civicapi-sdk
+luarocks install voxgig-sdk-civicapi
 ```
 
 If the module is not yet published, add the source directory to

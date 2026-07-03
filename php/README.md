@@ -10,7 +10,7 @@ The PHP SDK for the Civicapi API — an entity-oriented client using PHP convent
 
 ## Install
 ```bash
-composer require voxgig/civicapi-sdk
+composer require voxgig-sdk/civicapi
 ```
 
 

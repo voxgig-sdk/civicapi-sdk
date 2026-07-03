@@ -10,7 +10,7 @@ The TypeScript SDK for the Civicapi API — a type-safe, entity-oriented client 
 
 ## Install
 ```bash
-npm install civicapi
+npm install @voxgig-sdk/civicapi
 ```
 ## Tutorial: your first API call
 

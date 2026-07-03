@@ -10,7 +10,7 @@ The Python SDK for the Civicapi API — an entity-oriented client following Pyth
 
 ## Install
 ```bash
-pip install civicapi-sdk
+pip install voxgig-sdk-civicapi
 ```
 
 Or install from source:

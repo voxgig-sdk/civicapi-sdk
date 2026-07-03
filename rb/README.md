@@ -10,13 +10,13 @@ The Ruby SDK for the Civicapi API — an entity-oriented client using idiomatic 
 
 ## Install
 ```bash
-gem install civicapi-sdk
+gem install voxgig-sdk-civicapi
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "civicapi-sdk"
+gem "voxgig-sdk-civicapi"
 ```
 
 Then run:
