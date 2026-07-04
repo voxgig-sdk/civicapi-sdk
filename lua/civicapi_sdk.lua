@@ -244,18 +244,57 @@ end
 
 
 
+-- Idiomatic facade: client:election():list() / client:election():load({ id = ... })
+function CivicapiSDK:election(data)
+  local EntityMod = require("entity.election_entity")
+  if data == nil then
+    if self._election == nil then
+      self._election = EntityMod.new(self, nil)
+    end
+    return self._election
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:election() instead.
 function CivicapiSDK:Election(data)
   local EntityMod = require("entity.election_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:polling():list() / client:polling():load({ id = ... })
+function CivicapiSDK:polling(data)
+  local EntityMod = require("entity.polling_entity")
+  if data == nil then
+    if self._polling == nil then
+      self._polling = EntityMod.new(self, nil)
+    end
+    return self._polling
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:polling() instead.
 function CivicapiSDK:Polling(data)
   local EntityMod = require("entity.polling_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:result():list() / client:result():load({ id = ... })
+function CivicapiSDK:result(data)
+  local EntityMod = require("entity.result_entity")
+  if data == nil then
+    if self._result == nil then
+      self._result = EntityMod.new(self, nil)
+    end
+    return self._result
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:result() instead.
 function CivicapiSDK:Result(data)
   local EntityMod = require("entity.result_entity")
   return EntityMod.new(self, data)

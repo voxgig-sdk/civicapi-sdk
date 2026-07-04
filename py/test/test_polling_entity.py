@@ -50,8 +50,7 @@ class TestPollingEntity:
         polling_ref01_ent = client.Polling(None)
         polling_ref01_match = {}
 
-        polling_ref01_list_result, err = polling_ref01_ent.list(polling_ref01_match, None)
-        assert err is None
+        polling_ref01_list_result = polling_ref01_ent.list(polling_ref01_match, None)
         assert isinstance(polling_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _polling_basic_setup(extra):
         "CIVICAPI_TEST_POLLING_ENTID": idmap,
         "CIVICAPI_TEST_LIVE": "FALSE",
         "CIVICAPI_TEST_EXPLAIN": "FALSE",
-        "CIVICAPI_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _polling_basic_setup(extra):
     if env.get("CIVICAPI_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("CIVICAPI_APIKEY"),
             },
             extra or {},
         ])

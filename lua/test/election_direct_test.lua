@@ -63,14 +63,12 @@ function election_direct_setup(mockres)
   local env = runner.env_override({
     ["CIVICAPI_TEST_ELECTION_ENTID"] = {},
     ["CIVICAPI_TEST_LIVE"] = "FALSE",
-    ["CIVICAPI_APIKEY"] = "NONE",
   })
 
   local live = env["CIVICAPI_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["CIVICAPI_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

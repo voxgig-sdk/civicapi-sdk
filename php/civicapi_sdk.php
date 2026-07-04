@@ -103,7 +103,7 @@ class CivicapiSDK
         return $this->_rootctx;
     }
 
-    public function prepare(array $fetchargs = []): array
+    public function prepare(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
         $fetchargs = $fetchargs ?? [];
@@ -149,19 +149,27 @@ class CivicapiSDK
 
         [$_, $err] = ($utility->prepare_auth)($ctx);
         if ($err) {
-            return [null, $err];
+            return ($utility->make_error)($ctx, $err);
         }
 
-        return ($utility->make_fetch_def)($ctx);
+        [$fetchdef, $fd_err] = ($utility->make_fetch_def)($ctx);
+        if ($fd_err) {
+            return ($utility->make_error)($ctx, $fd_err);
+        }
+        return $fetchdef;
     }
 
-    public function direct(array $fetchargs = []): array
+    public function direct(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
 
-        [$fetchdef, $err] = $this->prepare($fetchargs);
-        if ($err) {
-            return [["ok" => false, "err" => $err], null];
+        // direct() is the raw-HTTP escape hatch: it never throws, it returns
+        // an {ok, err, ...} dict. prepare() now raises on error, so catch it
+        // and surface the failure through the dict instead.
+        try {
+            $fetchdef = $this->prepare($fetchargs);
+        } catch (\Throwable $err) {
+            return ["ok" => false, "err" => $err];
         }
 
         $fetchargs = $fetchargs ?? [];
@@ -176,14 +184,14 @@ class CivicapiSDK
         [$fetched, $fetch_err] = ($utility->fetcher)($ctx, $url, $fetchdef);
 
         if ($fetch_err) {
-            return [["ok" => false, "err" => $fetch_err], null];
+            return ["ok" => false, "err" => $fetch_err];
         }
 
         if ($fetched === null) {
-            return [[
+            return [
                 "ok" => false,
                 "err" => $ctx->make_error("direct_no_response", "response: undefined"),
-            ], null];
+            ];
         }
 
         if (is_array($fetched)) {
@@ -208,38 +216,71 @@ class CivicapiSDK
                 }
             }
 
-            return [[
+            return [
                 "ok" => $status >= 200 && $status < 300,
                 "status" => $status,
                 "headers" => Struct::getprop($fetched, "headers"),
                 "data" => $json_data,
-            ], null];
+            ];
         }
 
-        return [[
+        return [
             "ok" => false,
             "err" => $ctx->make_error("direct_invalid", "invalid response type"),
-        ], null];
+        ];
     }
 
 
-    public function Election($data = null)
+    private $_election = null;
+
+    // Idiomatic facade: $client->election()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Election() (PHP method
+    // names are case-insensitive).
+    public function election($data = null)
     {
         require_once __DIR__ . '/entity/election_entity.php';
+        if ($data === null) {
+            if ($this->_election === null) {
+                $this->_election = new ElectionEntity($this, null);
+            }
+            return $this->_election;
+        }
         return new ElectionEntity($this, $data);
     }
 
 
-    public function Polling($data = null)
+    private $_polling = null;
+
+    // Idiomatic facade: $client->polling()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Polling() (PHP method
+    // names are case-insensitive).
+    public function polling($data = null)
     {
         require_once __DIR__ . '/entity/polling_entity.php';
+        if ($data === null) {
+            if ($this->_polling === null) {
+                $this->_polling = new PollingEntity($this, null);
+            }
+            return $this->_polling;
+        }
         return new PollingEntity($this, $data);
     }
 
 
-    public function Result($data = null)
+    private $_result = null;
+
+    // Idiomatic facade: $client->result()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Result() (PHP method
+    // names are case-insensitive).
+    public function result($data = null)
     {
         require_once __DIR__ . '/entity/result_entity.php';
+        if ($data === null) {
+            if ($this->_result === null) {
+                $this->_result = new ResultEntity($this, null);
+            }
+            return $this->_result;
+        }
         return new ResultEntity($this, $data);
     }
 

@@ -4,6 +4,8 @@ import { ElectionEntity } from './entity/ElectionEntity'
 import { PollingEntity } from './entity/PollingEntity'
 import { ResultEntity } from './entity/ResultEntity'
 
+export type * from './CivicapiTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -204,18 +206,42 @@ class CivicapiSDK {
 
 
 
+  _election?: ElectionEntity
+
+  // Idiomatic facade: `client.election.list()` / `client.election.load({ id })`.
+  get election(): ElectionEntity {
+    return (this._election ??= new ElectionEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.election` instead. */
   Election(data?: any) {
     const self = this
     return new ElectionEntity(self,data)
   }
 
 
+  _polling?: PollingEntity
+
+  // Idiomatic facade: `client.polling.list()` / `client.polling.load({ id })`.
+  get polling(): PollingEntity {
+    return (this._polling ??= new PollingEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.polling` instead. */
   Polling(data?: any) {
     const self = this
     return new PollingEntity(self,data)
   }
 
 
+  _result?: ResultEntity
+
+  // Idiomatic facade: `client.result.list()` / `client.result.load({ id })`.
+  get result(): ResultEntity {
+    return (this._result ??= new ResultEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.result` instead. */
   Result(data?: any) {
     const self = this
     return new ResultEntity(self,data)

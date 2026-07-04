@@ -245,16 +245,25 @@ func (sdk *CivicapiSDK) Direct(fetchargs map[string]any) (map[string]any, error)
 }
 
 
+// Election returns a Election entity bound to this client.
+// Idiomatic usage: client.Election(nil).List(nil, nil) or
+// client.Election(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *CivicapiSDK) Election(data map[string]any) CivicapiEntity {
 	return NewElectionEntityFunc(sdk, data)
 }
 
 
+// Polling returns a Polling entity bound to this client.
+// Idiomatic usage: client.Polling(nil).List(nil, nil) or
+// client.Polling(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *CivicapiSDK) Polling(data map[string]any) CivicapiEntity {
 	return NewPollingEntityFunc(sdk, data)
 }
 
 
+// Result returns a Result entity bound to this client.
+// Idiomatic usage: client.Result(nil).List(nil, nil) or
+// client.Result(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *CivicapiSDK) Result(data map[string]any) CivicapiEntity {
 	return NewResultEntityFunc(sdk, data)
 }

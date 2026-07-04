@@ -9,9 +9,12 @@ The TypeScript SDK for the Civicapi API — a type-safe, entity-oriented client 
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/civicapi
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/civicapi-sdk/releases](https://github.com/voxgig-sdk/civicapi-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { CivicapiSDK } from 'civicapi'
+import { CivicapiSDK } from '@voxgig-sdk/civicapi'
 
-const client = new CivicapiSDK({
-  apikey: process.env.CIVICAPI_APIKEY,
-})
+const client = new CivicapiSDK()
 ```
 
 ### 2. List elections
 
 ```ts
-const result = await client.Election().list()
+const result = await client.election.list()
 
 if (result.ok) {
   for (const item of result.data) {
@@ -81,7 +82,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = CivicapiSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.election.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -89,7 +90,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new CivicapiSDK({ apikey: '...' })
+const client = new CivicapiSDK()
 const testClient = client.tester()
 ```
 
@@ -98,7 +99,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.election
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -125,7 +126,6 @@ const logger = {
 }
 
 const client = new CivicapiSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -136,7 +136,6 @@ Create a `.env.local` file at the project root:
 
 ```
 CIVICAPI_TEST_LIVE=TRUE
-CIVICAPI_APIKEY=<your-key>
 ```
 
 Then run:
@@ -154,7 +153,6 @@ cd ts && npm test
 
 ```ts
 new CivicapiSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -165,7 +163,6 @@ new CivicapiSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -304,7 +301,7 @@ API path: `/api/results`
 
 ### Election
 
-Create an instance: `const election = client.Election()`
+Create an instance: `const election = client.election`
 
 #### Operations
 
@@ -326,13 +323,13 @@ Create an instance: `const election = client.Election()`
 #### Example: List
 
 ```ts
-const elections = await client.Election().list()
+const elections = await client.election.list()
 ```
 
 
 ### Polling
 
-Create an instance: `const polling = client.Polling()`
+Create an instance: `const polling = client.polling`
 
 #### Operations
 
@@ -355,13 +352,13 @@ Create an instance: `const polling = client.Polling()`
 #### Example: List
 
 ```ts
-const pollings = await client.Polling().list()
+const pollings = await client.polling.list()
 ```
 
 
 ### Result
 
-Create an instance: `const result = client.Result()`
+Create an instance: `const result = client.result`
 
 #### Operations
 
@@ -381,7 +378,7 @@ Create an instance: `const result = client.Result()`
 #### Example: List
 
 ```ts
-const results = await client.Result().list()
+const results = await client.result.list()
 ```
 
 
@@ -442,7 +439,7 @@ civicapi/
 Import the SDK from the package root:
 
 ```ts
-import { CivicapiSDK } from 'civicapi'
+import { CivicapiSDK } from '@voxgig-sdk/civicapi'
 ```
 
 ### Entity state
@@ -452,11 +449,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const election = client.election
+await election.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// election.data() now returns the loaded election data
+// election.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

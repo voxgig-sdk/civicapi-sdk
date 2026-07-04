@@ -43,8 +43,7 @@ class ResultEntityTest < Minitest::Test
     result_ref01_ent = client.Result(nil)
     result_ref01_match = {}
 
-    result_ref01_list_result, err = result_ref01_ent.list(result_ref01_match, nil)
-    assert_nil err
+    result_ref01_list_result = result_ref01_ent.list(result_ref01_match, nil)
     assert result_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def result_basic_setup(extra)
     "CIVICAPI_TEST_RESULT_ENTID" => idmap,
     "CIVICAPI_TEST_LIVE" => "FALSE",
     "CIVICAPI_TEST_EXPLAIN" => "FALSE",
-    "CIVICAPI_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def result_basic_setup(extra)
   if env["CIVICAPI_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["CIVICAPI_APIKEY"],
       },
       extra || {},
     ])

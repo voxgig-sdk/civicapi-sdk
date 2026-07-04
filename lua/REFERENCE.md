@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -92,7 +91,7 @@ same parameters as `direct()`.
 ## ElectionEntity
 
 ```lua
-local election = client:Election(nil)
+local election = client:election(nil)
 ```
 
 ### Fields
@@ -113,7 +112,7 @@ local election = client:Election(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Election():list()
+local results, err = client:election():list()
 ```
 
 ### Common Methods
@@ -149,7 +148,7 @@ Return the entity name.
 ## PollingEntity
 
 ```lua
-local polling = client:Polling(nil)
+local polling = client:polling(nil)
 ```
 
 ### Fields
@@ -171,7 +170,7 @@ local polling = client:Polling(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Polling():list()
+local results, err = client:polling():list()
 ```
 
 ### Common Methods
@@ -207,7 +206,7 @@ Return the entity name.
 ## ResultEntity
 
 ```lua
-local result = client:Result(nil)
+local result = client:result(nil)
 ```
 
 ### Fields
@@ -226,7 +225,7 @@ local result = client:Result(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Result():list()
+local results, err = client:result():list()
 ```
 
 ### Common Methods

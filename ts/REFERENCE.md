@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -134,7 +133,7 @@ Alias for `CivicapiSDK.test()`.
 ## ElectionEntity
 
 ```ts
-const election = client.Election()
+const election = client.election
 ```
 
 ### Fields
@@ -155,7 +154,7 @@ const election = client.Election()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Election().list()
+const results = await client.election.list()
 ```
 
 ### Common Methods
@@ -189,7 +188,7 @@ Return a copy of the entity options.
 ## PollingEntity
 
 ```ts
-const polling = client.Polling()
+const polling = client.polling
 ```
 
 ### Fields
@@ -211,7 +210,7 @@ const polling = client.Polling()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Polling().list()
+const results = await client.polling.list()
 ```
 
 ### Common Methods
@@ -245,7 +244,7 @@ Return a copy of the entity options.
 ## ResultEntity
 
 ```ts
-const result = client.Result()
+const result = client.result
 ```
 
 ### Fields
@@ -264,7 +263,7 @@ const result = client.Result()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Result().list()
+const results = await client.result.list()
 ```
 
 ### Common Methods

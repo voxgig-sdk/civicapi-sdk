@@ -113,7 +113,6 @@ function basicSetup(extra?: any) {
     'CIVICAPI_TEST_POLLING_ENTID': idmap,
     'CIVICAPI_TEST_LIVE': 'FALSE',
     'CIVICAPI_TEST_EXPLAIN': 'FALSE',
-    'CIVICAPI_APIKEY': 'NONE',
   })
 
   idmap = env['CIVICAPI_TEST_POLLING_ENTID']
@@ -123,7 +122,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new CivicapiSDK(merge([
       {
-        apikey: env.CIVICAPI_APIKEY,
       },
       extra
     ]))

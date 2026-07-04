@@ -45,6 +45,7 @@ class ResultEntity
     end
   end
 
+  # @return [Result, Hash] the current Result data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class ResultEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Result fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class ResultEntity
   
 
   
+  # List Result items matching the given filter.
+  #
+  # @param reqmatch [ResultListMatch, Hash, nil] match filter (any subset of Result fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Result>, Array] the matching Result items; raises CivicapiError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

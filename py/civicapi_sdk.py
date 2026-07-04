@@ -144,16 +144,23 @@ class CivicapiSDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class CivicapiSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,25 +212,58 @@ class CivicapiSDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def election(self):
+        """Idiomatic facade: client.election.list() / client.election.load({"id": ...})."""
+        from entity.election_entity import ElectionEntity
+        cached = getattr(self, "_election", None)
+        if cached is None:
+            cached = ElectionEntity(self, None)
+            self._election = cached
+        return cached
 
     def Election(self, data=None):
+        # Deprecated: use client.election instead.
         from entity.election_entity import ElectionEntity
         return ElectionEntity(self, data)
 
 
+    @property
+    def polling(self):
+        """Idiomatic facade: client.polling.list() / client.polling.load({"id": ...})."""
+        from entity.polling_entity import PollingEntity
+        cached = getattr(self, "_polling", None)
+        if cached is None:
+            cached = PollingEntity(self, None)
+            self._polling = cached
+        return cached
+
     def Polling(self, data=None):
+        # Deprecated: use client.polling instead.
         from entity.polling_entity import PollingEntity
         return PollingEntity(self, data)
 
 
+    @property
+    def result(self):
+        """Idiomatic facade: client.result.list() / client.result.load({"id": ...})."""
+        from entity.result_entity import ResultEntity
+        cached = getattr(self, "_result", None)
+        if cached is None:
+            cached = ResultEntity(self, None)
+            self._result = cached
+        return cached
+
     def Result(self, data=None):
+        # Deprecated: use client.result instead.
         from entity.result_entity import ResultEntity
         return ResultEntity(self, data)
 

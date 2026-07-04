@@ -20,9 +20,6 @@ class CivicapiConfig
             ],
             "options" => [
                 "base" => "https://civicapi.org",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],

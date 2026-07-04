@@ -43,8 +43,7 @@ class PollingEntityTest < Minitest::Test
     polling_ref01_ent = client.Polling(nil)
     polling_ref01_match = {}
 
-    polling_ref01_list_result, err = polling_ref01_ent.list(polling_ref01_match, nil)
-    assert_nil err
+    polling_ref01_list_result = polling_ref01_ent.list(polling_ref01_match, nil)
     assert polling_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def polling_basic_setup(extra)
     "CIVICAPI_TEST_POLLING_ENTID" => idmap,
     "CIVICAPI_TEST_LIVE" => "FALSE",
     "CIVICAPI_TEST_EXPLAIN" => "FALSE",
-    "CIVICAPI_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def polling_basic_setup(extra)
   if env["CIVICAPI_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["CIVICAPI_APIKEY"],
       },
       extra || {},
     ])
