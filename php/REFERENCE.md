@@ -93,7 +93,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## ElectionEntity
 
 ```php
-$election = $client->election();
+$election = $client->Election();
 ```
 
 ### Fields
@@ -114,7 +114,7 @@ $election = $client->election();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->election()->list([]);
+$results = $client->Election()->list([]);
 ```
 
 ### Common Methods
@@ -150,7 +150,7 @@ Return the entity name.
 ## PollingEntity
 
 ```php
-$polling = $client->polling();
+$polling = $client->Polling();
 ```
 
 ### Fields
@@ -172,7 +172,7 @@ $polling = $client->polling();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->polling()->list([]);
+$results = $client->Polling()->list([]);
 ```
 
 ### Common Methods
@@ -208,7 +208,7 @@ Return the entity name.
 ## ResultEntity
 
 ```php
-$result = $client->result();
+$result = $client->Result();
 ```
 
 ### Fields
@@ -227,7 +227,7 @@ $result = $client->result();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->result()->list([]);
+$results = $client->Result()->list([]);
 ```
 
 ### Common Methods

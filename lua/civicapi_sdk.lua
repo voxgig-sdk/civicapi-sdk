@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:election():list() / client:election():load({ id = ... })
-function CivicapiSDK:election(data)
+-- Idiomatic facade: client:Election():list() / client:Election():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function CivicapiSDK:Election(data)
   local EntityMod = require("entity.election_entity")
   if data == nil then
     if self._election == nil then
@@ -256,15 +257,10 @@ function CivicapiSDK:election(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:election() instead.
-function CivicapiSDK:Election(data)
-  local EntityMod = require("entity.election_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:polling():list() / client:polling():load({ id = ... })
-function CivicapiSDK:polling(data)
+-- Idiomatic facade: client:Polling():list() / client:Polling():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function CivicapiSDK:Polling(data)
   local EntityMod = require("entity.polling_entity")
   if data == nil then
     if self._polling == nil then
@@ -275,15 +271,10 @@ function CivicapiSDK:polling(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:polling() instead.
-function CivicapiSDK:Polling(data)
-  local EntityMod = require("entity.polling_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:result():list() / client:result():load({ id = ... })
-function CivicapiSDK:result(data)
+-- Idiomatic facade: client:Result():list() / client:Result():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function CivicapiSDK:Result(data)
   local EntityMod = require("entity.result_entity")
   if data == nil then
     if self._result == nil then
@@ -291,12 +282,6 @@ function CivicapiSDK:result(data)
     end
     return self._result
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:result() instead.
-function CivicapiSDK:Result(data)
-  local EntityMod = require("entity.result_entity")
   return EntityMod.new(self, data)
 end
 

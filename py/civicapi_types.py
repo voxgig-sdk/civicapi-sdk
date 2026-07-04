@@ -4,67 +4,65 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class Election:
-    date: Optional[str] = None
-    id: Optional[str] = None
-    name: Optional[str] = None
-    state: Optional[str] = None
-    status: Optional[str] = None
-    type: Optional[str] = None
+class Election(TypedDict, total=False):
+    date: str
+    id: str
+    name: str
+    state: str
+    status: str
+    type: str
 
 
-@dataclass
-class ElectionListMatch:
-    date: Optional[str] = None
-    id: Optional[str] = None
-    name: Optional[str] = None
-    state: Optional[str] = None
-    status: Optional[str] = None
-    type: Optional[str] = None
+class ElectionListMatch(TypedDict, total=False):
+    date: str
+    id: str
+    name: str
+    state: str
+    status: str
+    type: str
 
 
-@dataclass
-class Polling:
-    end_date: Optional[str] = None
-    margin_of_error: Optional[float] = None
-    poll_id: Optional[str] = None
-    pollster: Optional[str] = None
-    result: Optional[list] = None
-    sample_size: Optional[int] = None
-    start_date: Optional[str] = None
+class Polling(TypedDict, total=False):
+    end_date: str
+    margin_of_error: float
+    poll_id: str
+    pollster: str
+    result: list
+    sample_size: int
+    start_date: str
 
 
-@dataclass
-class PollingListMatch:
-    end_date: Optional[str] = None
-    margin_of_error: Optional[float] = None
-    poll_id: Optional[str] = None
-    pollster: Optional[str] = None
-    result: Optional[list] = None
-    sample_size: Optional[int] = None
-    start_date: Optional[str] = None
+class PollingListMatch(TypedDict, total=False):
+    end_date: str
+    margin_of_error: float
+    poll_id: str
+    pollster: str
+    result: list
+    sample_size: int
+    start_date: str
 
 
-@dataclass
-class Result:
-    candidate: Optional[str] = None
-    party: Optional[str] = None
-    percentage: Optional[float] = None
-    vote: Optional[int] = None
+class Result(TypedDict, total=False):
+    candidate: str
+    party: str
+    percentage: float
+    vote: int
 
 
-@dataclass
-class ResultListMatch:
-    candidate: Optional[str] = None
-    party: Optional[str] = None
-    percentage: Optional[float] = None
-    vote: Optional[int] = None
-
+class ResultListMatch(TypedDict, total=False):
+    candidate: str
+    party: str
+    percentage: float
+    vote: int

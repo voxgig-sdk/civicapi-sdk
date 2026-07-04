@@ -220,57 +220,27 @@ class CivicapiSDK:
         }
 
 
-    @property
-    def election(self):
-        """Idiomatic facade: client.election.list() / client.election.load({"id": ...})."""
-        from entity.election_entity import ElectionEntity
-        cached = getattr(self, "_election", None)
-        if cached is None:
-            cached = ElectionEntity(self, None)
-            self._election = cached
-        return cached
-
-    def Election(self, data=None):
-        # Deprecated: use client.election instead.
+    def Election(self, data=None) -> "ElectionEntity":
+        """Entity factory: client.Election().list({}) / client.Election().load({"id": ...})."""
         from entity.election_entity import ElectionEntity
         return ElectionEntity(self, data)
 
 
-    @property
-    def polling(self):
-        """Idiomatic facade: client.polling.list() / client.polling.load({"id": ...})."""
-        from entity.polling_entity import PollingEntity
-        cached = getattr(self, "_polling", None)
-        if cached is None:
-            cached = PollingEntity(self, None)
-            self._polling = cached
-        return cached
-
-    def Polling(self, data=None):
-        # Deprecated: use client.polling instead.
+    def Polling(self, data=None) -> "PollingEntity":
+        """Entity factory: client.Polling().list({}) / client.Polling().load({"id": ...})."""
         from entity.polling_entity import PollingEntity
         return PollingEntity(self, data)
 
 
-    @property
-    def result(self):
-        """Idiomatic facade: client.result.list() / client.result.load({"id": ...})."""
-        from entity.result_entity import ResultEntity
-        cached = getattr(self, "_result", None)
-        if cached is None:
-            cached = ResultEntity(self, None)
-            self._result = cached
-        return cached
-
-    def Result(self, data=None):
-        # Deprecated: use client.result instead.
+    def Result(self, data=None) -> "ResultEntity":
+        """Entity factory: client.Result().list({}) / client.Result().load({"id": ...})."""
         from entity.result_entity import ResultEntity
         return ResultEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "CivicapiSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -290,3 +260,11 @@ class CivicapiSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.election_entity import ElectionEntity
+    from entity.polling_entity import PollingEntity
+    from entity.result_entity import ResultEntity

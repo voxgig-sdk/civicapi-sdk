@@ -206,42 +206,21 @@ class CivicapiSDK {
 
 
 
-  _election?: ElectionEntity
-
-  // Idiomatic facade: `client.election.list()` / `client.election.load({ id })`.
-  get election(): ElectionEntity {
-    return (this._election ??= new ElectionEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.election` instead. */
+  // Entity access: `client.Election().list()` / `client.Election().load({ id })`.
   Election(data?: any) {
     const self = this
     return new ElectionEntity(self,data)
   }
 
 
-  _polling?: PollingEntity
-
-  // Idiomatic facade: `client.polling.list()` / `client.polling.load({ id })`.
-  get polling(): PollingEntity {
-    return (this._polling ??= new PollingEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.polling` instead. */
+  // Entity access: `client.Polling().list()` / `client.Polling().load({ id })`.
   Polling(data?: any) {
     const self = this
     return new PollingEntity(self,data)
   }
 
 
-  _result?: ResultEntity
-
-  // Idiomatic facade: `client.result.list()` / `client.result.load({ id })`.
-  get result(): ResultEntity {
-    return (this._result ??= new ResultEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.result` instead. */
+  // Entity access: `client.Result().list()` / `client.Result().load({ id })`.
   Result(data?: any) {
     const self = this
     return new ResultEntity(self,data)

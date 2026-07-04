@@ -28,15 +28,15 @@ import { CivicapiSDK } from '@voxgig-sdk/civicapi'
 const client = new CivicapiSDK()
 ```
 
-### 2. List elections
+### 2. List election records
+
+`list()` resolves to an array of Election objects — iterate it directly:
 
 ```ts
-const result = await client.election.list()
+const elections = await client.Election().list()
 
-if (result.ok) {
-  for (const item of result.data) {
-    console.log(item.id, item.name)
-  }
+for (const election of elections) {
+  console.log(election)
 }
 ```
 
@@ -54,6 +54,9 @@ const result = await client.direct({
   params: { id: 'example' },
 })
 
+if (result instanceof Error) {
+  throw result
+}
 if (result.ok) {
   console.log(result.status)  // 200
   console.log(result.data)    // response body
@@ -82,9 +85,9 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = CivicapiSDK.test()
 
-const result = await client.election.load({ id: 'test01' })
-// result.ok === true
-// result.data contains mock response data
+const election = await client.Election().load({ id: 'test01' })
+// election is a bare entity populated with mock response data
+console.log(election)
 ```
 
 You can also use the instance method:
@@ -99,7 +102,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.election
+const entity = client.Election()
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -177,7 +180,7 @@ new CivicapiSDK(options?: {
 | `utility()` | `Utility` | Deep copy of the SDK utility object. |
 | `prepare(fetchargs?)` | `Promise<FetchDef>` | Build an HTTP request definition without sending it. |
 | `direct(fetchargs?)` | `Promise<DirectResult>` | Build and send an HTTP request. |
-| `Election(data?)` | `ElectionEntity` | Create a Election entity instance. |
+| `Election(data?)` | `ElectionEntity` | Create an Election entity instance. |
 | `Polling(data?)` | `PollingEntity` | Create a Polling entity instance. |
 | `Result(data?)` | `ResultEntity` | Create a Result entity instance. |
 | `tester(testopts?, sdkopts?)` | `CivicapiSDK` | Create a test-mode client instance. |
@@ -196,29 +199,30 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `load(reqmatch?, ctrl?): Promise<Result>` | Load a single entity by match criteria. |
-| `list` | `list(reqmatch?, ctrl?): Promise<Result>` | List entities matching the criteria. |
-| `create` | `create(reqdata?, ctrl?): Promise<Result>` | Create a new entity. |
-| `update` | `update(reqdata?, ctrl?): Promise<Result>` | Update an existing entity. |
-| `remove` | `remove(reqmatch?, ctrl?): Promise<Result>` | Remove an entity. |
+| `load` | `load(reqmatch?, ctrl?): Promise<Entity>` | Load a single entity by match criteria. |
+| `list` | `list(reqmatch?, ctrl?): Promise<Entity[]>` | List entities matching the criteria. |
+| `create` | `create(reqdata?, ctrl?): Promise<Entity>` | Create a new entity. |
+| `update` | `update(reqdata?, ctrl?): Promise<Entity>` | Update an existing entity. |
+| `remove` | `remove(reqmatch?, ctrl?): Promise<void>` | Remove an entity. |
 | `data` | `data(data?): any` | Get or set entity data. |
 | `match` | `match(match?): any` | Get or set entity match criteria. |
 | `make` | `make(): Entity` | Create a new instance with the same options. |
 | `client` | `client(): CivicapiSDK` | Return the parent SDK client. |
 | `entopts` | `entopts(): object` | Return a copy of the entity options. |
 
-#### Result shape
+#### Return values
 
-All entity operations return a Result object:
+Entity operations resolve to the entity data directly — there is no
+result envelope:
 
-```ts
-{
-  ok: boolean      // true if the HTTP status is 2xx
-  status: number   // HTTP status code
-  headers: object  // response headers
-  data: any        // parsed JSON response body
-}
-```
+- `load`, `create` and `update` resolve to a single entity object.
+- `list` resolves to an **array** of entity objects (iterate it directly;
+  there is no `.data` and no `.ok`).
+- `remove` resolves to `void`.
+
+On a failed request these methods **throw**, so wrap calls in
+`try`/`catch` to handle errors. Only `direct()` returns the result
+envelope described below.
 
 ### DirectResult shape
 
@@ -301,7 +305,7 @@ API path: `/api/results`
 
 ### Election
 
-Create an instance: `const election = client.election`
+Create an instance: `const election = client.Election()`
 
 #### Operations
 
@@ -323,13 +327,13 @@ Create an instance: `const election = client.election`
 #### Example: List
 
 ```ts
-const elections = await client.election.list()
+const elections = await client.Election().list()
 ```
 
 
 ### Polling
 
-Create an instance: `const polling = client.polling`
+Create an instance: `const polling = client.Polling()`
 
 #### Operations
 
@@ -352,13 +356,13 @@ Create an instance: `const polling = client.polling`
 #### Example: List
 
 ```ts
-const pollings = await client.polling.list()
+const pollings = await client.Polling().list()
 ```
 
 
 ### Result
 
-Create an instance: `const result = client.result`
+Create an instance: `const result = client.Result()`
 
 #### Operations
 
@@ -378,7 +382,7 @@ Create an instance: `const result = client.result`
 #### Example: List
 
 ```ts
-const results = await client.result.list()
+const results = await client.Result().list()
 ```
 
 
@@ -449,7 +453,7 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const election = client.election
+const election = client.Election()
 await election.load({ id: "example_id" })
 
 // election.data() now returns the loaded election data

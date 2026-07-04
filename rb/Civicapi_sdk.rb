@@ -208,39 +208,21 @@ class CivicapiSDK
   end
 
 
-  # Idiomatic facade: client.election.list / client.election.load({ "id" => ... })
-  def election
-    require_relative 'entity/election_entity'
-    @election ||= ElectionEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.election instead.
+  # Canonical facade: client.Election.list / client.Election.load({ "id" => ... })
   def Election(data = nil)
     require_relative 'entity/election_entity'
     ElectionEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.polling.list / client.polling.load({ "id" => ... })
-  def polling
-    require_relative 'entity/polling_entity'
-    @polling ||= PollingEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.polling instead.
+  # Canonical facade: client.Polling.list / client.Polling.load({ "id" => ... })
   def Polling(data = nil)
     require_relative 'entity/polling_entity'
     PollingEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.result.list / client.result.load({ "id" => ... })
-  def result
-    require_relative 'entity/result_entity'
-    @result ||= ResultEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.result instead.
+  # Canonical facade: client.Result.list / client.Result.load({ "id" => ... })
   def Result(data = nil)
     require_relative 'entity/result_entity'
     ResultEntity.new(self, data)

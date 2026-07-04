@@ -94,7 +94,7 @@ same parameters as `direct()`. Raises on error.
 ## ElectionEntity
 
 ```ruby
-election = client.election
+election = client.Election
 ```
 
 ### Fields
@@ -115,7 +115,7 @@ election = client.election
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.election.list(nil)
+results = client.Election.list(nil)
 ```
 
 ### Common Methods
@@ -151,7 +151,7 @@ Return the entity name.
 ## PollingEntity
 
 ```ruby
-polling = client.polling
+polling = client.Polling
 ```
 
 ### Fields
@@ -173,7 +173,7 @@ polling = client.polling
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.polling.list(nil)
+results = client.Polling.list(nil)
 ```
 
 ### Common Methods
@@ -209,7 +209,7 @@ Return the entity name.
 ## ResultEntity
 
 ```ruby
-result = client.result
+result = client.Result
 ```
 
 ### Fields
@@ -228,7 +228,7 @@ result = client.result
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.result.list(nil)
+results = client.Result.list(nil)
 ```
 
 ### Common Methods

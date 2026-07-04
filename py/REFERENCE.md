@@ -88,7 +88,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## ElectionEntity
 
 ```python
-election = client.election
+election = client.Election()
 ```
 
 ### Fields
@@ -109,7 +109,9 @@ election = client.election
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.election.list({})
+results = client.Election().list({})
+for election in results:
+    print(election)
 ```
 
 ### Common Methods
@@ -144,7 +146,7 @@ Return the entity name.
 ## PollingEntity
 
 ```python
-polling = client.polling
+polling = client.Polling()
 ```
 
 ### Fields
@@ -166,7 +168,9 @@ polling = client.polling
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.polling.list({})
+results = client.Polling().list({})
+for polling in results:
+    print(polling)
 ```
 
 ### Common Methods
@@ -201,7 +205,7 @@ Return the entity name.
 ## ResultEntity
 
 ```python
-result = client.result
+result = client.Result()
 ```
 
 ### Fields
@@ -220,7 +224,9 @@ result = client.result
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.result.list({})
+results = client.Result().list({})
+for result in results:
+    print(result)
 ```
 
 ### Common Methods

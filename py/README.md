@@ -31,14 +31,16 @@ from civicapi_sdk import CivicapiSDK
 client = CivicapiSDK()
 ```
 
-### 2. List elections
+### 2. List election records
+
+`list()` returns a `list` of records (each a `dict`) and raises on
+error — iterate it directly.
 
 ```python
 try:
-    result = client.election.list()
-    for item in result:
-        d = item.data_get()
-        print(d["id"], d["name"])
+    elections = client.Election().list({})
+    for election in elections:
+        print(election)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -86,8 +88,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = CivicapiSDK.test()
 
-result = client.election.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+election = client.Election().load({"id": "test01"})
+# election contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -163,7 +166,7 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
-| `Election` | `(data) -> ElectionEntity` | Create a Election entity instance. |
+| `Election` | `(data) -> ElectionEntity` | Create an Election entity instance. |
 | `Polling` | `(data) -> PollingEntity` | Create a Polling entity instance. |
 | `Result` | `(data) -> ResultEntity` | Create a Result entity instance. |
 
@@ -256,7 +259,7 @@ API path: `/api/results`
 
 ### Election
 
-Create an instance: `const election = client.election`
+Create an instance: `election = client.Election()`
 
 #### Operations
 
@@ -277,14 +280,14 @@ Create an instance: `const election = client.election`
 
 #### Example: List
 
-```ts
-const elections = await client.election.list()
+```python
+elections = client.Election().list({})
 ```
 
 
 ### Polling
 
-Create an instance: `const polling = client.polling`
+Create an instance: `polling = client.Polling()`
 
 #### Operations
 
@@ -306,14 +309,14 @@ Create an instance: `const polling = client.polling`
 
 #### Example: List
 
-```ts
-const pollings = await client.polling.list()
+```python
+pollings = client.Polling().list({})
 ```
 
 
 ### Result
 
-Create an instance: `const result = client.result`
+Create an instance: `result = client.Result()`
 
 #### Operations
 
@@ -332,8 +335,8 @@ Create an instance: `const result = client.result`
 
 #### Example: List
 
-```ts
-const results = await client.result.list()
+```python
+results = client.Result().list({})
 ```
 
 
@@ -407,7 +410,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-election = client.election
+election = client.Election()
 election.load({"id": "example_id"})
 
 # election.data_get() now returns the loaded election data

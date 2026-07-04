@@ -26,9 +26,11 @@ import { CivicapiSDK } from '@voxgig-sdk/civicapi'
 
 const client = new CivicapiSDK()
 
-// List all elections
-const elections = await client.election.list()
-console.log(elections.data)
+// List all elections (returns Election[])
+const elections = await client.Election().list()
+for (const election of elections) {
+  console.log(election)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -85,9 +87,10 @@ from civicapi_sdk import CivicapiSDK
 
 client = CivicapiSDK()
 
-# List all elections
-elections = client.election.list()
-print(elections)
+# List all elections (returns a list, raises on error)
+elections = client.Election().list({})
+for election in elections:
+    print(election)
 ```
 
 ### PHP
@@ -98,8 +101,8 @@ require_once 'civicapi_sdk.php';
 
 $client = new CivicapiSDK();
 
-// List all elections (throws on error)
-$elections = $client->election()->list();
+// List all elections (returns an array; throws on error)
+$elections = $client->Election()->list();
 print_r($elections);
 ```
 
@@ -122,8 +125,8 @@ require_relative "Civicapi_sdk"
 
 client = CivicapiSDK.new
 
-# List all elections
-elections = client.election.list
+# List all elections (returns an Array; raises on error)
+elections = client.Election.list
 puts elections
 ```
 
@@ -135,7 +138,7 @@ local sdk = require("civicapi_sdk")
 local client = sdk.new()
 
 -- List all elections
-local elections, err = client:election():list()
+local elections, err = client:Election():list()
 print(elections)
 ```
 
@@ -148,22 +151,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = CivicapiSDK.test()
-const result = await client.election.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const election = await client.Election().load({ id: 'test01' })
+// election is a bare Election populated with mock data
+console.log(election)
 ```
 
 ### Python
 
 ```python
 client = CivicapiSDK.test()
-result = client.election.load({"id": "test01"})
+election = client.Election().load({"id": "test01"})
+print(election)
 ```
 
 ### PHP
 
 ```php
-$client = CivicapiSDK::test();
-$result = $client->election()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = CivicapiSDK::test([
+    "entity" => ["election" => ["test01" => ["id" => "test01"]]],
+]);
+$election = $client->Election()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -178,15 +186,18 @@ result, err := client.Election(nil).Load(
 ### Ruby
 
 ```ruby
-client = CivicapiSDK.test
-result = client.election.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = CivicapiSDK.test({
+  "entity" => { "election" => { "test01" => { "id" => "test01" } } },
+})
+election = client.Election.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:election():load({ id = "test01" })
+local result, err = client:Election():load({ id = "test01" })
 ```
 
 ## How it works
@@ -234,6 +245,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

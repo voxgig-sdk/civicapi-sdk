@@ -29,18 +29,16 @@ require_once 'civicapi_sdk.php';
 $client = new CivicapiSDK();
 ```
 
-### 2. List elections
+### 2. List election records
 
 ```php
 try {
-    $result = $client->election()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of Election records — iterate directly.
+    $elections = $client->Election()->list();
+    foreach ($elections as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -86,13 +84,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = CivicapiSDK::test();
+$client = CivicapiSDK::test([
+    "entity" => ["election" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->election()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$election = $client->Election()->load(["id" => "test01"]);
+print_r($election);
 ```
 
 ### Use a custom fetch function
@@ -171,7 +173,7 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `get_utility` | `(): Utility` | Copy of the SDK utility object. |
 | `prepare` | `(array $fetchargs): array` | Build an HTTP request definition without sending. |
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
-| `Election` | `($data): ElectionEntity` | Create a Election entity instance. |
+| `Election` | `($data): ElectionEntity` | Create an Election entity instance. |
 | `Polling` | `($data): PollingEntity` | Create a Polling entity instance. |
 | `Result` | `($data): ResultEntity` | Create a Result entity instance. |
 
@@ -264,7 +266,7 @@ API path: `/api/results`
 
 ### Election
 
-Create an instance: `const election = client.election`
+Create an instance: `$election = $client->Election();`
 
 #### Operations
 
@@ -285,14 +287,15 @@ Create an instance: `const election = client.election`
 
 #### Example: List
 
-```ts
-const elections = await client.election.list()
+```php
+// list() returns an array of Election records (throws on error).
+$elections = $client->Election()->list();
 ```
 
 
 ### Polling
 
-Create an instance: `const polling = client.polling`
+Create an instance: `$polling = $client->Polling();`
 
 #### Operations
 
@@ -314,14 +317,15 @@ Create an instance: `const polling = client.polling`
 
 #### Example: List
 
-```ts
-const pollings = await client.polling.list()
+```php
+// list() returns an array of Polling records (throws on error).
+$pollings = $client->Polling()->list();
 ```
 
 
 ### Result
 
-Create an instance: `const result = client.result`
+Create an instance: `$result = $client->Result();`
 
 #### Operations
 
@@ -340,8 +344,9 @@ Create an instance: `const result = client.result`
 
 #### Example: List
 
-```ts
-const results = await client.result.list()
+```php
+// list() returns an array of Result records (throws on error).
+$results = $client->Result()->list();
 ```
 
 
@@ -416,7 +421,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$election = $client->election();
+$election = $client->Election();
 $election->load(["id" => "example_id"]);
 
 // $election->dataGet() now returns the loaded election data

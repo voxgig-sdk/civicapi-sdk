@@ -233,10 +233,10 @@ class CivicapiSDK
 
     private $_election = null;
 
-    // Idiomatic facade: $client->election()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Election() (PHP method
-    // names are case-insensitive).
-    public function election($data = null)
+    // Canonical facade: $client->Election()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->election()
+    // resolves here too.
+    public function Election($data = null)
     {
         require_once __DIR__ . '/entity/election_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class CivicapiSDK
 
     private $_polling = null;
 
-    // Idiomatic facade: $client->polling()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Polling() (PHP method
-    // names are case-insensitive).
-    public function polling($data = null)
+    // Canonical facade: $client->Polling()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->polling()
+    // resolves here too.
+    public function Polling($data = null)
     {
         require_once __DIR__ . '/entity/polling_entity.php';
         if ($data === null) {
@@ -269,10 +269,10 @@ class CivicapiSDK
 
     private $_result = null;
 
-    // Idiomatic facade: $client->result()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Result() (PHP method
-    // names are case-insensitive).
-    public function result($data = null)
+    // Canonical facade: $client->Result()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->result()
+    // resolves here too.
+    public function Result($data = null)
     {
         require_once __DIR__ . '/entity/result_entity.php';
         if ($data === null) {

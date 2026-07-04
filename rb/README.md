@@ -28,16 +28,14 @@ require_relative "Civicapi_sdk"
 client = CivicapiSDK.new
 ```
 
-### 2. List elections
+### 2. List election records
 
 ```ruby
 begin
-  result = client.election.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of Election records — iterate directly.
+  elections = client.Election.list
+  elections.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -85,13 +83,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = CivicapiSDK.test
+client = CivicapiSDK.test({
+  "entity" => { "election" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.election.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+election = client.Election.load({ "id" => "test01" })
+puts election
 ```
 
 ### Use a custom fetch function
@@ -167,7 +169,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> Hash` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> Hash` | Build and send an HTTP request. Returns a result hash (`result["ok"]`); does not raise. |
-| `Election` | `(data) -> ElectionEntity` | Create a Election entity instance. |
+| `Election` | `(data) -> ElectionEntity` | Create an Election entity instance. |
 | `Polling` | `(data) -> PollingEntity` | Create a Polling entity instance. |
 | `Result` | `(data) -> ResultEntity` | Create a Result entity instance. |
 
@@ -259,7 +261,7 @@ API path: `/api/results`
 
 ### Election
 
-Create an instance: `const election = client.election`
+Create an instance: `election = client.Election`
 
 #### Operations
 
@@ -280,14 +282,15 @@ Create an instance: `const election = client.election`
 
 #### Example: List
 
-```ts
-const elections = await client.election.list()
+```ruby
+# list returns an Array of Election records (raises on error).
+elections = client.Election.list
 ```
 
 
 ### Polling
 
-Create an instance: `const polling = client.polling`
+Create an instance: `polling = client.Polling`
 
 #### Operations
 
@@ -309,14 +312,15 @@ Create an instance: `const polling = client.polling`
 
 #### Example: List
 
-```ts
-const pollings = await client.polling.list()
+```ruby
+# list returns an Array of Polling records (raises on error).
+pollings = client.Polling.list
 ```
 
 
 ### Result
 
-Create an instance: `const result = client.result`
+Create an instance: `result = client.Result`
 
 #### Operations
 
@@ -335,8 +339,9 @@ Create an instance: `const result = client.result`
 
 #### Example: List
 
-```ts
-const results = await client.result.list()
+```ruby
+# list returns an Array of Result records (raises on error).
+results = client.Result.list
 ```
 
 
@@ -411,7 +416,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-election = client.election
+election = client.Election
 election.load({ "id" => "example_id" })
 
 # election.data_get now returns the loaded election data

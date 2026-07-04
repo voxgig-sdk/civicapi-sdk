@@ -133,7 +133,7 @@ Alias for `CivicapiSDK.test()`.
 ## ElectionEntity
 
 ```ts
-const election = client.election
+const election = client.Election()
 ```
 
 ### Fields
@@ -154,7 +154,7 @@ const election = client.election
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.election.list()
+const results = await client.Election().list()
 ```
 
 ### Common Methods
@@ -188,7 +188,7 @@ Return a copy of the entity options.
 ## PollingEntity
 
 ```ts
-const polling = client.polling
+const polling = client.Polling()
 ```
 
 ### Fields
@@ -210,7 +210,7 @@ const polling = client.polling
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.polling.list()
+const results = await client.Polling().list()
 ```
 
 ### Common Methods
@@ -244,7 +244,7 @@ Return a copy of the entity options.
 ## ResultEntity
 
 ```ts
-const result = client.result
+const result = client.Result()
 ```
 
 ### Fields
@@ -263,7 +263,7 @@ const result = client.result
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.result.list()
+const results = await client.Result().list()
 ```
 
 ### Common Methods

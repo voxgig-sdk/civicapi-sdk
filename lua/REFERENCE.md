@@ -91,7 +91,7 @@ same parameters as `direct()`.
 ## ElectionEntity
 
 ```lua
-local election = client:election(nil)
+local election = client:Election(nil)
 ```
 
 ### Fields
@@ -112,7 +112,7 @@ local election = client:election(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:election():list()
+local results, err = client:Election():list()
 ```
 
 ### Common Methods
@@ -148,7 +148,7 @@ Return the entity name.
 ## PollingEntity
 
 ```lua
-local polling = client:polling(nil)
+local polling = client:Polling(nil)
 ```
 
 ### Fields
@@ -170,7 +170,7 @@ local polling = client:polling(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:polling():list()
+local results, err = client:Polling():list()
 ```
 
 ### Common Methods
@@ -206,7 +206,7 @@ Return the entity name.
 ## ResultEntity
 
 ```lua
-local result = client:result(nil)
+local result = client:Result(nil)
 ```
 
 ### Fields
@@ -225,7 +225,7 @@ local result = client:result(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:result():list()
+local results, err = client:Result():list()
 ```
 
 ### Common Methods
