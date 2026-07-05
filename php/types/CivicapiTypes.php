@@ -23,7 +23,7 @@ class Election
     public ?string $type = null;
 }
 
-/** Match filter for Election#list (any subset of Election fields). */
+/** Request payload for Election#list. */
 class ElectionListMatch
 {
     public ?string $date = null;
@@ -46,7 +46,7 @@ class Polling
     public ?string $start_date = null;
 }
 
-/** Match filter for Polling#list (any subset of Polling fields). */
+/** Request payload for Polling#list. */
 class PollingListMatch
 {
     public ?string $end_date = null;
@@ -67,7 +67,7 @@ class Result
     public ?int $vote = null;
 }
 
-/** Match filter for Result#list (any subset of Result fields). */
+/** Request payload for Result#list. */
 class ResultListMatch
 {
     public ?string $candidate = null;

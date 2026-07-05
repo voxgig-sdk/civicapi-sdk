@@ -37,7 +37,7 @@ Election = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Election#list (any subset of Election fields).
+# Request payload for Election#list.
 #
 # @!attribute [rw] date
 #   @return [String, nil]
@@ -99,7 +99,7 @@ Polling = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Polling#list (any subset of Polling fields).
+# Request payload for Polling#list.
 #
 # @!attribute [rw] end_date
 #   @return [String, nil]
@@ -153,7 +153,7 @@ Result = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Result#list (any subset of Result fields).
+# Request payload for Result#list.
 #
 # @!attribute [rw] candidate
 #   @return [String, nil]

@@ -95,21 +95,21 @@ election = client.Election()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `state` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `date` | `str` | No |  |
+| `id` | `str` | No |  |
+| `name` | `str` | No |  |
+| `state` | `str` | No |  |
+| `status` | `str` | No |  |
+| `type` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Election().list({})
+results = client.Election().list()
 for election in results:
     print(election)
 ```
@@ -153,22 +153,22 @@ polling = client.Polling()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_date` | ``$STRING`` | No |  |
-| `margin_of_error` | ``$NUMBER`` | No |  |
-| `poll_id` | ``$STRING`` | No |  |
-| `pollster` | ``$STRING`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
-| `sample_size` | ``$INTEGER`` | No |  |
-| `start_date` | ``$STRING`` | No |  |
+| `end_date` | `str` | No |  |
+| `margin_of_error` | `float` | No |  |
+| `poll_id` | `str` | No |  |
+| `pollster` | `str` | No |  |
+| `result` | `list` | No |  |
+| `sample_size` | `int` | No |  |
+| `start_date` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Polling().list({})
+results = client.Polling().list()
 for polling in results:
     print(polling)
 ```
@@ -212,19 +212,19 @@ result = client.Result()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `candidate` | ``$STRING`` | No |  |
-| `party` | ``$STRING`` | No |  |
-| `percentage` | ``$NUMBER`` | No |  |
-| `vote` | ``$INTEGER`` | No |  |
+| `candidate` | `str` | No |  |
+| `party` | `str` | No |  |
+| `percentage` | `float` | No |  |
+| `vote` | `int` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Result().list({})
+results = client.Result().list()
 for result in results:
     print(result)
 ```

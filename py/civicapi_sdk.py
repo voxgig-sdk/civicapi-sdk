@@ -221,19 +221,19 @@ class CivicapiSDK:
 
 
     def Election(self, data=None) -> "ElectionEntity":
-        """Entity factory: client.Election().list({}) / client.Election().load({"id": ...})."""
+        """Entity factory: client.Election().list() / client.Election().load({"id": ...})."""
         from entity.election_entity import ElectionEntity
         return ElectionEntity(self, data)
 
 
     def Polling(self, data=None) -> "PollingEntity":
-        """Entity factory: client.Polling().list({}) / client.Polling().load({"id": ...})."""
+        """Entity factory: client.Polling().list() / client.Polling().load({"id": ...})."""
         from entity.polling_entity import PollingEntity
         return PollingEntity(self, data)
 
 
     def Result(self, data=None) -> "ResultEntity":
-        """Entity factory: client.Result().list({}) / client.Result().load({"id": ...})."""
+        """Entity factory: client.Result().list() / client.Result().load({"id": ...})."""
         from entity.result_entity import ResultEntity
         return ResultEntity(self, data)
 

@@ -17,8 +17,6 @@ go build -o civicapi-cli ./...
 ```sh
 # One-shot: arguments form a single AQL expression
 ./civicapi-cli list election
-./civicapi-cli load 1 election
-./civicapi-cli load '{id:1}' election
 
 # REPL
 ./civicapi-cli
@@ -29,8 +27,6 @@ go build -o civicapi-cli ./...
 | Word     | Signatures                                   | Description                |
 |----------|----------------------------------------------|----------------------------|
 | `list`   | `[entity]` · `[query entity]`                | List records               |
-| `load`   | `[entity]` · `[query entity]`                | Load a single record       |
-| `update` | `[entity]` · `[query entity]`                | Update a record            |
 
 `query` is either a Map (`{id:1}`) or a Scalar (`1`, treated as `{id:1}`).
 `entity` is one of the SDK's entity names (auto-quoted as an atom).

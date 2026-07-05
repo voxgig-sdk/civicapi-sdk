@@ -14,7 +14,14 @@ export interface Election {
   type?: string
 }
 
-export type ElectionListMatch = Partial<Election>
+export interface ElectionListMatch {
+  date?: string
+  id?: string
+  name?: string
+  state?: string
+  status?: string
+  type?: string
+}
 
 export interface Polling {
   end_date?: string
@@ -26,7 +33,15 @@ export interface Polling {
   start_date?: string
 }
 
-export type PollingListMatch = Partial<Polling>
+export interface PollingListMatch {
+  end_date?: string
+  margin_of_error?: number
+  poll_id?: string
+  pollster?: string
+  result?: any[]
+  sample_size?: number
+  start_date?: string
+}
 
 export interface Result {
   candidate?: string
@@ -35,5 +50,10 @@ export interface Result {
   vote?: number
 }
 
-export type ResultListMatch = Partial<Result>
+export interface ResultListMatch {
+  candidate?: string
+  party?: string
+  percentage?: number
+  vote?: number
+}
 

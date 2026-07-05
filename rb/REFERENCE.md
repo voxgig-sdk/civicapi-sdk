@@ -8,7 +8,7 @@ Complete API reference for the Civicapi Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'civicapi_sdk'
+require_relative 'Civicapi_sdk'
 
 client = CivicapiSDK.new(options)
 ```
@@ -101,21 +101,21 @@ election = client.Election
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `state` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `date` | `String` | No |  |
+| `id` | `String` | No |  |
+| `name` | `String` | No |  |
+| `state` | `String` | No |  |
+| `status` | `String` | No |  |
+| `type` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Election.list(nil)
+results = client.Election.list
 ```
 
 ### Common Methods
@@ -158,22 +158,22 @@ polling = client.Polling
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_date` | ``$STRING`` | No |  |
-| `margin_of_error` | ``$NUMBER`` | No |  |
-| `poll_id` | ``$STRING`` | No |  |
-| `pollster` | ``$STRING`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
-| `sample_size` | ``$INTEGER`` | No |  |
-| `start_date` | ``$STRING`` | No |  |
+| `end_date` | `String` | No |  |
+| `margin_of_error` | `Float` | No |  |
+| `poll_id` | `String` | No |  |
+| `pollster` | `String` | No |  |
+| `result` | `Array` | No |  |
+| `sample_size` | `Integer` | No |  |
+| `start_date` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Polling.list(nil)
+results = client.Polling.list
 ```
 
 ### Common Methods
@@ -216,19 +216,19 @@ result = client.Result
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `candidate` | ``$STRING`` | No |  |
-| `party` | ``$STRING`` | No |  |
-| `percentage` | ``$NUMBER`` | No |  |
-| `vote` | ``$INTEGER`` | No |  |
+| `candidate` | `String` | No |  |
+| `party` | `String` | No |  |
+| `percentage` | `Float` | No |  |
+| `vote` | `Integer` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Result.list(nil)
+results = client.Result.list
 ```
 
 ### Common Methods

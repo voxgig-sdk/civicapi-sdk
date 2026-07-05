@@ -105,12 +105,12 @@ election := client.Election(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `state` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `date` | `string` | No |  |
+| `id` | `string` | No |  |
+| `name` | `string` | No |  |
+| `state` | `string` | No |  |
+| `status` | `string` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 
@@ -156,13 +156,13 @@ polling := client.Polling(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_date` | ``$STRING`` | No |  |
-| `margin_of_error` | ``$NUMBER`` | No |  |
-| `poll_id` | ``$STRING`` | No |  |
-| `pollster` | ``$STRING`` | No |  |
-| `result` | ``$ARRAY`` | No |  |
-| `sample_size` | ``$INTEGER`` | No |  |
-| `start_date` | ``$STRING`` | No |  |
+| `end_date` | `string` | No |  |
+| `margin_of_error` | `float64` | No |  |
+| `poll_id` | `string` | No |  |
+| `pollster` | `string` | No |  |
+| `result` | `[]any` | No |  |
+| `sample_size` | `int` | No |  |
+| `start_date` | `string` | No |  |
 
 ### Operations
 
@@ -208,10 +208,10 @@ result := client.Result(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `candidate` | ``$STRING`` | No |  |
-| `party` | ``$STRING`` | No |  |
-| `percentage` | ``$NUMBER`` | No |  |
-| `vote` | ``$INTEGER`` | No |  |
+| `candidate` | `string` | No |  |
+| `party` | `string` | No |  |
+| `percentage` | `float64` | No |  |
+| `vote` | `int` | No |  |
 
 ### Operations
 

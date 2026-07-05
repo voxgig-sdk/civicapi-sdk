@@ -18,8 +18,7 @@ type Election struct {
 	Type *string `json:"type,omitempty"`
 }
 
-// ElectionListMatch mirrors the election fields as an all-optional match
-// filter (Go analog of Partial<Election>).
+// ElectionListMatch is the typed request payload for Election.ListTyped.
 type ElectionListMatch struct {
 	Date *string `json:"date,omitempty"`
 	Id *string `json:"id,omitempty"`
@@ -40,8 +39,7 @@ type Polling struct {
 	StartDate *string `json:"start_date,omitempty"`
 }
 
-// PollingListMatch mirrors the polling fields as an all-optional match
-// filter (Go analog of Partial<Polling>).
+// PollingListMatch is the typed request payload for Polling.ListTyped.
 type PollingListMatch struct {
 	EndDate *string `json:"end_date,omitempty"`
 	MarginOfError *float64 `json:"margin_of_error,omitempty"`
@@ -60,8 +58,7 @@ type Result struct {
 	Vote *int `json:"vote,omitempty"`
 }
 
-// ResultListMatch mirrors the result fields as an all-optional match
-// filter (Go analog of Partial<Result>).
+// ResultListMatch is the typed request payload for Result.ListTyped.
 type ResultListMatch struct {
 	Candidate *string `json:"candidate,omitempty"`
 	Party *string `json:"party,omitempty"`
