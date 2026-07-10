@@ -19,9 +19,9 @@ main: {
           url: "https://civicapi.org"
         }
       ]
+      summary: "civicAPI is a free API that provides real-time election results, polling data, and general election information."
       title: "civicAPI"
       version: "1.0.0"
+      website: "https://civicapi.org"
     }
   }
-}
-

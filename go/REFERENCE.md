@@ -99,6 +99,7 @@ same parameters as `Direct()`.
 
 ```go
 election := client.Election(nil)
+fmt.Println(election.GetName()) // "election"
 ```
 
 ### Fields
@@ -120,6 +121,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Election(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -150,6 +155,7 @@ Return the entity name.
 
 ```go
 polling := client.Polling(nil)
+fmt.Println(polling.GetName()) // "polling"
 ```
 
 ### Fields
@@ -172,6 +178,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Polling(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -202,6 +212,7 @@ Return the entity name.
 
 ```go
 result := client.Result(nil)
+fmt.Println(result.GetName()) // "result"
 ```
 
 ### Fields
@@ -221,6 +232,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Result(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods

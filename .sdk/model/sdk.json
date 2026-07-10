@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -534,14 +531,17 @@
           "name": "Free with Attribution",
           "url": "https://civicapi.org/api-documentation/"
         },
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
             "url": "https://civicapi.org"
           }
         ],
+        "summary": "civicAPI is a free API that provides real-time election results, polling data, and general election information.",
         "title": "civicAPI",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://civicapi.org"
       },
       "option": {},
       "target": {
@@ -594,6 +594,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -644,6 +647,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
