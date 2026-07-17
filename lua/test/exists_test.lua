@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- Civicapi SDK exists test
 
 local sdk = require("civicapi_sdk")
 
