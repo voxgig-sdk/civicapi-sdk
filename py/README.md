@@ -124,7 +124,8 @@ Create a mock client for unit testing — no server required:
 ```python
 client = CivicapiSDK.test()
 
-# Entity ops return the bare record and raise on error.
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
 election = client.Election().list()
 # election contains the mock response record
 ```
@@ -222,7 +223,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -259,13 +260,13 @@ API path: `/api/elections`
 
 | Field | Description |
 | --- | --- |
-| `end_date` |  |
-| `margin_of_error` |  |
-| `poll_id` |  |
+| `endDate` |  |
+| `marginOfError` |  |
+| `pollId` |  |
 | `pollster` |  |
-| `result` |  |
-| `sample_size` |  |
-| `start_date` |  |
+| `results` |  |
+| `sampleSize` |  |
+| `startDate` |  |
 
 Operations: List.
 
@@ -278,7 +279,7 @@ API path: `/api/polling`
 | `candidate` |  |
 | `party` |  |
 | `percentage` |  |
-| `vote` |  |
+| `votes` |  |
 
 Operations: List.
 
@@ -331,13 +332,13 @@ Create an instance: `polling = client.Polling()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `end_date` | `str` |  |
-| `margin_of_error` | `float` |  |
-| `poll_id` | `str` |  |
+| `endDate` | `str` |  |
+| `marginOfError` | `float` |  |
+| `pollId` | `str` |  |
 | `pollster` | `str` |  |
-| `result` | `list` |  |
-| `sample_size` | `int` |  |
-| `start_date` | `str` |  |
+| `results` | `list` |  |
+| `sampleSize` | `int` |  |
+| `startDate` | `str` |  |
 
 #### Example: List
 
@@ -363,7 +364,7 @@ Create an instance: `result = client.Result()`
 | `candidate` | `str` |  |
 | `party` | `str` |  |
 | `percentage` | `float` |  |
-| `vote` | `int` |  |
+| `votes` | `int` |  |
 
 #### Example: List
 

@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# Civicapi SDK exists test
 
 import pytest
 from civicapi_sdk import CivicapiSDK

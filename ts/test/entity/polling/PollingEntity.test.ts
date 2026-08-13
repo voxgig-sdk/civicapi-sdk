@@ -63,7 +63,7 @@ describe('PollingEntity', async () => {
     const polling_ref01_ent = client.Polling()
     const polling_ref01_match: any = {}
 
-    const polling_ref01_list = await polling_ref01_ent.list(polling_ref01_match)
+    const polling_ref01_list = (await polling_ref01_ent.list(polling_ref01_match)).map((e: any) => e.data())
 
 
   })

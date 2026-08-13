@@ -119,7 +119,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = CivicapiSDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 election = client.Election.list()
 puts election
 ```
@@ -253,13 +254,13 @@ API path: `/api/elections`
 
 | Field | Description |
 | --- | --- |
-| `end_date` |  |
-| `margin_of_error` |  |
-| `poll_id` |  |
+| `endDate` |  |
+| `marginOfError` |  |
+| `pollId` |  |
 | `pollster` |  |
-| `result` |  |
-| `sample_size` |  |
-| `start_date` |  |
+| `results` |  |
+| `sampleSize` |  |
+| `startDate` |  |
 
 Operations: List.
 
@@ -272,7 +273,7 @@ API path: `/api/polling`
 | `candidate` |  |
 | `party` |  |
 | `percentage` |  |
-| `vote` |  |
+| `votes` |  |
 
 Operations: List.
 
@@ -326,13 +327,13 @@ Create an instance: `polling = client.Polling`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `end_date` | `String` |  |
-| `margin_of_error` | `Float` |  |
-| `poll_id` | `String` |  |
+| `endDate` | `String` |  |
+| `marginOfError` | `Float` |  |
+| `pollId` | `String` |  |
 | `pollster` | `String` |  |
-| `result` | `Array` |  |
-| `sample_size` | `Integer` |  |
-| `start_date` | `String` |  |
+| `results` | `Array` |  |
+| `sampleSize` | `Integer` |  |
+| `startDate` | `String` |  |
 
 #### Example: List
 
@@ -359,7 +360,7 @@ Create an instance: `result = client.Result`
 | `candidate` | `String` |  |
 | `party` | `String` |  |
 | `percentage` | `Float` |  |
-| `vote` | `Integer` |  |
+| `votes` | `Integer` |  |
 
 #### Example: List
 

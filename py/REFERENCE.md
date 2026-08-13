@@ -153,13 +153,13 @@ polling = client.Polling()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_date` | `str` | No |  |
-| `margin_of_error` | `float` | No |  |
-| `poll_id` | `str` | No |  |
+| `endDate` | `str` | No |  |
+| `marginOfError` | `float` | No |  |
+| `pollId` | `str` | No |  |
 | `pollster` | `str` | No |  |
-| `result` | `list` | No |  |
-| `sample_size` | `int` | No |  |
-| `start_date` | `str` | No |  |
+| `results` | `list` | No |  |
+| `sampleSize` | `int` | No |  |
+| `startDate` | `str` | No |  |
 
 ### Operations
 
@@ -215,7 +215,7 @@ result = client.Result()
 | `candidate` | `str` | No |  |
 | `party` | `str` | No |  |
 | `percentage` | `float` | No |  |
-| `vote` | `int` | No |  |
+| `votes` | `int` | No |  |
 
 ### Operations
 

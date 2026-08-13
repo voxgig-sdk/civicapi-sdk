@@ -107,6 +107,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/elections",
 								"parts": []any{
@@ -122,12 +123,11 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.elections`",
 								},
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -138,21 +138,21 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "end_date",
+						"name": "endDate",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 0,
 					},
 					map[string]any{
 						"active": true,
-						"name": "margin_of_error",
+						"name": "marginOfError",
 						"req": false,
 						"type": "`$NUMBER`",
 						"index$": 1,
 					},
 					map[string]any{
 						"active": true,
-						"name": "poll_id",
+						"name": "pollId",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 2,
@@ -166,21 +166,21 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "result",
+						"name": "results",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 4,
 					},
 					map[string]any{
 						"active": true,
-						"name": "sample_size",
+						"name": "sampleSize",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 5,
 					},
 					map[string]any{
 						"active": true,
-						"name": "start_date",
+						"name": "startDate",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 6,
@@ -234,6 +234,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/polling",
 								"parts": []any{
@@ -250,12 +251,11 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.polls`",
 								},
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -287,7 +287,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "vote",
+						"name": "votes",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 3,
@@ -332,6 +332,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/api/results",
 								"parts": []any{
@@ -347,12 +348,11 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.results`",
 								},
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{

@@ -37,7 +37,7 @@ class ResultEntity extends CivicapiEntityBase<Result> {
 
 
 
-  async list(this: any, reqmatch?: ResultListMatch, ctrl?: Control): Promise<Result[]> {
+  async list(this: any, reqmatch?: ResultListMatch, ctrl?: Control): Promise<ResultEntity[]> {
 
     const utility = this._utility
 

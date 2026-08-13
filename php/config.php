@@ -113,6 +113,7 @@ class CivicapiConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/elections',
                   'parts' => [
@@ -128,7 +129,7 @@ class CivicapiConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.elections`',
                   ],
                   'index$' => 0,
                 ],
@@ -144,21 +145,21 @@ class CivicapiConfig
           'fields' => [
             [
               'active' => true,
-              'name' => 'end_date',
+              'name' => 'endDate',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 0,
             ],
             [
               'active' => true,
-              'name' => 'margin_of_error',
+              'name' => 'marginOfError',
               'req' => false,
               'type' => '`$NUMBER`',
               'index$' => 1,
             ],
             [
               'active' => true,
-              'name' => 'poll_id',
+              'name' => 'pollId',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 2,
@@ -172,21 +173,21 @@ class CivicapiConfig
             ],
             [
               'active' => true,
-              'name' => 'result',
+              'name' => 'results',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 4,
             ],
             [
               'active' => true,
-              'name' => 'sample_size',
+              'name' => 'sampleSize',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 5,
             ],
             [
               'active' => true,
-              'name' => 'start_date',
+              'name' => 'startDate',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 6,
@@ -240,6 +241,7 @@ class CivicapiConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/polling',
                   'parts' => [
@@ -256,7 +258,7 @@ class CivicapiConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.polls`',
                   ],
                   'index$' => 0,
                 ],
@@ -293,7 +295,7 @@ class CivicapiConfig
             ],
             [
               'active' => true,
-              'name' => 'vote',
+              'name' => 'votes',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 3,
@@ -338,6 +340,7 @@ class CivicapiConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/results',
                   'parts' => [
@@ -353,7 +356,7 @@ class CivicapiConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.results`',
                   ],
                   'index$' => 0,
                 ],

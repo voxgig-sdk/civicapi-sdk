@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import CivicapiControl
-from core.error import CivicapiError
-from core.result import CivicapiResult
-from core.spec import CivicapiSpec
+from projectname_sdk.config import make_config
+from projectname_sdk.features import _make_feature
+from projectname_sdk.core.control import CivicapiControl
+from projectname_sdk.core.error import CivicapiError
+from projectname_sdk.core.result import CivicapiResult
+from projectname_sdk.core.spec import CivicapiSpec
 
 
 # True when this SDK was generated with the named feature.

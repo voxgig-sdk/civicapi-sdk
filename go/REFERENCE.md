@@ -162,13 +162,13 @@ fmt.Println(polling.GetName()) // "polling"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_date` | `string` | No |  |
-| `margin_of_error` | `float64` | No |  |
-| `poll_id` | `string` | No |  |
+| `endDate` | `string` | No |  |
+| `marginOfError` | `float64` | No |  |
+| `pollId` | `string` | No |  |
 | `pollster` | `string` | No |  |
-| `result` | `[]any` | No |  |
-| `sample_size` | `int` | No |  |
-| `start_date` | `string` | No |  |
+| `results` | `[]any` | No |  |
+| `sampleSize` | `int` | No |  |
+| `startDate` | `string` | No |  |
 
 ### Operations
 
@@ -222,7 +222,7 @@ fmt.Println(result.GetName()) // "result"
 | `candidate` | `string` | No |  |
 | `party` | `string` | No |  |
 | `percentage` | `float64` | No |  |
-| `vote` | `int` | No |  |
+| `votes` | `int` | No |  |
 
 ### Operations
 

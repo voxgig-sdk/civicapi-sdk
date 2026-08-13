@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = CivicapiSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = CivicapiSDK.test({
+  entity: {
+    election: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const elections = await client.Election().list()
-// elections is an array of bare Election records populated with mock data
+// elections is an array of Election entities, populated with mock data
+// — call elections[0].data() for the record itself
 console.log(elections)
 ```
 
@@ -110,7 +119,7 @@ import { CivicapiSDK } from '@voxgig-sdk/civicapi'
 
 const client = new CivicapiSDK()
 
-// List all elections (returns Election[])
+// List all elections (returns ElectionEntity[] — .data() for the record)
 const elections = await client.Election().list()
 for (const election of elections) {
   console.log(election)
@@ -345,6 +354,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://civicapi.org/api-documentation/](https://civicapi.org/api-documentation/)
 

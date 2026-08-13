@@ -16,11 +16,11 @@
 import pytest
 
 from civicapi_sdk import CivicapiSDK
-from core.error import CivicapiError
-from core.result import CivicapiResult
-from core.response import CivicapiResponse
-from core.spec import CivicapiSpec
-from feature.base_feature import CivicapiBaseFeature
+from civicapi_sdk.core.error import CivicapiError
+from civicapi_sdk.core.result import CivicapiResult
+from civicapi_sdk.core.response import CivicapiResponse
+from civicapi_sdk.core.spec import CivicapiSpec
+from civicapi_sdk.feature.base_feature import CivicapiBaseFeature
 
 
 def _client():

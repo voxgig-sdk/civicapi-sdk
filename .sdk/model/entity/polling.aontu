@@ -6,17 +6,17 @@ main: kit: entity: polling: {
 
   fields: [
     {
-      name: "end_date"
+      name: "endDate"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "margin_of_error"
+      name: "marginOfError"
       req: false
       type: "`$NUMBER`"
     }
     {
-      name: "poll_id"
+      name: "pollId"
       req: false
       type: "`$STRING`"
     }
@@ -26,17 +26,17 @@ main: kit: entity: polling: {
       type: "`$STRING`"
     }
     {
-      name: "result"
+      name: "results"
       req: false
       type: "`$ARRAY`"
     }
     {
-      name: "sample_size"
+      name: "sampleSize"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "start_date"
+      name: "startDate"
       req: false
       type: "`$STRING`"
     }
@@ -100,7 +100,7 @@ main: kit: entity: polling: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.polls`"
           }
         }
       ]

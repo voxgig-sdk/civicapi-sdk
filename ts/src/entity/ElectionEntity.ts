@@ -37,7 +37,7 @@ class ElectionEntity extends CivicapiEntityBase<Election> {
 
 
 
-  async list(this: any, reqmatch?: ElectionListMatch, ctrl?: Control): Promise<Election[]> {
+  async list(this: any, reqmatch?: ElectionListMatch, ctrl?: Control): Promise<ElectionEntity[]> {
 
     const utility = this._utility
 

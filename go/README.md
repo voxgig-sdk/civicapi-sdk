@@ -277,13 +277,13 @@ API path: `/api/elections`
 
 | Field | Description |
 | --- | --- |
-| `"end_date"` |  |
-| `"margin_of_error"` |  |
-| `"poll_id"` |  |
+| `"endDate"` |  |
+| `"marginOfError"` |  |
+| `"pollId"` |  |
 | `"pollster"` |  |
-| `"result"` |  |
-| `"sample_size"` |  |
-| `"start_date"` |  |
+| `"results"` |  |
+| `"sampleSize"` |  |
+| `"startDate"` |  |
 
 Operations: List.
 
@@ -296,7 +296,7 @@ API path: `/api/polling`
 | `"candidate"` |  |
 | `"party"` |  |
 | `"percentage"` |  |
-| `"vote"` |  |
+| `"votes"` |  |
 
 Operations: List.
 
@@ -353,13 +353,13 @@ Create an instance: `polling := client.Polling(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `end_date` | `string` |  |
-| `margin_of_error` | `float64` |  |
-| `poll_id` | `string` |  |
+| `endDate` | `string` |  |
+| `marginOfError` | `float64` |  |
+| `pollId` | `string` |  |
 | `pollster` | `string` |  |
-| `result` | `[]any` |  |
-| `sample_size` | `int` |  |
-| `start_date` | `string` |  |
+| `results` | `[]any` |  |
+| `sampleSize` | `int` |  |
+| `startDate` | `string` |  |
 
 #### Example: List
 
@@ -389,7 +389,7 @@ Create an instance: `result := client.Result(nil)`
 | `candidate` | `string` |  |
 | `party` | `string` |  |
 | `percentage` | `float64` |  |
-| `vote` | `int` |  |
+| `votes` | `int` |  |
 
 #### Example: List
 

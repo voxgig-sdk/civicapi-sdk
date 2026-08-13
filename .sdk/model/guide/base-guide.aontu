@@ -8,18 +8,21 @@ guide: {
   entity: election: {
     path: "/api/elections": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.elections`")|top
     }
   }
 
   entity: polling: {
     path: "/api/polling": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.polls`")|top
     }
   }
 
   entity: result: {
     path: "/api/results": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.results`")|top
     }
   }
 

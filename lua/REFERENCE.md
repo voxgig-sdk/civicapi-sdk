@@ -155,13 +155,13 @@ local polling = client:Polling(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_date` | `string` | No |  |
-| `margin_of_error` | `number` | No |  |
-| `poll_id` | `string` | No |  |
+| `endDate` | `string` | No |  |
+| `marginOfError` | `number` | No |  |
+| `pollId` | `string` | No |  |
 | `pollster` | `string` | No |  |
-| `result` | `table` | No |  |
-| `sample_size` | `number` | No |  |
-| `start_date` | `string` | No |  |
+| `results` | `table` | No |  |
+| `sampleSize` | `number` | No |  |
+| `startDate` | `string` | No |  |
 
 ### Operations
 
@@ -216,7 +216,7 @@ local result = client:Result(nil)
 | `candidate` | `string` | No |  |
 | `party` | `string` | No |  |
 | `percentage` | `number` | No |  |
-| `vote` | `number` | No |  |
+| `votes` | `number` | No |  |
 
 ### Operations
 

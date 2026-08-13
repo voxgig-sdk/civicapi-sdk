@@ -195,13 +195,13 @@ const polling = client.Polling()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_date` | `string` | No |  |
-| `margin_of_error` | `number` | No |  |
-| `poll_id` | `string` | No |  |
+| `endDate` | `string` | No |  |
+| `marginOfError` | `number` | No |  |
+| `pollId` | `string` | No |  |
 | `pollster` | `string` | No |  |
-| `result` | `any[]` | No |  |
-| `sample_size` | `number` | No |  |
-| `start_date` | `string` | No |  |
+| `results` | `any[]` | No |  |
+| `sampleSize` | `number` | No |  |
+| `startDate` | `string` | No |  |
 
 ### Operations
 
@@ -254,7 +254,7 @@ const result = client.Result()
 | `candidate` | `string` | No |  |
 | `party` | `string` | No |  |
 | `percentage` | `number` | No |  |
-| `vote` | `number` | No |  |
+| `votes` | `number` | No |  |
 
 ### Operations
 

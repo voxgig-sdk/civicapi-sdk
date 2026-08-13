@@ -125,7 +125,8 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = CivicapiSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $election = $client->Election()->list();
 print_r($election);
 ```
@@ -226,7 +227,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -263,13 +264,13 @@ API path: `/api/elections`
 
 | Field | Description |
 | --- | --- |
-| `end_date` |  |
-| `margin_of_error` |  |
-| `poll_id` |  |
+| `endDate` |  |
+| `marginOfError` |  |
+| `pollId` |  |
 | `pollster` |  |
-| `result` |  |
-| `sample_size` |  |
-| `start_date` |  |
+| `results` |  |
+| `sampleSize` |  |
+| `startDate` |  |
 
 Operations: List.
 
@@ -282,7 +283,7 @@ API path: `/api/polling`
 | `candidate` |  |
 | `party` |  |
 | `percentage` |  |
-| `vote` |  |
+| `votes` |  |
 
 Operations: List.
 
@@ -336,13 +337,13 @@ Create an instance: `$polling = $client->Polling();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `end_date` | `string` |  |
-| `margin_of_error` | `float` |  |
-| `poll_id` | `string` |  |
+| `endDate` | `string` |  |
+| `marginOfError` | `float` |  |
+| `pollId` | `string` |  |
 | `pollster` | `string` |  |
-| `result` | `array` |  |
-| `sample_size` | `int` |  |
-| `start_date` | `string` |  |
+| `results` | `array` |  |
+| `sampleSize` | `int` |  |
+| `startDate` | `string` |  |
 
 #### Example: List
 
@@ -369,7 +370,7 @@ Create an instance: `$result = $client->Result();`
 | `candidate` | `string` |  |
 | `party` | `string` |  |
 | `percentage` | `float` |  |
-| `vote` | `int` |  |
+| `votes` | `int` |  |
 
 #### Example: List
 

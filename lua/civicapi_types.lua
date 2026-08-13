@@ -23,34 +23,34 @@
 ---@field type? string
 
 ---@class Polling
----@field end_date? string
----@field margin_of_error? number
----@field poll_id? string
+---@field endDate? string
+---@field marginOfError? number
+---@field pollId? string
 ---@field pollster? string
----@field result? table
----@field sample_size? number
----@field start_date? string
+---@field results? table
+---@field sampleSize? number
+---@field startDate? string
 
 ---@class PollingListMatch
----@field end_date? string
----@field margin_of_error? number
----@field poll_id? string
+---@field endDate? string
+---@field marginOfError? number
+---@field pollId? string
 ---@field pollster? string
----@field result? table
----@field sample_size? number
----@field start_date? string
+---@field results? table
+---@field sampleSize? number
+---@field startDate? string
 
 ---@class Result
 ---@field candidate? string
 ---@field party? string
 ---@field percentage? number
----@field vote? number
+---@field votes? number
 
 ---@class ResultListMatch
 ---@field candidate? string
 ---@field party? string
 ---@field percentage? number
----@field vote? number
+---@field votes? number
 
 local M = {}
 

@@ -157,13 +157,13 @@ $polling = $client->Polling();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_date` | `string` | No |  |
-| `margin_of_error` | `float` | No |  |
-| `poll_id` | `string` | No |  |
+| `endDate` | `string` | No |  |
+| `marginOfError` | `float` | No |  |
+| `pollId` | `string` | No |  |
 | `pollster` | `string` | No |  |
-| `result` | `array` | No |  |
-| `sample_size` | `int` | No |  |
-| `start_date` | `string` | No |  |
+| `results` | `array` | No |  |
+| `sampleSize` | `int` | No |  |
+| `startDate` | `string` | No |  |
 
 ### Operations
 
@@ -218,7 +218,7 @@ $result = $client->Result();
 | `candidate` | `string` | No |  |
 | `party` | `string` | No |  |
 | `percentage` | `float` | No |  |
-| `vote` | `int` | No |  |
+| `votes` | `int` | No |  |
 
 ### Operations
 

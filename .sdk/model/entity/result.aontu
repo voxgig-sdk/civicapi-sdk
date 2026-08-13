@@ -21,7 +21,7 @@ main: kit: entity: result: {
       type: "`$NUMBER`"
     }
     {
-      name: "vote"
+      name: "votes"
       req: false
       type: "`$INTEGER`"
     }
@@ -76,7 +76,7 @@ main: kit: entity: result: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.results`"
           }
         }
       ]

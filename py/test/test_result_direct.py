@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from civicapi_sdk.utility.voxgig_struct import voxgig_struct as vs
 from civicapi_sdk import CivicapiSDK
-from core import helpers
+from civicapi_sdk.core import helpers
 from test import runner
 
 

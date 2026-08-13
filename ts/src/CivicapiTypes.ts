@@ -24,36 +24,36 @@ export interface ElectionListMatch {
 }
 
 export interface Polling {
-  end_date?: string
-  margin_of_error?: number
-  poll_id?: string
+  endDate?: string
+  marginOfError?: number
+  pollId?: string
   pollster?: string
-  result?: any[]
-  sample_size?: number
-  start_date?: string
+  results?: any[]
+  sampleSize?: number
+  startDate?: string
 }
 
 export interface PollingListMatch {
-  end_date?: string
-  margin_of_error?: number
-  poll_id?: string
+  endDate?: string
+  marginOfError?: number
+  pollId?: string
   pollster?: string
-  result?: any[]
-  sample_size?: number
-  start_date?: string
+  results?: any[]
+  sampleSize?: number
+  startDate?: string
 }
 
 export interface Result {
   candidate?: string
   party?: string
   percentage?: number
-  vote?: number
+  votes?: number
 }
 
 export interface ResultListMatch {
   candidate?: string
   party?: string
   percentage?: number
-  vote?: number
+  votes?: number
 }
 

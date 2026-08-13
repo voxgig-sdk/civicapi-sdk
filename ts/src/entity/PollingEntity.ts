@@ -37,7 +37,7 @@ class PollingEntity extends CivicapiEntityBase<Polling> {
 
 
 
-  async list(this: any, reqmatch?: PollingListMatch, ctrl?: Control): Promise<Polling[]> {
+  async list(this: any, reqmatch?: PollingListMatch, ctrl?: Control): Promise<PollingEntity[]> {
 
     const utility = this._utility
 

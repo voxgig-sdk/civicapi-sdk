@@ -68,67 +68,67 @@ ElectionListMatch = Struct.new(
 
 # Polling entity data model.
 #
-# @!attribute [rw] end_date
+# @!attribute [rw] endDate
 #   @return [String, nil]
 #
-# @!attribute [rw] margin_of_error
+# @!attribute [rw] marginOfError
 #   @return [Float, nil]
 #
-# @!attribute [rw] poll_id
+# @!attribute [rw] pollId
 #   @return [String, nil]
 #
 # @!attribute [rw] pollster
 #   @return [String, nil]
 #
-# @!attribute [rw] result
+# @!attribute [rw] results
 #   @return [Array, nil]
 #
-# @!attribute [rw] sample_size
+# @!attribute [rw] sampleSize
 #   @return [Integer, nil]
 #
-# @!attribute [rw] start_date
+# @!attribute [rw] startDate
 #   @return [String, nil]
 Polling = Struct.new(
-  :end_date,
-  :margin_of_error,
-  :poll_id,
+  :endDate,
+  :marginOfError,
+  :pollId,
   :pollster,
-  :result,
-  :sample_size,
-  :start_date,
+  :results,
+  :sampleSize,
+  :startDate,
   keyword_init: true
 )
 
 # Request payload for Polling#list.
 #
-# @!attribute [rw] end_date
+# @!attribute [rw] endDate
 #   @return [String, nil]
 #
-# @!attribute [rw] margin_of_error
+# @!attribute [rw] marginOfError
 #   @return [Float, nil]
 #
-# @!attribute [rw] poll_id
+# @!attribute [rw] pollId
 #   @return [String, nil]
 #
 # @!attribute [rw] pollster
 #   @return [String, nil]
 #
-# @!attribute [rw] result
+# @!attribute [rw] results
 #   @return [Array, nil]
 #
-# @!attribute [rw] sample_size
+# @!attribute [rw] sampleSize
 #   @return [Integer, nil]
 #
-# @!attribute [rw] start_date
+# @!attribute [rw] startDate
 #   @return [String, nil]
 PollingListMatch = Struct.new(
-  :end_date,
-  :margin_of_error,
-  :poll_id,
+  :endDate,
+  :marginOfError,
+  :pollId,
   :pollster,
-  :result,
-  :sample_size,
-  :start_date,
+  :results,
+  :sampleSize,
+  :startDate,
   keyword_init: true
 )
 
@@ -143,13 +143,13 @@ PollingListMatch = Struct.new(
 # @!attribute [rw] percentage
 #   @return [Float, nil]
 #
-# @!attribute [rw] vote
+# @!attribute [rw] votes
 #   @return [Integer, nil]
 Result = Struct.new(
   :candidate,
   :party,
   :percentage,
-  :vote,
+  :votes,
   keyword_init: true
 )
 
@@ -164,13 +164,13 @@ Result = Struct.new(
 # @!attribute [rw] percentage
 #   @return [Float, nil]
 #
-# @!attribute [rw] vote
+# @!attribute [rw] votes
 #   @return [Integer, nil]
 ResultListMatch = Struct.new(
   :candidate,
   :party,
   :percentage,
-  :vote,
+  :votes,
   keyword_init: true
 )
 

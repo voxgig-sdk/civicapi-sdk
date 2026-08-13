@@ -63,7 +63,7 @@ describe('ElectionEntity', async () => {
     const election_ref01_ent = client.Election()
     const election_ref01_match: any = {}
 
-    const election_ref01_list = await election_ref01_ent.list(election_ref01_match)
+    const election_ref01_list = (await election_ref01_ent.list(election_ref01_match)).map((e: any) => e.data())
 
 
   })

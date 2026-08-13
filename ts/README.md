@@ -35,7 +35,9 @@ const client = new CivicapiSDK()
 
 ### 2. List election records
 
-`list()` resolves to an array of Election objects — iterate it directly:
+`list()` resolves to an array of Election ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const elections = await client.Election().list()
@@ -120,7 +122,8 @@ Create a mock client for unit testing — no server required:
 const client = CivicapiSDK.test()
 
 const election = await client.Election().list()
-// election is a bare entity populated with mock response data
+// election is the entity, populated with mock response data
+// — call election.data() for the record itself
 console.log(election)
 ```
 
@@ -301,13 +304,13 @@ API path: `/api/elections`
 
 | Field | Description |
 | --- | --- |
-| `end_date` |  |
-| `margin_of_error` |  |
-| `poll_id` |  |
+| `endDate` |  |
+| `marginOfError` |  |
+| `pollId` |  |
 | `pollster` |  |
-| `result` |  |
-| `sample_size` |  |
-| `start_date` |  |
+| `results` |  |
+| `sampleSize` |  |
+| `startDate` |  |
 
 Operations: list.
 
@@ -320,7 +323,7 @@ API path: `/api/polling`
 | `candidate` |  |
 | `party` |  |
 | `percentage` |  |
-| `vote` |  |
+| `votes` |  |
 
 Operations: list.
 
@@ -373,13 +376,13 @@ Create an instance: `const polling = client.Polling()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `end_date` | `string` |  |
-| `margin_of_error` | `number` |  |
-| `poll_id` | `string` |  |
+| `endDate` | `string` |  |
+| `marginOfError` | `number` |  |
+| `pollId` | `string` |  |
 | `pollster` | `string` |  |
-| `result` | `any[]` |  |
-| `sample_size` | `number` |  |
-| `start_date` | `string` |  |
+| `results` | `any[]` |  |
+| `sampleSize` | `number` |  |
+| `startDate` | `string` |  |
 
 #### Example: List
 
@@ -405,7 +408,7 @@ Create an instance: `const result = client.Result()`
 | `candidate` | `string` |  |
 | `party` | `string` |  |
 | `percentage` | `number` |  |
-| `vote` | `number` |  |
+| `votes` | `number` |  |
 
 #### Example: List
 

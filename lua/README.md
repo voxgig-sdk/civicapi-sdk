@@ -220,9 +220,9 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local election, err = client:Election():load()
+    local election, err = client:Election():list()
     if err then error(err) end
-    -- election is the loaded record
+    -- election is the record list
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.
@@ -248,13 +248,13 @@ API path: `/api/elections`
 
 | Field | Description |
 | --- | --- |
-| `end_date` |  |
-| `margin_of_error` |  |
-| `poll_id` |  |
+| `endDate` |  |
+| `marginOfError` |  |
+| `pollId` |  |
 | `pollster` |  |
-| `result` |  |
-| `sample_size` |  |
-| `start_date` |  |
+| `results` |  |
+| `sampleSize` |  |
+| `startDate` |  |
 
 Operations: List.
 
@@ -267,7 +267,7 @@ API path: `/api/polling`
 | `candidate` |  |
 | `party` |  |
 | `percentage` |  |
-| `vote` |  |
+| `votes` |  |
 
 Operations: List.
 
@@ -320,13 +320,13 @@ Create an instance: `local polling = client:Polling(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `end_date` | `string` |  |
-| `margin_of_error` | `number` |  |
-| `poll_id` | `string` |  |
+| `endDate` | `string` |  |
+| `marginOfError` | `number` |  |
+| `pollId` | `string` |  |
 | `pollster` | `string` |  |
-| `result` | `table` |  |
-| `sample_size` | `number` |  |
-| `start_date` | `string` |  |
+| `results` | `table` |  |
+| `sampleSize` | `number` |  |
+| `startDate` | `string` |  |
 
 #### Example: List
 
@@ -352,7 +352,7 @@ Create an instance: `local result = client:Result(nil)`
 | `candidate` | `string` |  |
 | `party` | `string` |  |
 | `percentage` | `number` |  |
-| `vote` | `number` |  |
+| `votes` | `number` |  |
 
 #### Example: List
 
