@@ -40,7 +40,7 @@ class CivicapiSDK
         $utility = new CivicapiUtility();
         $this->_utility = $utility;
 
-        $config = CivicapiConfig::make_config();
+        $config = CivicapiConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

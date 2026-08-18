@@ -15,7 +15,7 @@ require_relative "../Civicapi_sdk"
 module CivicapiFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = CivicapiConfig.make_config["feature"]
+    f = CivicapiConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 

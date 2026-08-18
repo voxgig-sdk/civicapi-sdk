@@ -28,7 +28,7 @@ class CivicapiSDK
     utility = CivicapiUtility.new
     @_utility = utility
 
-    config = CivicapiConfig.make_config
+    config = CivicapiConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,
