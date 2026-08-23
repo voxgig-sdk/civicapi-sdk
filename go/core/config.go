@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "Civicapi",
+			"slug": "civicapi",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -35,26 +38,32 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "date",
+						"short": "Election date",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique election identifier",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Election name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "state",
+						"short": "State or jurisdiction",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "status",
+						"short": "Current status of the election",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "type",
+						"short": "Type of election",
 						"type": "`$STRING`",
 					},
 				},
@@ -119,18 +128,22 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "endDate",
+						"short": "Poll end date",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "marginOfError",
+						"short": "Margin of error percentage",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "pollId",
+						"short": "Unique poll identifier",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "pollster",
+						"short": "Organization conducting the poll",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -139,10 +152,12 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "sampleSize",
+						"short": "Number of respondents",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "startDate",
+						"short": "Poll start date",
 						"type": "`$STRING`",
 					},
 				},
@@ -216,18 +231,22 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "candidate",
+						"short": "Candidate name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "party",
+						"short": "Political party",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "percentage",
+						"short": "Percentage of total votes",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "votes",
+						"short": "Number of votes received",
 						"type": "`$INTEGER`",
 					},
 				},

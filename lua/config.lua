@@ -7,6 +7,9 @@ local function make_config()
   return {
     main = {
       name = "Civicapi",
+      slug = "civicapi",
+      version = "0.0.1",
+      target = "lua",
     },
     feature = {
       ["test"] = {
@@ -31,26 +34,32 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "date",
+            ["short"] = "Election date",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "id",
+            ["short"] = "Unique election identifier",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "name",
+            ["short"] = "Election name",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "state",
+            ["short"] = "State or jurisdiction",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "status",
+            ["short"] = "Current status of the election",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "type",
+            ["short"] = "Type of election",
             ["type"] = "`$STRING`",
           },
         },
@@ -115,18 +124,22 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "endDate",
+            ["short"] = "Poll end date",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "marginOfError",
+            ["short"] = "Margin of error percentage",
             ["type"] = "`$NUMBER`",
           },
           {
             ["name"] = "pollId",
+            ["short"] = "Unique poll identifier",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "pollster",
+            ["short"] = "Organization conducting the poll",
             ["type"] = "`$STRING`",
           },
           {
@@ -135,10 +148,12 @@ local function make_config()
           },
           {
             ["name"] = "sampleSize",
+            ["short"] = "Number of respondents",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "startDate",
+            ["short"] = "Poll start date",
             ["type"] = "`$STRING`",
           },
         },
@@ -212,18 +227,22 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "candidate",
+            ["short"] = "Candidate name",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "party",
+            ["short"] = "Political party",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "percentage",
+            ["short"] = "Percentage of total votes",
             ["type"] = "`$NUMBER`",
           },
           {
             ["name"] = "votes",
+            ["short"] = "Number of votes received",
             ["type"] = "`$INTEGER`",
           },
         },

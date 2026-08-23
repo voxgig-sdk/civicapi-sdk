@@ -1,48 +1,37 @@
-# Entity: election
+# Entity: result
 
-main: kit: entity: election: {
+main: kit: entity: result: {
 
   alias: field: {}
 
   fields: [
     {
-      name: "date"
+      name: "candidate"
       req: false
+      short: "Candidate name"
       type: "`$STRING`"
     }
     {
-      name: "id"
+      name: "party"
       req: false
+      short: "Political party"
       type: "`$STRING`"
     }
     {
-      name: "name"
+      name: "percentage"
       req: false
-      type: "`$STRING`"
+      short: "Percentage of total votes"
+      type: "`$NUMBER`"
     }
     {
-      name: "state"
+      name: "votes"
       req: false
-      type: "`$STRING`"
-    }
-    {
-      name: "status"
-      req: false
-      type: "`$STRING`"
-    }
-    {
-      name: "type"
-      req: false
-      type: "`$STRING`"
+      short: "Number of votes received"
+      type: "`$INTEGER`"
     }
   ]
 
-  id: {
-    field: "id"
-    name: "id"
-  }
-
-  name: "election"
+  name: "result"
   op: {
     list: {
       name: "list"
@@ -51,6 +40,22 @@ main: kit: entity: election: {
           args: {
             query: [
               {
+                example: "Los Angeles"
+                kind: "query"
+                name: "county"
+                orig: "county"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "2024-presidential"
+                kind: "query"
+                name: "election_id"
+                orig: "election_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
                 example: "CA"
                 kind: "query"
                 name: "state"
@@ -58,39 +63,24 @@ main: kit: entity: election: {
                 reqd: false
                 type: "`$STRING`"
               }
-              {
-                kind: "query"
-                name: "type"
-                orig: "type"
-                reqd: false
-                type: "`$STRING`"
-              }
-              {
-                example: 2024
-                kind: "query"
-                name: "year"
-                orig: "year"
-                reqd: false
-                type: "`$INTEGER`"
-              }
             ]
           }
           method: "GET"
-          orig: "/api/elections"
+          orig: "/api/results"
           parts: [
             "api"
-            "elections"
+            "results"
           ]
           select: {
             exist: [
+              "county"
+              "election_id"
               "state"
-              "type"
-              "year"
             ]
           }
           transform: {
             req: "`reqdata`"
-            res: "`body.elections`"
+            res: "`body.results`"
           }
         }
       ]

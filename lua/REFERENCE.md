@@ -98,12 +98,12 @@ local election = client:Election(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | `string` | No |  |
-| `id` | `string` | No |  |
-| `name` | `string` | No |  |
-| `state` | `string` | No |  |
-| `status` | `string` | No |  |
-| `type` | `string` | No |  |
+| `date` | `string` | No | Election date |
+| `id` | `string` | No | Unique election identifier |
+| `name` | `string` | No | Election name |
+| `state` | `string` | No | State or jurisdiction |
+| `status` | `string` | No | Current status of the election |
+| `type` | `string` | No | Type of election |
 
 ### Operations
 
@@ -155,13 +155,13 @@ local polling = client:Polling(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `endDate` | `string` | No |  |
-| `marginOfError` | `number` | No |  |
-| `pollId` | `string` | No |  |
-| `pollster` | `string` | No |  |
+| `endDate` | `string` | No | Poll end date |
+| `marginOfError` | `number` | No | Margin of error percentage |
+| `pollId` | `string` | No | Unique poll identifier |
+| `pollster` | `string` | No | Organization conducting the poll |
 | `results` | `table` | No |  |
-| `sampleSize` | `number` | No |  |
-| `startDate` | `string` | No |  |
+| `sampleSize` | `number` | No | Number of respondents |
+| `startDate` | `string` | No | Poll start date |
 
 ### Operations
 
@@ -213,10 +213,10 @@ local result = client:Result(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `candidate` | `string` | No |  |
-| `party` | `string` | No |  |
-| `percentage` | `number` | No |  |
-| `votes` | `number` | No |  |
+| `candidate` | `string` | No | Candidate name |
+| `party` | `string` | No | Political party |
+| `percentage` | `number` | No | Percentage of total votes |
+| `votes` | `number` | No | Number of votes received |
 
 ### Operations
 

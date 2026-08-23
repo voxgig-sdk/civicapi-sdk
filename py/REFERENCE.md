@@ -95,12 +95,12 @@ election = client.Election()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | `str` | No |  |
-| `id` | `str` | No |  |
-| `name` | `str` | No |  |
-| `state` | `str` | No |  |
-| `status` | `str` | No |  |
-| `type` | `str` | No |  |
+| `date` | `str` | No | Election date |
+| `id` | `str` | No | Unique election identifier |
+| `name` | `str` | No | Election name |
+| `state` | `str` | No | State or jurisdiction |
+| `status` | `str` | No | Current status of the election |
+| `type` | `str` | No | Type of election |
 
 ### Operations
 
@@ -153,13 +153,13 @@ polling = client.Polling()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `endDate` | `str` | No |  |
-| `marginOfError` | `float` | No |  |
-| `pollId` | `str` | No |  |
-| `pollster` | `str` | No |  |
+| `endDate` | `str` | No | Poll end date |
+| `marginOfError` | `float` | No | Margin of error percentage |
+| `pollId` | `str` | No | Unique poll identifier |
+| `pollster` | `str` | No | Organization conducting the poll |
 | `results` | `list` | No |  |
-| `sampleSize` | `int` | No |  |
-| `startDate` | `str` | No |  |
+| `sampleSize` | `int` | No | Number of respondents |
+| `startDate` | `str` | No | Poll start date |
 
 ### Operations
 
@@ -212,10 +212,10 @@ result = client.Result()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `candidate` | `str` | No |  |
-| `party` | `str` | No |  |
-| `percentage` | `float` | No |  |
-| `votes` | `int` | No |  |
+| `candidate` | `str` | No | Candidate name |
+| `party` | `str` | No | Political party |
+| `percentage` | `float` | No | Percentage of total votes |
+| `votes` | `int` | No | Number of votes received |
 
 ### Operations
 

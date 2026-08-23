@@ -239,12 +239,12 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `date` |  |
-| `id` |  |
-| `name` |  |
-| `state` |  |
-| `status` |  |
-| `type` |  |
+| `date` | Election date |
+| `id` | Unique election identifier |
+| `name` | Election name |
+| `state` | State or jurisdiction |
+| `status` | Current status of the election |
+| `type` | Type of election |
 
 Operations: List.
 
@@ -254,13 +254,13 @@ API path: `/api/elections`
 
 | Field | Description |
 | --- | --- |
-| `endDate` |  |
-| `marginOfError` |  |
-| `pollId` |  |
-| `pollster` |  |
+| `endDate` | Poll end date |
+| `marginOfError` | Margin of error percentage |
+| `pollId` | Unique poll identifier |
+| `pollster` | Organization conducting the poll |
 | `results` |  |
-| `sampleSize` |  |
-| `startDate` |  |
+| `sampleSize` | Number of respondents |
+| `startDate` | Poll start date |
 
 Operations: List.
 
@@ -270,10 +270,10 @@ API path: `/api/polling`
 
 | Field | Description |
 | --- | --- |
-| `candidate` |  |
-| `party` |  |
-| `percentage` |  |
-| `votes` |  |
+| `candidate` | Candidate name |
+| `party` | Political party |
+| `percentage` | Percentage of total votes |
+| `votes` | Number of votes received |
 
 Operations: List.
 
@@ -298,12 +298,12 @@ Create an instance: `election = client.Election`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `date` | `String` |  |
-| `id` | `String` |  |
-| `name` | `String` |  |
-| `state` | `String` |  |
-| `status` | `String` |  |
-| `type` | `String` |  |
+| `date` | `String` | Election date |
+| `id` | `String` | Unique election identifier |
+| `name` | `String` | Election name |
+| `state` | `String` | State or jurisdiction |
+| `status` | `String` | Current status of the election |
+| `type` | `String` | Type of election |
 
 #### Example: List
 
@@ -327,13 +327,13 @@ Create an instance: `polling = client.Polling`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `endDate` | `String` |  |
-| `marginOfError` | `Float` |  |
-| `pollId` | `String` |  |
-| `pollster` | `String` |  |
+| `endDate` | `String` | Poll end date |
+| `marginOfError` | `Float` | Margin of error percentage |
+| `pollId` | `String` | Unique poll identifier |
+| `pollster` | `String` | Organization conducting the poll |
 | `results` | `Array` |  |
-| `sampleSize` | `Integer` |  |
-| `startDate` | `String` |  |
+| `sampleSize` | `Integer` | Number of respondents |
+| `startDate` | `String` | Poll start date |
 
 #### Example: List
 
@@ -357,10 +357,10 @@ Create an instance: `result = client.Result`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `candidate` | `String` |  |
-| `party` | `String` |  |
-| `percentage` | `Float` |  |
-| `votes` | `Integer` |  |
+| `candidate` | `String` | Candidate name |
+| `party` | `String` | Political party |
+| `percentage` | `Float` | Percentage of total votes |
+| `votes` | `Integer` | Number of votes received |
 
 #### Example: List
 

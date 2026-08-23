@@ -36,36 +36,42 @@
               "active": true,
               "name": "date",
               "req": false,
+              "short": "Election date",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique election identifier",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Election name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "state",
               "req": false,
+              "short": "State or jurisdiction",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "status",
               "req": false,
+              "short": "Current status of the election",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "type",
               "req": false,
+              "short": "Type of election",
               "type": "`$STRING`"
             }
           ],
@@ -147,24 +153,28 @@
               "active": true,
               "name": "endDate",
               "req": false,
+              "short": "Poll end date",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "marginOfError",
               "req": false,
+              "short": "Margin of error percentage",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "pollId",
               "req": false,
+              "short": "Unique poll identifier",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "pollster",
               "req": false,
+              "short": "Organization conducting the poll",
               "type": "`$STRING`"
             },
             {
@@ -177,12 +187,14 @@
               "active": true,
               "name": "sampleSize",
               "req": false,
+              "short": "Number of respondents",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "startDate",
               "req": false,
+              "short": "Poll start date",
               "type": "`$STRING`"
             }
           ],
@@ -271,24 +283,28 @@
               "active": true,
               "name": "candidate",
               "req": false,
+              "short": "Candidate name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "party",
               "req": false,
+              "short": "Political party",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "percentage",
               "req": false,
+              "short": "Percentage of total votes",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "votes",
               "req": false,
+              "short": "Number of votes received",
               "type": "`$INTEGER`"
             }
           ],

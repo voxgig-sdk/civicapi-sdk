@@ -6,7 +6,7 @@ The Golang SDK for the Civicapi API — an entity-oriented client using standard
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Election(nil)` — each with the same small set of operations (`List`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -262,12 +262,12 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"date"` |  |
-| `"id"` |  |
-| `"name"` |  |
-| `"state"` |  |
-| `"status"` |  |
-| `"type"` |  |
+| `"date"` | Election date |
+| `"id"` | Unique election identifier |
+| `"name"` | Election name |
+| `"state"` | State or jurisdiction |
+| `"status"` | Current status of the election |
+| `"type"` | Type of election |
 
 Operations: List.
 
@@ -277,13 +277,13 @@ API path: `/api/elections`
 
 | Field | Description |
 | --- | --- |
-| `"endDate"` |  |
-| `"marginOfError"` |  |
-| `"pollId"` |  |
-| `"pollster"` |  |
+| `"endDate"` | Poll end date |
+| `"marginOfError"` | Margin of error percentage |
+| `"pollId"` | Unique poll identifier |
+| `"pollster"` | Organization conducting the poll |
 | `"results"` |  |
-| `"sampleSize"` |  |
-| `"startDate"` |  |
+| `"sampleSize"` | Number of respondents |
+| `"startDate"` | Poll start date |
 
 Operations: List.
 
@@ -293,10 +293,10 @@ API path: `/api/polling`
 
 | Field | Description |
 | --- | --- |
-| `"candidate"` |  |
-| `"party"` |  |
-| `"percentage"` |  |
-| `"votes"` |  |
+| `"candidate"` | Candidate name |
+| `"party"` | Political party |
+| `"percentage"` | Percentage of total votes |
+| `"votes"` | Number of votes received |
 
 Operations: List.
 
@@ -321,12 +321,12 @@ Create an instance: `election := client.Election(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `date` | `string` |  |
-| `id` | `string` |  |
-| `name` | `string` |  |
-| `state` | `string` |  |
-| `status` | `string` |  |
-| `type` | `string` |  |
+| `date` | `string` | Election date |
+| `id` | `string` | Unique election identifier |
+| `name` | `string` | Election name |
+| `state` | `string` | State or jurisdiction |
+| `status` | `string` | Current status of the election |
+| `type` | `string` | Type of election |
 
 #### Example: List
 
@@ -353,13 +353,13 @@ Create an instance: `polling := client.Polling(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `endDate` | `string` |  |
-| `marginOfError` | `float64` |  |
-| `pollId` | `string` |  |
-| `pollster` | `string` |  |
+| `endDate` | `string` | Poll end date |
+| `marginOfError` | `float64` | Margin of error percentage |
+| `pollId` | `string` | Unique poll identifier |
+| `pollster` | `string` | Organization conducting the poll |
 | `results` | `[]any` |  |
-| `sampleSize` | `int` |  |
-| `startDate` | `string` |  |
+| `sampleSize` | `int` | Number of respondents |
+| `startDate` | `string` | Poll start date |
 
 #### Example: List
 
@@ -386,10 +386,10 @@ Create an instance: `result := client.Result(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `candidate` | `string` |  |
-| `party` | `string` |  |
-| `percentage` | `float64` |  |
-| `votes` | `int` |  |
+| `candidate` | `string` | Candidate name |
+| `party` | `string` | Political party |
+| `percentage` | `float64` | Percentage of total votes |
+| `votes` | `int` | Number of votes received |
 
 #### Example: List
 

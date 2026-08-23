@@ -245,12 +245,12 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `date` |  |
-| `id` |  |
-| `name` |  |
-| `state` |  |
-| `status` |  |
-| `type` |  |
+| `date` | Election date |
+| `id` | Unique election identifier |
+| `name` | Election name |
+| `state` | State or jurisdiction |
+| `status` | Current status of the election |
+| `type` | Type of election |
 
 Operations: List.
 
@@ -260,13 +260,13 @@ API path: `/api/elections`
 
 | Field | Description |
 | --- | --- |
-| `endDate` |  |
-| `marginOfError` |  |
-| `pollId` |  |
-| `pollster` |  |
+| `endDate` | Poll end date |
+| `marginOfError` | Margin of error percentage |
+| `pollId` | Unique poll identifier |
+| `pollster` | Organization conducting the poll |
 | `results` |  |
-| `sampleSize` |  |
-| `startDate` |  |
+| `sampleSize` | Number of respondents |
+| `startDate` | Poll start date |
 
 Operations: List.
 
@@ -276,10 +276,10 @@ API path: `/api/polling`
 
 | Field | Description |
 | --- | --- |
-| `candidate` |  |
-| `party` |  |
-| `percentage` |  |
-| `votes` |  |
+| `candidate` | Candidate name |
+| `party` | Political party |
+| `percentage` | Percentage of total votes |
+| `votes` | Number of votes received |
 
 Operations: List.
 
@@ -304,12 +304,12 @@ Create an instance: `election = client.Election()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `date` | `str` |  |
-| `id` | `str` |  |
-| `name` | `str` |  |
-| `state` | `str` |  |
-| `status` | `str` |  |
-| `type` | `str` |  |
+| `date` | `str` | Election date |
+| `id` | `str` | Unique election identifier |
+| `name` | `str` | Election name |
+| `state` | `str` | State or jurisdiction |
+| `status` | `str` | Current status of the election |
+| `type` | `str` | Type of election |
 
 #### Example: List
 
@@ -332,13 +332,13 @@ Create an instance: `polling = client.Polling()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `endDate` | `str` |  |
-| `marginOfError` | `float` |  |
-| `pollId` | `str` |  |
-| `pollster` | `str` |  |
+| `endDate` | `str` | Poll end date |
+| `marginOfError` | `float` | Margin of error percentage |
+| `pollId` | `str` | Unique poll identifier |
+| `pollster` | `str` | Organization conducting the poll |
 | `results` | `list` |  |
-| `sampleSize` | `int` |  |
-| `startDate` | `str` |  |
+| `sampleSize` | `int` | Number of respondents |
+| `startDate` | `str` | Poll start date |
 
 #### Example: List
 
@@ -361,10 +361,10 @@ Create an instance: `result = client.Result()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `candidate` | `str` |  |
-| `party` | `str` |  |
-| `percentage` | `float` |  |
-| `votes` | `int` |  |
+| `candidate` | `str` | Candidate name |
+| `party` | `str` | Political party |
+| `percentage` | `float` | Percentage of total votes |
+| `votes` | `int` | Number of votes received |
 
 #### Example: List
 

@@ -8,21 +8,25 @@ main: kit: entity: polling: {
     {
       name: "endDate"
       req: false
+      short: "Poll end date"
       type: "`$STRING`"
     }
     {
       name: "marginOfError"
       req: false
+      short: "Margin of error percentage"
       type: "`$NUMBER`"
     }
     {
       name: "pollId"
       req: false
+      short: "Unique poll identifier"
       type: "`$STRING`"
     }
     {
       name: "pollster"
       req: false
+      short: "Organization conducting the poll"
       type: "`$STRING`"
     }
     {
@@ -33,11 +37,13 @@ main: kit: entity: polling: {
     {
       name: "sampleSize"
       req: false
+      short: "Number of respondents"
       type: "`$INTEGER`"
     }
     {
       name: "startDate"
       req: false
+      short: "Poll start date"
       type: "`$STRING`"
     }
   ]

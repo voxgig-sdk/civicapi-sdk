@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -289,12 +289,12 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `date` |  |
-| `id` |  |
-| `name` |  |
-| `state` |  |
-| `status` |  |
-| `type` |  |
+| `date` | Election date |
+| `id` | Unique election identifier |
+| `name` | Election name |
+| `state` | State or jurisdiction |
+| `status` | Current status of the election |
+| `type` | Type of election |
 
 Operations: list.
 
@@ -304,13 +304,13 @@ API path: `/api/elections`
 
 | Field | Description |
 | --- | --- |
-| `endDate` |  |
-| `marginOfError` |  |
-| `pollId` |  |
-| `pollster` |  |
+| `endDate` | Poll end date |
+| `marginOfError` | Margin of error percentage |
+| `pollId` | Unique poll identifier |
+| `pollster` | Organization conducting the poll |
 | `results` |  |
-| `sampleSize` |  |
-| `startDate` |  |
+| `sampleSize` | Number of respondents |
+| `startDate` | Poll start date |
 
 Operations: list.
 
@@ -320,10 +320,10 @@ API path: `/api/polling`
 
 | Field | Description |
 | --- | --- |
-| `candidate` |  |
-| `party` |  |
-| `percentage` |  |
-| `votes` |  |
+| `candidate` | Candidate name |
+| `party` | Political party |
+| `percentage` | Percentage of total votes |
+| `votes` | Number of votes received |
 
 Operations: list.
 
@@ -348,12 +348,12 @@ Create an instance: `const election = client.Election()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `date` | `string` |  |
-| `id` | `string` |  |
-| `name` | `string` |  |
-| `state` | `string` |  |
-| `status` | `string` |  |
-| `type` | `string` |  |
+| `date` | `string` | Election date |
+| `id` | `string` | Unique election identifier |
+| `name` | `string` | Election name |
+| `state` | `string` | State or jurisdiction |
+| `status` | `string` | Current status of the election |
+| `type` | `string` | Type of election |
 
 #### Example: List
 
@@ -376,13 +376,13 @@ Create an instance: `const polling = client.Polling()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `endDate` | `string` |  |
-| `marginOfError` | `number` |  |
-| `pollId` | `string` |  |
-| `pollster` | `string` |  |
+| `endDate` | `string` | Poll end date |
+| `marginOfError` | `number` | Margin of error percentage |
+| `pollId` | `string` | Unique poll identifier |
+| `pollster` | `string` | Organization conducting the poll |
 | `results` | `any[]` |  |
-| `sampleSize` | `number` |  |
-| `startDate` | `string` |  |
+| `sampleSize` | `number` | Number of respondents |
+| `startDate` | `string` | Poll start date |
 
 #### Example: List
 
@@ -405,10 +405,10 @@ Create an instance: `const result = client.Result()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `candidate` | `string` |  |
-| `party` | `string` |  |
-| `percentage` | `number` |  |
-| `votes` | `number` |  |
+| `candidate` | `string` | Candidate name |
+| `party` | `string` | Political party |
+| `percentage` | `number` | Percentage of total votes |
+| `votes` | `number` | Number of votes received |
 
 #### Example: List
 

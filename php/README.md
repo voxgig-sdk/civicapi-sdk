@@ -249,12 +249,12 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `date` |  |
-| `id` |  |
-| `name` |  |
-| `state` |  |
-| `status` |  |
-| `type` |  |
+| `date` | Election date |
+| `id` | Unique election identifier |
+| `name` | Election name |
+| `state` | State or jurisdiction |
+| `status` | Current status of the election |
+| `type` | Type of election |
 
 Operations: List.
 
@@ -264,13 +264,13 @@ API path: `/api/elections`
 
 | Field | Description |
 | --- | --- |
-| `endDate` |  |
-| `marginOfError` |  |
-| `pollId` |  |
-| `pollster` |  |
+| `endDate` | Poll end date |
+| `marginOfError` | Margin of error percentage |
+| `pollId` | Unique poll identifier |
+| `pollster` | Organization conducting the poll |
 | `results` |  |
-| `sampleSize` |  |
-| `startDate` |  |
+| `sampleSize` | Number of respondents |
+| `startDate` | Poll start date |
 
 Operations: List.
 
@@ -280,10 +280,10 @@ API path: `/api/polling`
 
 | Field | Description |
 | --- | --- |
-| `candidate` |  |
-| `party` |  |
-| `percentage` |  |
-| `votes` |  |
+| `candidate` | Candidate name |
+| `party` | Political party |
+| `percentage` | Percentage of total votes |
+| `votes` | Number of votes received |
 
 Operations: List.
 
@@ -308,12 +308,12 @@ Create an instance: `$election = $client->Election();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `date` | `string` |  |
-| `id` | `string` |  |
-| `name` | `string` |  |
-| `state` | `string` |  |
-| `status` | `string` |  |
-| `type` | `string` |  |
+| `date` | `string` | Election date |
+| `id` | `string` | Unique election identifier |
+| `name` | `string` | Election name |
+| `state` | `string` | State or jurisdiction |
+| `status` | `string` | Current status of the election |
+| `type` | `string` | Type of election |
 
 #### Example: List
 
@@ -337,13 +337,13 @@ Create an instance: `$polling = $client->Polling();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `endDate` | `string` |  |
-| `marginOfError` | `float` |  |
-| `pollId` | `string` |  |
-| `pollster` | `string` |  |
+| `endDate` | `string` | Poll end date |
+| `marginOfError` | `float` | Margin of error percentage |
+| `pollId` | `string` | Unique poll identifier |
+| `pollster` | `string` | Organization conducting the poll |
 | `results` | `array` |  |
-| `sampleSize` | `int` |  |
-| `startDate` | `string` |  |
+| `sampleSize` | `int` | Number of respondents |
+| `startDate` | `string` | Poll start date |
 
 #### Example: List
 
@@ -367,10 +367,10 @@ Create an instance: `$result = $client->Result();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `candidate` | `string` |  |
-| `party` | `string` |  |
-| `percentage` | `float` |  |
-| `votes` | `int` |  |
+| `candidate` | `string` | Candidate name |
+| `party` | `string` | Political party |
+| `percentage` | `float` | Percentage of total votes |
+| `votes` | `int` | Number of votes received |
 
 #### Example: List
 

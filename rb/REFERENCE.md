@@ -101,12 +101,12 @@ election = client.Election
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | `String` | No |  |
-| `id` | `String` | No |  |
-| `name` | `String` | No |  |
-| `state` | `String` | No |  |
-| `status` | `String` | No |  |
-| `type` | `String` | No |  |
+| `date` | `String` | No | Election date |
+| `id` | `String` | No | Unique election identifier |
+| `name` | `String` | No | Election name |
+| `state` | `String` | No | State or jurisdiction |
+| `status` | `String` | No | Current status of the election |
+| `type` | `String` | No | Type of election |
 
 ### Operations
 
@@ -158,13 +158,13 @@ polling = client.Polling
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `endDate` | `String` | No |  |
-| `marginOfError` | `Float` | No |  |
-| `pollId` | `String` | No |  |
-| `pollster` | `String` | No |  |
+| `endDate` | `String` | No | Poll end date |
+| `marginOfError` | `Float` | No | Margin of error percentage |
+| `pollId` | `String` | No | Unique poll identifier |
+| `pollster` | `String` | No | Organization conducting the poll |
 | `results` | `Array` | No |  |
-| `sampleSize` | `Integer` | No |  |
-| `startDate` | `String` | No |  |
+| `sampleSize` | `Integer` | No | Number of respondents |
+| `startDate` | `String` | No | Poll start date |
 
 ### Operations
 
@@ -216,10 +216,10 @@ result = client.Result
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `candidate` | `String` | No |  |
-| `party` | `String` | No |  |
-| `percentage` | `Float` | No |  |
-| `votes` | `Integer` | No |  |
+| `candidate` | `String` | No | Candidate name |
+| `party` | `String` | No | Political party |
+| `percentage` | `Float` | No | Percentage of total votes |
+| `votes` | `Integer` | No | Number of votes received |
 
 ### Operations
 

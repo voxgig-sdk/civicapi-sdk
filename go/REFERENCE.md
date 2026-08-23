@@ -106,12 +106,12 @@ fmt.Println(election.GetName()) // "election"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | `string` | No |  |
-| `id` | `string` | No |  |
-| `name` | `string` | No |  |
-| `state` | `string` | No |  |
-| `status` | `string` | No |  |
-| `type` | `string` | No |  |
+| `date` | `string` | No | Election date |
+| `id` | `string` | No | Unique election identifier |
+| `name` | `string` | No | Election name |
+| `state` | `string` | No | State or jurisdiction |
+| `status` | `string` | No | Current status of the election |
+| `type` | `string` | No | Type of election |
 
 ### Operations
 
@@ -162,13 +162,13 @@ fmt.Println(polling.GetName()) // "polling"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `endDate` | `string` | No |  |
-| `marginOfError` | `float64` | No |  |
-| `pollId` | `string` | No |  |
-| `pollster` | `string` | No |  |
+| `endDate` | `string` | No | Poll end date |
+| `marginOfError` | `float64` | No | Margin of error percentage |
+| `pollId` | `string` | No | Unique poll identifier |
+| `pollster` | `string` | No | Organization conducting the poll |
 | `results` | `[]any` | No |  |
-| `sampleSize` | `int` | No |  |
-| `startDate` | `string` | No |  |
+| `sampleSize` | `int` | No | Number of respondents |
+| `startDate` | `string` | No | Poll start date |
 
 ### Operations
 
@@ -219,10 +219,10 @@ fmt.Println(result.GetName()) // "result"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `candidate` | `string` | No |  |
-| `party` | `string` | No |  |
-| `percentage` | `float64` | No |  |
-| `votes` | `int` | No |  |
+| `candidate` | `string` | No | Candidate name |
+| `party` | `string` | No | Political party |
+| `percentage` | `float64` | No | Percentage of total votes |
+| `votes` | `int` | No | Number of votes received |
 
 ### Operations
 
