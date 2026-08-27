@@ -26,12 +26,9 @@ class Election
 /** Request payload for Election#list. */
 class ElectionListMatch
 {
-    public ?string $date = null;
-    public ?string $id = null;
-    public ?string $name = null;
     public ?string $state = null;
-    public ?string $status = null;
     public ?string $type = null;
+    public ?int $year = null;
 }
 
 /** Polling entity data model. */
@@ -49,13 +46,10 @@ class Polling
 /** Request payload for Polling#list. */
 class PollingListMatch
 {
-    public ?string $endDate = null;
-    public ?float $marginOfError = null;
-    public ?string $pollId = null;
-    public ?string $pollster = null;
-    public ?array $results = null;
-    public ?int $sampleSize = null;
-    public ?string $startDate = null;
+    public ?string $election_id = null;
+    public ?string $end_date = null;
+    public ?string $start_date = null;
+    public ?string $state = null;
 }
 
 /** Result entity data model. */
@@ -70,9 +64,8 @@ class Result
 /** Request payload for Result#list. */
 class ResultListMatch
 {
-    public ?string $candidate = null;
-    public ?string $party = null;
-    public ?float $percentage = null;
-    public ?int $votes = null;
+    public ?string $county = null;
+    public string $election_id;
+    public ?string $state = null;
 }
 

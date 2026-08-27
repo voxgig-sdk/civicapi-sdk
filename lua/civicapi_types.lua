@@ -15,12 +15,9 @@
 ---@field type? string
 
 ---@class ElectionListMatch
----@field date? string
----@field id? string
----@field name? string
 ---@field state? string
----@field status? string
 ---@field type? string
+---@field year? number
 
 ---@class Polling
 ---@field endDate? string
@@ -32,13 +29,10 @@
 ---@field startDate? string
 
 ---@class PollingListMatch
----@field endDate? string
----@field marginOfError? number
----@field pollId? string
----@field pollster? string
----@field results? table
----@field sampleSize? number
----@field startDate? string
+---@field election_id? string
+---@field end_date? string
+---@field start_date? string
+---@field state? string
 
 ---@class Result
 ---@field candidate? string
@@ -47,10 +41,9 @@
 ---@field votes? number
 
 ---@class ResultListMatch
----@field candidate? string
----@field party? string
----@field percentage? number
----@field votes? number
+---@field county? string
+---@field election_id string
+---@field state? string
 
 local M = {}
 

@@ -26,12 +26,9 @@ class Election(TypedDict, total=False):
 
 
 class ElectionListMatch(TypedDict, total=False):
-    date: str
-    id: str
-    name: str
     state: str
-    status: str
     type: str
+    year: int
 
 
 class Polling(TypedDict, total=False):
@@ -45,13 +42,10 @@ class Polling(TypedDict, total=False):
 
 
 class PollingListMatch(TypedDict, total=False):
-    endDate: str
-    marginOfError: float
-    pollId: str
-    pollster: str
-    results: list
-    sampleSize: int
-    startDate: str
+    election_id: str
+    end_date: str
+    start_date: str
+    state: str
 
 
 class Result(TypedDict, total=False):
@@ -61,8 +55,10 @@ class Result(TypedDict, total=False):
     votes: int
 
 
-class ResultListMatch(TypedDict, total=False):
-    candidate: str
-    party: str
-    percentage: float
-    votes: int
+class ResultListMatchRequired(TypedDict):
+    election_id: str
+
+
+class ResultListMatch(ResultListMatchRequired, total=False):
+    county: str
+    state: str

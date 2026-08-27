@@ -24,12 +24,9 @@ type Election struct {
 
 // ElectionListMatch is the typed request payload for Election.ListTyped.
 type ElectionListMatch struct {
-	Date *string `json:"date,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
 	State *string `json:"state,omitempty"`
-	Status *string `json:"status,omitempty"`
 	Type *string `json:"type,omitempty"`
+	Year *int `json:"year,omitempty"`
 }
 
 // Polling is the typed data model for the polling entity.
@@ -45,13 +42,10 @@ type Polling struct {
 
 // PollingListMatch is the typed request payload for Polling.ListTyped.
 type PollingListMatch struct {
-	EndDate *string `json:"endDate,omitempty"`
-	MarginOfError *float64 `json:"marginOfError,omitempty"`
-	PollId *string `json:"pollId,omitempty"`
-	Pollster *string `json:"pollster,omitempty"`
-	Results *[]any `json:"results,omitempty"`
-	SampleSize *int `json:"sampleSize,omitempty"`
-	StartDate *string `json:"startDate,omitempty"`
+	ElectionId *string `json:"election_id,omitempty"`
+	EndDate *string `json:"end_date,omitempty"`
+	StartDate *string `json:"start_date,omitempty"`
+	State *string `json:"state,omitempty"`
 }
 
 // Result is the typed data model for the result entity.
@@ -64,10 +58,9 @@ type Result struct {
 
 // ResultListMatch is the typed request payload for Result.ListTyped.
 type ResultListMatch struct {
-	Candidate *string `json:"candidate,omitempty"`
-	Party *string `json:"party,omitempty"`
-	Percentage *float64 `json:"percentage,omitempty"`
-	Votes *int `json:"votes,omitempty"`
+	County *string `json:"county,omitempty"`
+	ElectionId string `json:"election_id"`
+	State *string `json:"state,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

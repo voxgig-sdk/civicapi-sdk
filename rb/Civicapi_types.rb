@@ -39,30 +39,18 @@ Election = Struct.new(
 
 # Request payload for Election#list.
 #
-# @!attribute [rw] date
-#   @return [String, nil]
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
 # @!attribute [rw] state
-#   @return [String, nil]
-#
-# @!attribute [rw] status
 #   @return [String, nil]
 #
 # @!attribute [rw] type
 #   @return [String, nil]
+#
+# @!attribute [rw] year
+#   @return [Integer, nil]
 ElectionListMatch = Struct.new(
-  :date,
-  :id,
-  :name,
   :state,
-  :status,
   :type,
+  :year,
   keyword_init: true
 )
 
@@ -101,34 +89,22 @@ Polling = Struct.new(
 
 # Request payload for Polling#list.
 #
-# @!attribute [rw] endDate
+# @!attribute [rw] election_id
 #   @return [String, nil]
 #
-# @!attribute [rw] marginOfError
-#   @return [Float, nil]
-#
-# @!attribute [rw] pollId
+# @!attribute [rw] end_date
 #   @return [String, nil]
 #
-# @!attribute [rw] pollster
+# @!attribute [rw] start_date
 #   @return [String, nil]
 #
-# @!attribute [rw] results
-#   @return [Array, nil]
-#
-# @!attribute [rw] sampleSize
-#   @return [Integer, nil]
-#
-# @!attribute [rw] startDate
+# @!attribute [rw] state
 #   @return [String, nil]
 PollingListMatch = Struct.new(
-  :endDate,
-  :marginOfError,
-  :pollId,
-  :pollster,
-  :results,
-  :sampleSize,
-  :startDate,
+  :election_id,
+  :end_date,
+  :start_date,
+  :state,
   keyword_init: true
 )
 
@@ -155,22 +131,18 @@ Result = Struct.new(
 
 # Request payload for Result#list.
 #
-# @!attribute [rw] candidate
+# @!attribute [rw] county
 #   @return [String, nil]
 #
-# @!attribute [rw] party
+# @!attribute [rw] election_id
+#   @return [String]
+#
+# @!attribute [rw] state
 #   @return [String, nil]
-#
-# @!attribute [rw] percentage
-#   @return [Float, nil]
-#
-# @!attribute [rw] votes
-#   @return [Integer, nil]
 ResultListMatch = Struct.new(
-  :candidate,
-  :party,
-  :percentage,
-  :votes,
+  :county,
+  :election_id,
+  :state,
   keyword_init: true
 )
 

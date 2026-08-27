@@ -15,12 +15,9 @@ export interface Election {
 }
 
 export interface ElectionListMatch {
-  date?: string
-  id?: string
-  name?: string
   state?: string
-  status?: string
   type?: string
+  year?: number
 }
 
 export interface Polling {
@@ -34,13 +31,10 @@ export interface Polling {
 }
 
 export interface PollingListMatch {
-  endDate?: string
-  marginOfError?: number
-  pollId?: string
-  pollster?: string
-  results?: any[]
-  sampleSize?: number
-  startDate?: string
+  election_id?: string
+  end_date?: string
+  start_date?: string
+  state?: string
 }
 
 export interface Result {
@@ -51,9 +45,8 @@ export interface Result {
 }
 
 export interface ResultListMatch {
-  candidate?: string
-  party?: string
-  percentage?: number
-  votes?: number
+  county?: string
+  election_id: string
+  state?: string
 }
 
