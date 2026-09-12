@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -73,6 +84,7 @@ class Config {
     "election": {
       "fields": [
         {
+          "format": "date",
           "name": "date",
           "short": "Election date",
           "type": "`$STRING`"
@@ -103,6 +115,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "election",
       "op": {
         "list": {
@@ -137,9 +153,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/elections",
-              "parts": [
-                "api",
-                "elections"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "elections"
+                }
               ],
               "select": {
                 "exist": [
@@ -151,7 +171,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.elections`"
-              }
+              },
+              "parts": [
+                "api",
+                "elections"
+              ]
             }
           ]
         }
@@ -163,11 +187,13 @@ class Config {
     "polling": {
       "fields": [
         {
+          "format": "date",
           "name": "endDate",
           "short": "Poll end date",
           "type": "`$STRING`"
         },
         {
+          "format": "float",
           "name": "marginOfError",
           "short": "Margin of error percentage",
           "type": "`$NUMBER`"
@@ -192,6 +218,7 @@ class Config {
           "type": "`$INTEGER`"
         },
         {
+          "format": "date",
           "name": "startDate",
           "short": "Poll start date",
           "type": "`$STRING`"
@@ -239,9 +266,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/polling",
-              "parts": [
-                "api",
-                "polling"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "polling"
+                }
               ],
               "select": {
                 "exist": [
@@ -254,7 +285,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.polls`"
-              }
+              },
+              "parts": [
+                "api",
+                "polling"
+              ]
             }
           ]
         }
@@ -276,6 +311,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "float",
           "name": "percentage",
           "short": "Percentage of total votes",
           "type": "`$NUMBER`"
@@ -322,9 +358,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/results",
-              "parts": [
-                "api",
-                "results"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "results"
+                }
               ],
               "select": {
                 "exist": [
@@ -336,7 +376,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.results`"
-              }
+              },
+              "parts": [
+                "api",
+                "results"
+              ]
             }
           ]
         }
@@ -352,6 +396,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

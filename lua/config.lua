@@ -34,6 +34,7 @@ local function make_config()
       ["election"] = {
         ["fields"] = {
           {
+            ["format"] = "date",
             ["name"] = "date",
             ["short"] = "Election date",
             ["type"] = "`$STRING`",
@@ -63,6 +64,10 @@ local function make_config()
             ["short"] = "Type of election",
             ["type"] = "`$STRING`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "election",
         ["op"] = {
@@ -98,9 +103,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/elections",
-                ["parts"] = {
-                  "api",
-                  "elections",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "elections",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -113,6 +122,10 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.elections`",
                 },
+                ["parts"] = {
+                  "api",
+                  "elections",
+                },
               },
             },
           },
@@ -124,11 +137,13 @@ local function make_config()
       ["polling"] = {
         ["fields"] = {
           {
+            ["format"] = "date",
             ["name"] = "endDate",
             ["short"] = "Poll end date",
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "float",
             ["name"] = "marginOfError",
             ["short"] = "Margin of error percentage",
             ["type"] = "`$NUMBER`",
@@ -153,6 +168,7 @@ local function make_config()
             ["type"] = "`$INTEGER`",
           },
           {
+            ["format"] = "date",
             ["name"] = "startDate",
             ["short"] = "Poll start date",
             ["type"] = "`$STRING`",
@@ -200,9 +216,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/polling",
-                ["parts"] = {
-                  "api",
-                  "polling",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "polling",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -215,6 +235,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.polls`",
+                },
+                ["parts"] = {
+                  "api",
+                  "polling",
                 },
               },
             },
@@ -237,6 +261,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "float",
             ["name"] = "percentage",
             ["short"] = "Percentage of total votes",
             ["type"] = "`$NUMBER`",
@@ -283,9 +308,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/results",
-                ["parts"] = {
-                  "api",
-                  "results",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "results",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -297,6 +326,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.results`",
+                },
+                ["parts"] = {
+                  "api",
+                  "results",
                 },
               },
             },

@@ -6,12 +6,14 @@ main: kit: entity: polling: {
 
   fields: [
     {
+      format: "date"
       name: "endDate"
       req: false
       short: "Poll end date"
       type: "`$STRING`"
     }
     {
+      format: "float"
       name: "marginOfError"
       req: false
       short: "Margin of error percentage"
@@ -41,6 +43,7 @@ main: kit: entity: polling: {
       type: "`$INTEGER`"
     }
     {
+      format: "date"
       name: "startDate"
       req: false
       short: "Poll start date"
@@ -92,9 +95,13 @@ main: kit: entity: polling: {
           }
           method: "GET"
           orig: "/api/polling"
-          parts: [
-            "api"
-            "polling"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "polling"
+            }
           ]
           select: {
             exist: [

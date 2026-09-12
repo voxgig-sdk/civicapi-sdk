@@ -38,6 +38,7 @@ func MakeConfig() map[string]any {
 			"election": map[string]any{
 				"fields": []any{
 					map[string]any{
+						"format": "date",
 						"name": "date",
 						"short": "Election date",
 						"type": "`$STRING`",
@@ -67,6 +68,10 @@ func MakeConfig() map[string]any {
 						"short": "Type of election",
 						"type": "`$STRING`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "election",
 				"op": map[string]any{
@@ -102,9 +107,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/elections",
-								"parts": []any{
-									"api",
-									"elections",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "elections",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -117,6 +126,10 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body.elections`",
 								},
+								"parts": []any{
+									"api",
+									"elections",
+								},
 							},
 						},
 					},
@@ -128,11 +141,13 @@ func MakeConfig() map[string]any {
 			"polling": map[string]any{
 				"fields": []any{
 					map[string]any{
+						"format": "date",
 						"name": "endDate",
 						"short": "Poll end date",
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "float",
 						"name": "marginOfError",
 						"short": "Margin of error percentage",
 						"type": "`$NUMBER`",
@@ -157,6 +172,7 @@ func MakeConfig() map[string]any {
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
+						"format": "date",
 						"name": "startDate",
 						"short": "Poll start date",
 						"type": "`$STRING`",
@@ -204,9 +220,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/polling",
-								"parts": []any{
-									"api",
-									"polling",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "polling",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -219,6 +239,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.polls`",
+								},
+								"parts": []any{
+									"api",
+									"polling",
 								},
 							},
 						},
@@ -241,6 +265,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "float",
 						"name": "percentage",
 						"short": "Percentage of total votes",
 						"type": "`$NUMBER`",
@@ -287,9 +312,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/results",
-								"parts": []any{
-									"api",
-									"results",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "results",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -302,6 +331,10 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body.results`",
 								},
+								"parts": []any{
+									"api",
+									"results",
+								},
 							},
 						},
 					},
@@ -312,6 +345,17 @@ func MakeConfig() map[string]any {
 			},
 		},
 	}
+}
+
+// The plugin definitions the model selected per feature, as []any so a
+// feature package can consume them without core naming its types. Empty
+// when no active feature declares active plugin groups for this target.
+var featurePlugins = map[string][]any{
+}
+
+// FeaturePlugins is the definitions list for one feature's chain.
+func FeaturePlugins(name string) []any {
+	return featurePlugins[name]
 }
 
 var (

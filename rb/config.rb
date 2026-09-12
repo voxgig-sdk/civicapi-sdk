@@ -46,6 +46,7 @@ module CivicapiConfig
         "election" => {
           "fields" => [
             {
+              "format" => "date",
               "name" => "date",
               "short" => "Election date",
               "type" => "`$STRING`",
@@ -76,6 +77,10 @@ module CivicapiConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "election",
           "op" => {
             "list" => {
@@ -110,9 +115,13 @@ module CivicapiConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/elections",
-                  "parts" => [
-                    "api",
-                    "elections",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "elections",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -125,6 +134,10 @@ module CivicapiConfig
                     "req" => "`reqdata`",
                     "res" => "`body.elections`",
                   },
+                  "parts" => [
+                    "api",
+                    "elections",
+                  ],
                 },
               ],
             },
@@ -136,11 +149,13 @@ module CivicapiConfig
         "polling" => {
           "fields" => [
             {
+              "format" => "date",
               "name" => "endDate",
               "short" => "Poll end date",
               "type" => "`$STRING`",
             },
             {
+              "format" => "float",
               "name" => "marginOfError",
               "short" => "Margin of error percentage",
               "type" => "`$NUMBER`",
@@ -165,6 +180,7 @@ module CivicapiConfig
               "type" => "`$INTEGER`",
             },
             {
+              "format" => "date",
               "name" => "startDate",
               "short" => "Poll start date",
               "type" => "`$STRING`",
@@ -212,9 +228,13 @@ module CivicapiConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/polling",
-                  "parts" => [
-                    "api",
-                    "polling",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "polling",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -228,6 +248,10 @@ module CivicapiConfig
                     "req" => "`reqdata`",
                     "res" => "`body.polls`",
                   },
+                  "parts" => [
+                    "api",
+                    "polling",
+                  ],
                 },
               ],
             },
@@ -249,6 +273,7 @@ module CivicapiConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "float",
               "name" => "percentage",
               "short" => "Percentage of total votes",
               "type" => "`$NUMBER`",
@@ -295,9 +320,13 @@ module CivicapiConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/results",
-                  "parts" => [
-                    "api",
-                    "results",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "results",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -310,6 +339,10 @@ module CivicapiConfig
                     "req" => "`reqdata`",
                     "res" => "`body.results`",
                   },
+                  "parts" => [
+                    "api",
+                    "results",
+                  ],
                 },
               ],
             },

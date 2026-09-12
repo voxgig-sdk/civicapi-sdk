@@ -18,6 +18,7 @@ main: kit: entity: result: {
       type: "`$STRING`"
     }
     {
+      format: "float"
       name: "percentage"
       req: false
       short: "Percentage of total votes"
@@ -67,9 +68,13 @@ main: kit: entity: result: {
           }
           method: "GET"
           orig: "/api/results"
-          parts: [
-            "api"
-            "results"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "results"
+            }
           ]
           select: {
             exist: [

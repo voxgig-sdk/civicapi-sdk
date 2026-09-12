@@ -1,6 +1,14 @@
 # Civicapi SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -55,6 +63,7 @@ def make_config():
       "election": {
         "fields": [
           {
+            "format": "date",
             "name": "date",
             "short": "Election date",
             "type": "`$STRING`",
@@ -85,6 +94,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "election",
         "op": {
           "list": {
@@ -119,9 +132,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/elections",
-                "parts": [
-                  "api",
-                  "elections",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "elections",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -134,6 +151,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.elections`",
                 },
+                "parts": [
+                  "api",
+                  "elections",
+                ],
               },
             ],
           },
@@ -145,11 +166,13 @@ def make_config():
       "polling": {
         "fields": [
           {
+            "format": "date",
             "name": "endDate",
             "short": "Poll end date",
             "type": "`$STRING`",
           },
           {
+            "format": "float",
             "name": "marginOfError",
             "short": "Margin of error percentage",
             "type": "`$NUMBER`",
@@ -174,6 +197,7 @@ def make_config():
             "type": "`$INTEGER`",
           },
           {
+            "format": "date",
             "name": "startDate",
             "short": "Poll start date",
             "type": "`$STRING`",
@@ -221,9 +245,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/polling",
-                "parts": [
-                  "api",
-                  "polling",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "polling",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -237,6 +265,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.polls`",
                 },
+                "parts": [
+                  "api",
+                  "polling",
+                ],
               },
             ],
           },
@@ -258,6 +290,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "float",
             "name": "percentage",
             "short": "Percentage of total votes",
             "type": "`$NUMBER`",
@@ -304,9 +337,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/results",
-                "parts": [
-                  "api",
-                  "results",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "results",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -319,6 +356,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.results`",
                 },
+                "parts": [
+                  "api",
+                  "results",
+                ],
               },
             ],
           },

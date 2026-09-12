@@ -6,6 +6,7 @@ main: kit: entity: election: {
 
   fields: [
     {
+      format: "date"
       name: "date"
       req: false
       short: "Election date"
@@ -83,9 +84,13 @@ main: kit: entity: election: {
           }
           method: "GET"
           orig: "/api/elections"
-          parts: [
-            "api"
-            "elections"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "elections"
+            }
           ]
           select: {
             exist: [

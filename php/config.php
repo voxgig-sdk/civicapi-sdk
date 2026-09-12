@@ -60,6 +60,7 @@ class CivicapiConfig
         'election' => [
           'fields' => [
             [
+              'format' => 'date',
               'name' => 'date',
               'short' => 'Election date',
               'type' => '`$STRING`',
@@ -89,6 +90,10 @@ class CivicapiConfig
               'short' => 'Type of election',
               'type' => '`$STRING`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'election',
           'op' => [
@@ -124,9 +129,13 @@ class CivicapiConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/elections',
-                  'parts' => [
-                    'api',
-                    'elections',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'elections',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -139,6 +148,10 @@ class CivicapiConfig
                     'req' => '`reqdata`',
                     'res' => '`body.elections`',
                   ],
+                  'parts' => [
+                    'api',
+                    'elections',
+                  ],
                 ],
               ],
             ],
@@ -150,11 +163,13 @@ class CivicapiConfig
         'polling' => [
           'fields' => [
             [
+              'format' => 'date',
               'name' => 'endDate',
               'short' => 'Poll end date',
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'float',
               'name' => 'marginOfError',
               'short' => 'Margin of error percentage',
               'type' => '`$NUMBER`',
@@ -179,6 +194,7 @@ class CivicapiConfig
               'type' => '`$INTEGER`',
             ],
             [
+              'format' => 'date',
               'name' => 'startDate',
               'short' => 'Poll start date',
               'type' => '`$STRING`',
@@ -226,9 +242,13 @@ class CivicapiConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/polling',
-                  'parts' => [
-                    'api',
-                    'polling',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'polling',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -241,6 +261,10 @@ class CivicapiConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.polls`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'polling',
                   ],
                 ],
               ],
@@ -263,6 +287,7 @@ class CivicapiConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'float',
               'name' => 'percentage',
               'short' => 'Percentage of total votes',
               'type' => '`$NUMBER`',
@@ -309,9 +334,13 @@ class CivicapiConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/results',
-                  'parts' => [
-                    'api',
-                    'results',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'results',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -323,6 +352,10 @@ class CivicapiConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.results`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'results',
                   ],
                 ],
               ],
