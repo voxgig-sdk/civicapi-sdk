@@ -105,7 +105,7 @@ local results, err = client:Election():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/civicapi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/civicapi-sdk/releases) |
+| TypeScript | `@voxgig-sdk/civicapi-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/civicapi-sdk/releases) |
 | Python | `voxgig-sdk-civicapi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/civicapi-sdk/releases) |
 | PHP | `voxgig-sdk/civicapi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/civicapi-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/civicapi-sdk/go` | `go get github.com/voxgig-sdk/civicapi-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Election():list()
 ### TypeScript
 
 ```ts
-import { CivicapiSDK } from '@voxgig-sdk/civicapi'
+import { CivicapiSDK } from '@voxgig-sdk/civicapi-sdk'
 
 const client = new CivicapiSDK()
 

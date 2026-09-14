@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { CivicapiSDK } from '@voxgig-sdk/civicapi'
+import { CivicapiSDK } from '@voxgig-sdk/civicapi-sdk'
 
 const client = new CivicapiSDK()
 ```
@@ -499,7 +499,7 @@ civicapi/
 Import the SDK from the package root:
 
 ```ts
-import { CivicapiSDK } from '@voxgig-sdk/civicapi'
+import { CivicapiSDK } from '@voxgig-sdk/civicapi-sdk'
 ```
 
 ### Entity state
