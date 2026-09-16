@@ -7,7 +7,7 @@
         "pollId": "s48",
         "pollster": "s49",
         "results": [],
-        "sampleSize": "s4b",
+        "sampleSize": 75,
         "startDate": "s4c"
       },
       "POLLING01": {
@@ -16,7 +16,7 @@
         "pollId": "s8e",
         "pollster": "s8f",
         "results": [],
-        "sampleSize": "s91",
+        "sampleSize": 145,
         "startDate": "s92"
       },
       "POLLING02": {
@@ -25,7 +25,7 @@
         "pollId": "sd4",
         "pollster": "sd5",
         "results": [],
-        "sampleSize": "sd7",
+        "sampleSize": 215,
         "startDate": "sd8"
       }
     }
@@ -38,8 +38,138 @@
         "pollId": "s11a",
         "pollster": "s11b",
         "results": [],
-        "sampleSize": "s11d",
+        "sampleSize": 285,
         "startDate": "s11e"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/polling": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getPollingData",
+        "parameters": [
+          {
+            "description": "Unique identifier for the election",
+            "in": "query",
+            "name": "electionId",
+            "required": false,
+            "schema": {
+              "example": "2024-presidential",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter polling data by state",
+            "in": "query",
+            "name": "state",
+            "required": false,
+            "schema": {
+              "example": "CA",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Start date for polling data range",
+            "in": "query",
+            "name": "startDate",
+            "required": false,
+            "schema": {
+              "example": "2024-01-01",
+              "format": "date",
+              "type": "string"
+            }
+          },
+          {
+            "description": "End date for polling data range",
+            "in": "query",
+            "name": "endDate",
+            "required": false,
+            "schema": {
+              "example": "2024-12-31",
+              "format": "date",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "polls": {
+                      "items": {
+                        "properties": {
+                          "endDate": {
+                            "description": "Poll end date",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "marginOfError": {
+                            "description": "Margin of error percentage",
+                            "format": "float",
+                            "type": "number"
+                          },
+                          "pollId": {
+                            "description": "Unique poll identifier",
+                            "type": "string"
+                          },
+                          "pollster": {
+                            "description": "Organization conducting the poll",
+                            "type": "string"
+                          },
+                          "results": {
+                            "items": {
+                              "properties": {
+                                "candidate": {
+                                  "description": "Candidate name",
+                                  "type": "string"
+                                },
+                                "party": {
+                                  "description": "Political party",
+                                  "type": "string"
+                                },
+                                "percentage": {
+                                  "description": "Polling percentage",
+                                  "format": "float",
+                                  "type": "number"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          },
+                          "sampleSize": {
+                            "description": "Number of respondents",
+                            "type": "integer"
+                          },
+                          "startDate": {
+                            "description": "Poll start date",
+                            "format": "date",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with polling data"
+          },
+          "400": {
+            "description": "Bad request - invalid parameters"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

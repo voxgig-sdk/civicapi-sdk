@@ -4,7 +4,10 @@ declare(strict_types=1);
 // Civicapi SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class CivicapiFeatures
@@ -14,8 +17,14 @@ class CivicapiFeatures
         switch ($name) {
             case "base":
                 return new CivicapiBaseFeature();
+            case "ratelimit":
+                return new CivicapiRatelimitFeature();
+            case "retry":
+                return new CivicapiRetryFeature();
             case "test":
                 return new CivicapiTestFeature();
+            case "timeout":
+                return new CivicapiTimeoutFeature();
             default:
                 return new CivicapiBaseFeature();
         }
@@ -31,7 +40,10 @@ class CivicapiFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;

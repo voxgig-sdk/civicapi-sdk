@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { CivicapiSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('PollingEntity', async () => {
 
     const live = 'TRUE' === process.env.CIVICAPI_TEST_LIVE
     for (const op of ['list']) {
-      if (maybeSkipControl(t, 'entityOp', 'polling.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'polling.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set CIVICAPI_TEST_POLLING_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"format":"date","name":"endDate","req":false,"short":"Poll end date","type":"`$STRING`","index$":0},{"active":true,"format":"float","name":"marginOfError","req":false,"short":"Margin of error percentage","type":"`$NUMBER`","index$":1},{"active":true,"name":"pollId","req":false,"short":"Unique poll identifier","type":"`$STRING`","index$":2},{"active":true,"name":"pollster","req":false,"short":"Organization conducting the poll","type":"`$STRING`","index$":3},{"active":true,"name":"results","req":false,"type":"`$ARRAY`","index$":4},{"active":true,"name":"sampleSize","req":false,"short":"Number of respondents","type":"`$INTEGER`","index$":5},{"active":true,"format":"date","name":"startDate","req":false,"short":"Poll start date","type":"`$STRING`","index$":6}],"name":"polling","op":{"list":{"input":"data","name":"list","points":[{"active":true,"args":{"query":[{"active":true,"example":"2024-presidential","kind":"query","name":"election_id","orig":"election_id","reqd":false,"type":"`$STRING`","index$":0},{"active":true,"example":"2024-12-31","kind":"query","name":"end_date","orig":"end_date","reqd":false,"type":"`$STRING`","index$":1},{"active":true,"example":"2024-01-01","kind":"query","name":"start_date","orig":"start_date","reqd":false,"type":"`$STRING`","index$":2},{"active":true,"example":"CA","kind":"query","name":"state","orig":"state","reqd":false,"type":"`$STRING`","index$":3}]},"contract":{"id":"GET /api/polling","json":"{\"operationId\":\"getPollingData\",\"parameters\":[{\"description\":\"Unique identifier for the election\",\"in\":\"query\",\"name\":\"electionId\",\"required\":false,\"schema\":{\"example\":\"2024-presidential\",\"type\":\"string\"}},{\"description\":\"Filter polling data by state\",\"in\":\"query\",\"name\":\"state\",\"required\":false,\"schema\":{\"example\":\"CA\",\"type\":\"string\"}},{\"description\":\"Start date for polling data range\",\"in\":\"query\",\"name\":\"startDate\",\"required\":false,\"schema\":{\"example\":\"2024-01-01\",\"format\":\"date\",\"type\":\"string\"}},{\"description\":\"End date for polling data range\",\"in\":\"query\",\"name\":\"endDate\",\"required\":false,\"schema\":{\"example\":\"2024-12-31\",\"format\":\"date\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"polls\":{\"items\":{\"properties\":{\"endDate\":{\"description\":\"Poll end date\",\"format\":\"date\",\"type\":\"string\"},\"marginOfError\":{\"description\":\"Margin of error percentage\",\"format\":\"float\",\"type\":\"number\"},\"pollId\":{\"description\":\"Unique poll identifier\",\"type\":\"string\"},\"pollster\":{\"description\":\"Organization conducting the poll\",\"type\":\"string\"},\"results\":{\"items\":{\"properties\":{\"candidate\":{\"description\":\"Candidate name\",\"type\":\"string\"},\"party\":{\"description\":\"Political party\",\"type\":\"string\"},\"percentage\":{\"description\":\"Polling percentage\",\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"},\"type\":\"array\"},\"sampleSize\":{\"description\":\"Number of respondents\",\"type\":\"integer\"},\"startDate\":{\"description\":\"Poll start date\",\"format\":\"date\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response with polling data\"},\"400\":{\"description\":\"Bad request - invalid parameters\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/api/polling","segments":[{"lit":"api"},{"lit":"polling"}],"select":{"exist":["election_id","end_date","start_date","state"]},"transform":{"req":"`reqdata`","res":"`body.polls`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"polling","name__orig":"polling","Name":"Polling","name_":"polling","name-":"polling","NAME":"POLLING","index$":1}, {"active":true,"entity":"polling","key$":"BasicPollingFlow","kind":"basic","name":"BasicPollingFlow","param":{},"step":[{"active":true,"data":{},"input":{},"match":{},"op":"list","spec":[],"valid":[{"apply":"ItemExists","def":{"ref":"polling_ref01"}}],"index$":0}]}, 'Polling')
     }
     const client = setup.client
     const struct = setup.struct
@@ -109,13 +108,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['CIVICAPI_TEST_POLLING_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'CIVICAPI_TEST_POLLING_ENTID': idmap,
     'CIVICAPI_TEST_LIVE': 'FALSE',
@@ -126,7 +118,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.CIVICAPI_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['CIVICAPI_TEST_POLLING_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new CivicapiSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -138,7 +136,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -151,7 +150,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.CIVICAPI_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 

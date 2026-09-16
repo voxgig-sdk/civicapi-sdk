@@ -1,12 +1,18 @@
 # Civicapi SDK feature factory
 
 from civicapi_sdk.feature.base_feature import CivicapiBaseFeature
+from civicapi_sdk.feature.ratelimit_feature import CivicapiRatelimitFeature
+from civicapi_sdk.feature.retry_feature import CivicapiRetryFeature
 from civicapi_sdk.feature.test_feature import CivicapiTestFeature
+from civicapi_sdk.feature.timeout_feature import CivicapiTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: CivicapiBaseFeature(),
+    "ratelimit": lambda: CivicapiRatelimitFeature(),
+    "retry": lambda: CivicapiRetryFeature(),
     "test": lambda: CivicapiTestFeature(),
+    "timeout": lambda: CivicapiTimeoutFeature(),
 }
 
 

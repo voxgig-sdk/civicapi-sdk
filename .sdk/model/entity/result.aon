@@ -66,6 +66,12 @@ main: kit: entity: result: {
               }
             ]
           }
+          contract: {
+            id: "GET /api/results"
+            json: "{\"operationId\":\"getElectionResults\",\"parameters\":[{\"description\":\"Unique identifier for the election\",\"in\":\"query\",\"name\":\"electionId\",\"required\":true,\"schema\":{\"example\":\"2024-presidential\",\"type\":\"string\"}},{\"description\":\"Filter results by state\",\"in\":\"query\",\"name\":\"state\",\"required\":false,\"schema\":{\"example\":\"CA\",\"type\":\"string\"}},{\"description\":\"Filter results by county\",\"in\":\"query\",\"name\":\"county\",\"required\":false,\"schema\":{\"example\":\"Los Angeles\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"electionId\":{\"description\":\"Election identifier\",\"type\":\"string\"},\"lastUpdated\":{\"description\":\"Timestamp of last update\",\"format\":\"date-time\",\"type\":\"string\"},\"reportingPercentage\":{\"description\":\"Percentage of precincts reporting\",\"format\":\"float\",\"type\":\"number\"},\"results\":{\"items\":{\"properties\":{\"candidate\":{\"description\":\"Candidate name\",\"type\":\"string\"},\"party\":{\"description\":\"Political party\",\"type\":\"string\"},\"percentage\":{\"description\":\"Percentage of total votes\",\"format\":\"float\",\"type\":\"number\"},\"votes\":{\"description\":\"Number of votes received\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response with election results\"},\"400\":{\"description\":\"Bad request - missing or invalid electionId\"},\"404\":{\"description\":\"Election not found\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/api/results"
           segments: [

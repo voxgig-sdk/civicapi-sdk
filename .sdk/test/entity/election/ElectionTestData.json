@@ -37,5 +37,110 @@
         "type": "sf5"
       }
     }
+  },
+  "requests": {
+    "GET /api/elections": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getElections",
+        "parameters": [
+          {
+            "description": "Filter elections by year",
+            "in": "query",
+            "name": "year",
+            "required": false,
+            "schema": {
+              "example": 2024,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Filter elections by state",
+            "in": "query",
+            "name": "state",
+            "required": false,
+            "schema": {
+              "example": "CA",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Type of election (e.g., presidential, congressional, local)",
+            "in": "query",
+            "name": "type",
+            "required": false,
+            "schema": {
+              "enum": [
+                "presidential",
+                "congressional",
+                "gubernatorial",
+                "local"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "elections": {
+                      "items": {
+                        "properties": {
+                          "date": {
+                            "description": "Election date",
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "id": {
+                            "description": "Unique election identifier",
+                            "type": "string"
+                          },
+                          "name": {
+                            "description": "Election name",
+                            "type": "string"
+                          },
+                          "state": {
+                            "description": "State or jurisdiction",
+                            "type": "string"
+                          },
+                          "status": {
+                            "description": "Current status of the election",
+                            "enum": [
+                              "upcoming",
+                              "ongoing",
+                              "completed"
+                            ],
+                            "type": "string"
+                          },
+                          "type": {
+                            "description": "Type of election",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with election information"
+          },
+          "400": {
+            "description": "Bad request - invalid parameters"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }
