@@ -127,15 +127,15 @@ class Config {
 
     entity: {
       
-      election: {
-      },
-
-      polling: {
-      },
-
-      result: {
-      },
-
+        election: {
+        },
+  
+        polling: {
+        },
+  
+        result: {
+        },
+  
     }
   }
 

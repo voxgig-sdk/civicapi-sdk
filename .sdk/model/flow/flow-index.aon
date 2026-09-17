@@ -1,5 +1,5 @@
 # Flows
 
-@"BasicElectionFlow.aon"
-@"BasicPollingFlow.aon"
-@"BasicResultFlow.aon"
+@"./BasicElectionFlow.aon"
+@"./BasicPollingFlow.aon"
+@"./BasicResultFlow.aon"

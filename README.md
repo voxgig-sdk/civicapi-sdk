@@ -105,12 +105,12 @@ local results, err = client:Election():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/civicapi-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/civicapi-sdk/releases) |
-| Python | `voxgig-sdk-civicapi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/civicapi-sdk/releases) |
-| PHP | `voxgig-sdk/civicapi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/civicapi-sdk/releases) |
+| TypeScript | `@voxgig-sdk/civicapi-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/civicapi-sdk/tags) |
+| Python | `voxgig-sdk-civicapi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/civicapi-sdk/tags) |
+| PHP | `voxgig-sdk/civicapi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/civicapi-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/civicapi-sdk/go` | `go get github.com/voxgig-sdk/civicapi-sdk/go@latest` |
-| Ruby | `voxgig-sdk-civicapi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/civicapi-sdk/releases) |
-| Lua | `voxgig-sdk-civicapi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/civicapi-sdk/releases) |
+| Ruby | `voxgig-sdk-civicapi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/civicapi-sdk/tags) |
+| Lua | `voxgig-sdk-civicapi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/civicapi-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/civicapi-sdk/go-cli` | `go install github.com/voxgig-sdk/civicapi-sdk/go-cli/cmd/civicapi@latest` |
 | Go MCP server | `github.com/voxgig-sdk/civicapi-sdk/go-mcp` | `go get github.com/voxgig-sdk/civicapi-sdk/go-mcp@latest` |
 
