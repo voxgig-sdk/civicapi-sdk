@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ElectionEntity = void 0;
 const CivicapiEntityBase_1 = require("../CivicapiEntityBase");
-// TODO: needs Entity superclass
 class ElectionEntity extends CivicapiEntityBase_1.CivicapiEntityBase {
     constructor(client, entopts) {
         super(client, entopts);

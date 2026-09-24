@@ -43,7 +43,7 @@ local elections, err = client:Election():list()
 if err then error(err) end
 
 for _, item in ipairs(elections) do
-  print(item["id"], item["date"])
+  print(item["id"])
 end
 ```
 

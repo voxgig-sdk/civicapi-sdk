@@ -19,7 +19,6 @@ import type {
   ResultListMatch,
 } from '../CivicapiTypes'
 
-// TODO: needs Entity superclass
 class ResultEntity extends CivicapiEntityBase<Result> {
 
   constructor(client: CivicapiSDK, entopts: any) {

@@ -1,0 +1,137 @@
+# Entity: polling
+
+main: kit: entity: polling: {
+
+  alias: field: {}
+
+  fields: {
+    endDate: {
+      fo: "date"
+      h: "End Date"
+      n: "endDate"
+      r: false
+      sh: "Poll end date"
+      t: "`$STRING`"
+    }
+    marginOfError: {
+      fo: "float"
+      h: "Margin Of Error"
+      n: "marginOfError"
+      r: false
+      sh: "Margin of error percentage"
+      t: "`$NUMBER`"
+    }
+    pollId: {
+      h: "Poll Id"
+      n: "pollId"
+      r: false
+      sh: "Unique poll identifier"
+      t: "`$STRING`"
+    }
+    pollster: {
+      h: "Pollster"
+      n: "pollster"
+      r: false
+      sh: "Organization conducting the poll"
+      t: "`$STRING`"
+    }
+    results: {
+      h: "Results"
+      n: "results"
+      r: false
+      t: "`$ARRAY`"
+    }
+    sampleSize: {
+      h: "Sample Size"
+      n: "sampleSize"
+      r: false
+      sh: "Number of respondents"
+      t: "`$INTEGER`"
+    }
+    startDate: {
+      fo: "date"
+      h: "Start Date"
+      n: "startDate"
+      r: false
+      sh: "Poll start date"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "polling"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/polling"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "2024-presidential"
+                k: "query"
+                n: "election_id"
+                or: "election_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "2024-12-31"
+                k: "query"
+                n: "end_date"
+                or: "end_date"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "2024-01-01"
+                k: "query"
+                n: "start_date"
+                or: "start_date"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "CA"
+                k: "query"
+                n: "state"
+                or: "state"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/polling"
+          q: {
+            exist: [
+              "election_id"
+              "end_date"
+              "start_date"
+              "state"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "polling"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.polls`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

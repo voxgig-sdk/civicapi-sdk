@@ -1,7 +1,7 @@
 // Typed models for the Civicapi SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,12 +14,6 @@ import (
 
 // Election is the typed data model for the election entity.
 type Election struct {
-	Date *string `json:"date,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	State *string `json:"state,omitempty"`
-	Status *string `json:"status,omitempty"`
-	Type *string `json:"type,omitempty"`
 }
 
 // ElectionListMatch is the typed request payload for Election.ListTyped.
@@ -31,13 +25,6 @@ type ElectionListMatch struct {
 
 // Polling is the typed data model for the polling entity.
 type Polling struct {
-	EndDate *string `json:"endDate,omitempty"`
-	MarginOfError *float64 `json:"marginOfError,omitempty"`
-	PollId *string `json:"pollId,omitempty"`
-	Pollster *string `json:"pollster,omitempty"`
-	Results *[]any `json:"results,omitempty"`
-	SampleSize *int `json:"sampleSize,omitempty"`
-	StartDate *string `json:"startDate,omitempty"`
 }
 
 // PollingListMatch is the typed request payload for Polling.ListTyped.
@@ -50,10 +37,6 @@ type PollingListMatch struct {
 
 // Result is the typed data model for the result entity.
 type Result struct {
-	Candidate *string `json:"candidate,omitempty"`
-	Party *string `json:"party,omitempty"`
-	Percentage *float64 `json:"percentage,omitempty"`
-	Votes *int `json:"votes,omitempty"`
 }
 
 // ResultListMatch is the typed request payload for Result.ListTyped.

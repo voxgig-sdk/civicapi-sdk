@@ -19,7 +19,6 @@ import type {
   ElectionListMatch,
 } from '../CivicapiTypes'
 
-// TODO: needs Entity superclass
 class ElectionEntity extends CivicapiEntityBase<Election> {
 
   constructor(client: CivicapiSDK, entopts: any) {

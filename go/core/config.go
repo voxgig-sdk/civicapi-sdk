@@ -92,35 +92,41 @@ func MakeConfig() map[string]any {
 			"election": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"format": "date",
 						"name": "date",
-						"short": "Election date",
+						"title": "Date",
 						"type": "`$STRING`",
+						"short": "Election date",
+						"format": "date",
 					},
 					map[string]any{
 						"name": "id",
-						"short": "Unique election identifier",
+						"title": "Id",
 						"type": "`$STRING`",
+						"short": "Unique election identifier",
 					},
 					map[string]any{
 						"name": "name",
-						"short": "Election name",
+						"title": "Name",
 						"type": "`$STRING`",
+						"short": "Election name",
 					},
 					map[string]any{
 						"name": "state",
-						"short": "State or jurisdiction",
+						"title": "State",
 						"type": "`$STRING`",
+						"short": "State or jurisdiction",
 					},
 					map[string]any{
 						"name": "status",
-						"short": "Current status of the election",
+						"title": "Status",
 						"type": "`$STRING`",
+						"short": "Current status of the election",
 					},
 					map[string]any{
 						"name": "type",
-						"short": "Type of election",
+						"title": "Type",
 						"type": "`$STRING`",
+						"short": "Type of election",
 					},
 				},
 				"id": map[string]any{
@@ -134,30 +140,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "CA",
-											"kind": "query",
-											"name": "state",
-											"orig": "state",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "type",
-											"orig": "type",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 2024,
-											"kind": "query",
-											"name": "year",
-											"orig": "year",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/elections",
@@ -169,20 +151,45 @@ func MakeConfig() map[string]any {
 										"lit": "elections",
 									},
 								},
+								"parts": []any{
+									"api",
+									"elections",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.elections`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "state",
+											"orig": "state",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "CA",
+										},
+										map[string]any{
+											"name": "type",
+											"orig": "type",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "year",
+											"orig": "year",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 2024,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"state",
 										"type",
 										"year",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.elections`",
-								},
-								"parts": []any{
-									"api",
-									"elections",
 								},
 							},
 						},
@@ -195,41 +202,48 @@ func MakeConfig() map[string]any {
 			"polling": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"format": "date",
 						"name": "endDate",
-						"short": "Poll end date",
+						"title": "End Date",
 						"type": "`$STRING`",
+						"short": "Poll end date",
+						"format": "date",
 					},
 					map[string]any{
-						"format": "float",
 						"name": "marginOfError",
-						"short": "Margin of error percentage",
+						"title": "Margin Of Error",
 						"type": "`$NUMBER`",
+						"short": "Margin of error percentage",
+						"format": "float",
 					},
 					map[string]any{
 						"name": "pollId",
-						"short": "Unique poll identifier",
+						"title": "Poll Id",
 						"type": "`$STRING`",
+						"short": "Unique poll identifier",
 					},
 					map[string]any{
 						"name": "pollster",
-						"short": "Organization conducting the poll",
+						"title": "Pollster",
 						"type": "`$STRING`",
+						"short": "Organization conducting the poll",
 					},
 					map[string]any{
 						"name": "results",
+						"title": "Results",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "sampleSize",
-						"short": "Number of respondents",
+						"title": "Sample Size",
 						"type": "`$INTEGER`",
+						"short": "Number of respondents",
 					},
 					map[string]any{
-						"format": "date",
 						"name": "startDate",
-						"short": "Poll start date",
+						"title": "Start Date",
 						"type": "`$STRING`",
+						"short": "Poll start date",
+						"format": "date",
 					},
 				},
 				"name": "polling",
@@ -239,38 +253,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "2024-presidential",
-											"kind": "query",
-											"name": "election_id",
-											"orig": "election_id",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "2024-12-31",
-											"kind": "query",
-											"name": "end_date",
-											"orig": "end_date",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "2024-01-01",
-											"kind": "query",
-											"name": "start_date",
-											"orig": "start_date",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "CA",
-											"kind": "query",
-											"name": "state",
-											"orig": "state",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/polling",
@@ -282,6 +264,47 @@ func MakeConfig() map[string]any {
 										"lit": "polling",
 									},
 								},
+								"parts": []any{
+									"api",
+									"polling",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.polls`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "election_id",
+											"orig": "election_id",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2024-presidential",
+										},
+										map[string]any{
+											"name": "end_date",
+											"orig": "end_date",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2024-12-31",
+										},
+										map[string]any{
+											"name": "start_date",
+											"orig": "start_date",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "2024-01-01",
+										},
+										map[string]any{
+											"name": "state",
+											"orig": "state",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "CA",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"election_id",
@@ -289,14 +312,6 @@ func MakeConfig() map[string]any {
 										"start_date",
 										"state",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.polls`",
-								},
-								"parts": []any{
-									"api",
-									"polling",
 								},
 							},
 						},
@@ -310,24 +325,28 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "candidate",
-						"short": "Candidate name",
+						"title": "Candidate",
 						"type": "`$STRING`",
+						"short": "Candidate name",
 					},
 					map[string]any{
 						"name": "party",
-						"short": "Political party",
+						"title": "Party",
 						"type": "`$STRING`",
+						"short": "Political party",
 					},
 					map[string]any{
-						"format": "float",
 						"name": "percentage",
-						"short": "Percentage of total votes",
+						"title": "Percentage",
 						"type": "`$NUMBER`",
+						"short": "Percentage of total votes",
+						"format": "float",
 					},
 					map[string]any{
 						"name": "votes",
-						"short": "Number of votes received",
+						"title": "Votes",
 						"type": "`$INTEGER`",
+						"short": "Number of votes received",
 					},
 				},
 				"name": "result",
@@ -337,32 +356,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "Los Angeles",
-											"kind": "query",
-											"name": "county",
-											"orig": "county",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "2024-presidential",
-											"kind": "query",
-											"name": "election_id",
-											"orig": "election_id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "CA",
-											"kind": "query",
-											"name": "state",
-											"orig": "state",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/results",
@@ -374,20 +367,47 @@ func MakeConfig() map[string]any {
 										"lit": "results",
 									},
 								},
+								"parts": []any{
+									"api",
+									"results",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.results`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "county",
+											"orig": "county",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "Los Angeles",
+										},
+										map[string]any{
+											"name": "election_id",
+											"orig": "election_id",
+											"type": "`$STRING`",
+											"kind": "query",
+											"reqd": true,
+											"example": "2024-presidential",
+										},
+										map[string]any{
+											"name": "state",
+											"orig": "state",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "CA",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"county",
 										"election_id",
 										"state",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.results`",
-								},
-								"parts": []any{
-									"api",
-									"results",
 								},
 							},
 						},

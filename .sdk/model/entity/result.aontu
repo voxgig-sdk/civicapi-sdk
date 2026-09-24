@@ -1,0 +1,106 @@
+# Entity: result
+
+main: kit: entity: result: {
+
+  alias: field: {}
+
+  fields: {
+    candidate: {
+      h: "Candidate"
+      n: "candidate"
+      r: false
+      sh: "Candidate name"
+      t: "`$STRING`"
+    }
+    party: {
+      h: "Party"
+      n: "party"
+      r: false
+      sh: "Political party"
+      t: "`$STRING`"
+    }
+    percentage: {
+      fo: "float"
+      h: "Percentage"
+      n: "percentage"
+      r: false
+      sh: "Percentage of total votes"
+      t: "`$NUMBER`"
+    }
+    votes: {
+      h: "Votes"
+      n: "votes"
+      r: false
+      sh: "Number of votes received"
+      t: "`$INTEGER`"
+    }
+  }
+
+  name: "result"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/results"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "Los Angeles"
+                k: "query"
+                n: "county"
+                or: "county"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "2024-presidential"
+                k: "query"
+                n: "election_id"
+                or: "election_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "CA"
+                k: "query"
+                n: "state"
+                or: "state"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/results"
+          q: {
+            exist: [
+              "county"
+              "election_id"
+              "state"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "results"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.results`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

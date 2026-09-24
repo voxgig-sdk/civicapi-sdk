@@ -16,12 +16,6 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS: Record<string, any[]> = {
   
 }
@@ -32,7 +26,6 @@ class Config {
   makeFeature(this: any, fn: string) {
     const fc = FEATURE_CLASS[fn]
     const fi = new fc()
-    // TODO: errors etc
     return fi
   }
 
@@ -144,35 +137,41 @@ class Config {
     "election": {
       "fields": [
         {
-          "format": "date",
           "name": "date",
+          "title": "Date",
+          "type": "`$STRING`",
           "short": "Election date",
-          "type": "`$STRING`"
+          "format": "date"
         },
         {
           "name": "id",
-          "short": "Unique election identifier",
-          "type": "`$STRING`"
+          "title": "Id",
+          "type": "`$STRING`",
+          "short": "Unique election identifier"
         },
         {
           "name": "name",
-          "short": "Election name",
-          "type": "`$STRING`"
+          "title": "Name",
+          "type": "`$STRING`",
+          "short": "Election name"
         },
         {
           "name": "state",
-          "short": "State or jurisdiction",
-          "type": "`$STRING`"
+          "title": "State",
+          "type": "`$STRING`",
+          "short": "State or jurisdiction"
         },
         {
           "name": "status",
-          "short": "Current status of the election",
-          "type": "`$STRING`"
+          "title": "Status",
+          "type": "`$STRING`",
+          "short": "Current status of the election"
         },
         {
           "name": "type",
-          "short": "Type of election",
-          "type": "`$STRING`"
+          "title": "Type",
+          "type": "`$STRING`",
+          "short": "Type of election"
         }
       ],
       "id": {
@@ -186,30 +185,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "CA",
-                    "kind": "query",
-                    "name": "state",
-                    "orig": "state",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "type",
-                    "orig": "type",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": 2024,
-                    "kind": "query",
-                    "name": "year",
-                    "orig": "year",
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/elections",
@@ -221,21 +196,46 @@ class Config {
                   "lit": "elections"
                 }
               ],
+              "parts": [
+                "api",
+                "elections"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body.elections`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "state",
+                    "orig": "state",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "CA"
+                  },
+                  {
+                    "name": "type",
+                    "orig": "type",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "year",
+                    "orig": "year",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 2024
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "state",
                   "type",
                   "year"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body.elections`"
-              },
-              "parts": [
-                "api",
-                "elections"
-              ]
+              }
             }
           ]
         }
@@ -247,41 +247,48 @@ class Config {
     "polling": {
       "fields": [
         {
-          "format": "date",
           "name": "endDate",
+          "title": "End Date",
+          "type": "`$STRING`",
           "short": "Poll end date",
-          "type": "`$STRING`"
+          "format": "date"
         },
         {
-          "format": "float",
           "name": "marginOfError",
+          "title": "Margin Of Error",
+          "type": "`$NUMBER`",
           "short": "Margin of error percentage",
-          "type": "`$NUMBER`"
+          "format": "float"
         },
         {
           "name": "pollId",
-          "short": "Unique poll identifier",
-          "type": "`$STRING`"
+          "title": "Poll Id",
+          "type": "`$STRING`",
+          "short": "Unique poll identifier"
         },
         {
           "name": "pollster",
-          "short": "Organization conducting the poll",
-          "type": "`$STRING`"
+          "title": "Pollster",
+          "type": "`$STRING`",
+          "short": "Organization conducting the poll"
         },
         {
           "name": "results",
+          "title": "Results",
           "type": "`$ARRAY`"
         },
         {
           "name": "sampleSize",
-          "short": "Number of respondents",
-          "type": "`$INTEGER`"
+          "title": "Sample Size",
+          "type": "`$INTEGER`",
+          "short": "Number of respondents"
         },
         {
-          "format": "date",
           "name": "startDate",
+          "title": "Start Date",
+          "type": "`$STRING`",
           "short": "Poll start date",
-          "type": "`$STRING`"
+          "format": "date"
         }
       ],
       "name": "polling",
@@ -291,38 +298,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "2024-presidential",
-                    "kind": "query",
-                    "name": "election_id",
-                    "orig": "election_id",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "2024-12-31",
-                    "kind": "query",
-                    "name": "end_date",
-                    "orig": "end_date",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "2024-01-01",
-                    "kind": "query",
-                    "name": "start_date",
-                    "orig": "start_date",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "CA",
-                    "kind": "query",
-                    "name": "state",
-                    "orig": "state",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/polling",
@@ -334,6 +309,47 @@ class Config {
                   "lit": "polling"
                 }
               ],
+              "parts": [
+                "api",
+                "polling"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body.polls`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "election_id",
+                    "orig": "election_id",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2024-presidential"
+                  },
+                  {
+                    "name": "end_date",
+                    "orig": "end_date",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2024-12-31"
+                  },
+                  {
+                    "name": "start_date",
+                    "orig": "start_date",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2024-01-01"
+                  },
+                  {
+                    "name": "state",
+                    "orig": "state",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "CA"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "election_id",
@@ -341,15 +357,7 @@ class Config {
                   "start_date",
                   "state"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body.polls`"
-              },
-              "parts": [
-                "api",
-                "polling"
-              ]
+              }
             }
           ]
         }
@@ -362,24 +370,28 @@ class Config {
       "fields": [
         {
           "name": "candidate",
-          "short": "Candidate name",
-          "type": "`$STRING`"
+          "title": "Candidate",
+          "type": "`$STRING`",
+          "short": "Candidate name"
         },
         {
           "name": "party",
-          "short": "Political party",
-          "type": "`$STRING`"
+          "title": "Party",
+          "type": "`$STRING`",
+          "short": "Political party"
         },
         {
-          "format": "float",
           "name": "percentage",
+          "title": "Percentage",
+          "type": "`$NUMBER`",
           "short": "Percentage of total votes",
-          "type": "`$NUMBER`"
+          "format": "float"
         },
         {
           "name": "votes",
-          "short": "Number of votes received",
-          "type": "`$INTEGER`"
+          "title": "Votes",
+          "type": "`$INTEGER`",
+          "short": "Number of votes received"
         }
       ],
       "name": "result",
@@ -389,32 +401,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "Los Angeles",
-                    "kind": "query",
-                    "name": "county",
-                    "orig": "county",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "2024-presidential",
-                    "kind": "query",
-                    "name": "election_id",
-                    "orig": "election_id",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "CA",
-                    "kind": "query",
-                    "name": "state",
-                    "orig": "state",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/api/results",
@@ -426,21 +412,48 @@ class Config {
                   "lit": "results"
                 }
               ],
+              "parts": [
+                "api",
+                "results"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body.results`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "county",
+                    "orig": "county",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "Los Angeles"
+                  },
+                  {
+                    "name": "election_id",
+                    "orig": "election_id",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "reqd": true,
+                    "example": "2024-presidential"
+                  },
+                  {
+                    "name": "state",
+                    "orig": "state",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "CA"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "county",
                   "election_id",
                   "state"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body.results`"
-              },
-              "parts": [
-                "api",
-                "results"
-              ]
+              }
             }
           ]
         }

@@ -19,7 +19,6 @@ import type {
   PollingListMatch,
 } from '../CivicapiTypes'
 
-// TODO: needs Entity superclass
 class PollingEntity extends CivicapiEntityBase<Polling> {
 
   constructor(client: CivicapiSDK, entopts: any) {

@@ -24,57 +24,129 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "election": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "format": "date",
-              "name": "date",
-              "req": false,
-              "short": "Election date",
-              "type": "`$STRING`"
+          "fields": {
+            "date": {
+              "a": true,
+              "fo": "date",
+              "h": "Date",
+              "n": "date",
+              "r": false,
+              "sh": "Election date",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Unique election identifier",
-              "type": "`$STRING`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Unique election identifier",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "Election name",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "Election name",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "state",
-              "req": false,
-              "short": "State or jurisdiction",
-              "type": "`$STRING`"
+            "state": {
+              "a": true,
+              "h": "State",
+              "n": "state",
+              "r": false,
+              "sh": "State or jurisdiction",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "status",
-              "req": false,
-              "short": "Current status of the election",
-              "type": "`$STRING`"
+            "status": {
+              "a": true,
+              "h": "Status",
+              "n": "status",
+              "r": false,
+              "sh": "Current status of the election",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "type",
-              "req": false,
-              "short": "Type of election",
-              "type": "`$STRING`"
+            "type": {
+              "a": true,
+              "h": "Type",
+              "n": "type",
+              "r": false,
+              "sh": "Type of election",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -86,47 +158,54 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/elections",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": "CA",
-                        "kind": "query",
-                        "name": "state",
-                        "orig": "state",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "CA",
+                        "k": "query",
+                        "n": "state",
+                        "or": "state",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "type",
-                        "orig": "type",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "type",
+                        "or": "type",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": 2024,
-                        "kind": "query",
-                        "name": "year",
-                        "orig": "year",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 2024,
+                        "k": "query",
+                        "n": "year",
+                        "or": "year",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/elections",
-                    "json": "{\"operationId\":\"getElections\",\"parameters\":[{\"description\":\"Filter elections by year\",\"in\":\"query\",\"name\":\"year\",\"required\":false,\"schema\":{\"example\":2024,\"type\":\"integer\"}},{\"description\":\"Filter elections by state\",\"in\":\"query\",\"name\":\"state\",\"required\":false,\"schema\":{\"example\":\"CA\",\"type\":\"string\"}},{\"description\":\"Type of election (e.g., presidential, congressional, local)\",\"in\":\"query\",\"name\":\"type\",\"required\":false,\"schema\":{\"enum\":[\"presidential\",\"congressional\",\"gubernatorial\",\"local\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"elections\":{\"items\":{\"properties\":{\"date\":{\"description\":\"Election date\",\"format\":\"date\",\"type\":\"string\"},\"id\":{\"description\":\"Unique election identifier\",\"type\":\"string\"},\"name\":{\"description\":\"Election name\",\"type\":\"string\"},\"state\":{\"description\":\"State or jurisdiction\",\"type\":\"string\"},\"status\":{\"description\":\"Current status of the election\",\"enum\":[\"upcoming\",\"ongoing\",\"completed\"],\"type\":\"string\"},\"type\":{\"description\":\"Type of election\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response with election information\"},\"400\":{\"description\":\"Bad request - invalid parameters\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/elections",
+                  "q": {
+                    "exist": [
+                      "state",
+                      "type",
+                      "year"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/elections",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -134,14 +213,7 @@
                       "lit": "elections"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "state",
-                      "type",
-                      "year"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.elections`"
                   }
@@ -158,59 +230,66 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "format": "date",
-              "name": "endDate",
-              "req": false,
-              "short": "Poll end date",
-              "type": "`$STRING`"
+          "fields": {
+            "endDate": {
+              "a": true,
+              "fo": "date",
+              "h": "End Date",
+              "n": "endDate",
+              "r": false,
+              "sh": "Poll end date",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "float",
-              "name": "marginOfError",
-              "req": false,
-              "short": "Margin of error percentage",
-              "type": "`$NUMBER`"
+            "marginOfError": {
+              "a": true,
+              "fo": "float",
+              "h": "Margin Of Error",
+              "n": "marginOfError",
+              "r": false,
+              "sh": "Margin of error percentage",
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "name": "pollId",
-              "req": false,
-              "short": "Unique poll identifier",
-              "type": "`$STRING`"
+            "pollId": {
+              "a": true,
+              "h": "Poll Id",
+              "n": "pollId",
+              "r": false,
+              "sh": "Unique poll identifier",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "pollster",
-              "req": false,
-              "short": "Organization conducting the poll",
-              "type": "`$STRING`"
+            "pollster": {
+              "a": true,
+              "h": "Pollster",
+              "n": "pollster",
+              "r": false,
+              "sh": "Organization conducting the poll",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "results",
-              "req": false,
-              "type": "`$ARRAY`"
+            "results": {
+              "a": true,
+              "h": "Results",
+              "n": "results",
+              "r": false,
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "sampleSize",
-              "req": false,
-              "short": "Number of respondents",
-              "type": "`$INTEGER`"
+            "sampleSize": {
+              "a": true,
+              "h": "Sample Size",
+              "n": "sampleSize",
+              "r": false,
+              "sh": "Number of respondents",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "format": "date",
-              "name": "startDate",
-              "req": false,
-              "short": "Poll start date",
-              "type": "`$STRING`"
+            "startDate": {
+              "a": true,
+              "fo": "date",
+              "h": "Start Date",
+              "n": "startDate",
+              "r": false,
+              "sh": "Poll start date",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "polling",
           "op": {
             "list": {
@@ -218,65 +297,56 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/polling",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": "2024-presidential",
-                        "kind": "query",
-                        "name": "election_id",
-                        "orig": "election_id",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "2024-presidential",
+                        "k": "query",
+                        "n": "election_id",
+                        "or": "election_id",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "2024-12-31",
-                        "kind": "query",
-                        "name": "end_date",
-                        "orig": "end_date",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "2024-12-31",
+                        "k": "query",
+                        "n": "end_date",
+                        "or": "end_date",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "2024-01-01",
-                        "kind": "query",
-                        "name": "start_date",
-                        "orig": "start_date",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "2024-01-01",
+                        "k": "query",
+                        "n": "start_date",
+                        "or": "start_date",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "CA",
-                        "kind": "query",
-                        "name": "state",
-                        "orig": "state",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "CA",
+                        "k": "query",
+                        "n": "state",
+                        "or": "state",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/polling",
-                    "json": "{\"operationId\":\"getPollingData\",\"parameters\":[{\"description\":\"Unique identifier for the election\",\"in\":\"query\",\"name\":\"electionId\",\"required\":false,\"schema\":{\"example\":\"2024-presidential\",\"type\":\"string\"}},{\"description\":\"Filter polling data by state\",\"in\":\"query\",\"name\":\"state\",\"required\":false,\"schema\":{\"example\":\"CA\",\"type\":\"string\"}},{\"description\":\"Start date for polling data range\",\"in\":\"query\",\"name\":\"startDate\",\"required\":false,\"schema\":{\"example\":\"2024-01-01\",\"format\":\"date\",\"type\":\"string\"}},{\"description\":\"End date for polling data range\",\"in\":\"query\",\"name\":\"endDate\",\"required\":false,\"schema\":{\"example\":\"2024-12-31\",\"format\":\"date\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"polls\":{\"items\":{\"properties\":{\"endDate\":{\"description\":\"Poll end date\",\"format\":\"date\",\"type\":\"string\"},\"marginOfError\":{\"description\":\"Margin of error percentage\",\"format\":\"float\",\"type\":\"number\"},\"pollId\":{\"description\":\"Unique poll identifier\",\"type\":\"string\"},\"pollster\":{\"description\":\"Organization conducting the poll\",\"type\":\"string\"},\"results\":{\"items\":{\"properties\":{\"candidate\":{\"description\":\"Candidate name\",\"type\":\"string\"},\"party\":{\"description\":\"Political party\",\"type\":\"string\"},\"percentage\":{\"description\":\"Polling percentage\",\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"},\"type\":\"array\"},\"sampleSize\":{\"description\":\"Number of respondents\",\"type\":\"integer\"},\"startDate\":{\"description\":\"Poll start date\",\"format\":\"date\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response with polling data\"},\"400\":{\"description\":\"Bad request - invalid parameters\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/polling",
-                  "segments": [
-                    {
-                      "lit": "api"
-                    },
-                    {
-                      "lit": "polling"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/polling",
+                  "q": {
                     "exist": [
                       "election_id",
                       "end_date",
@@ -284,7 +354,16 @@
                       "state"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "polling"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.polls`"
                   }
@@ -301,37 +380,41 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "candidate",
-              "req": false,
-              "short": "Candidate name",
-              "type": "`$STRING`"
+          "fields": {
+            "candidate": {
+              "a": true,
+              "h": "Candidate",
+              "n": "candidate",
+              "r": false,
+              "sh": "Candidate name",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "party",
-              "req": false,
-              "short": "Political party",
-              "type": "`$STRING`"
+            "party": {
+              "a": true,
+              "h": "Party",
+              "n": "party",
+              "r": false,
+              "sh": "Political party",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "float",
-              "name": "percentage",
-              "req": false,
-              "short": "Percentage of total votes",
-              "type": "`$NUMBER`"
+            "percentage": {
+              "a": true,
+              "fo": "float",
+              "h": "Percentage",
+              "n": "percentage",
+              "r": false,
+              "sh": "Percentage of total votes",
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "name": "votes",
-              "req": false,
-              "short": "Number of votes received",
-              "type": "`$INTEGER`"
+            "votes": {
+              "a": true,
+              "h": "Votes",
+              "n": "votes",
+              "r": false,
+              "sh": "Number of votes received",
+              "t": "`$INTEGER`"
             }
-          ],
+          },
           "name": "result",
           "op": {
             "list": {
@@ -339,48 +422,55 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/results",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": "Los Angeles",
-                        "kind": "query",
-                        "name": "county",
-                        "orig": "county",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "Los Angeles",
+                        "k": "query",
+                        "n": "county",
+                        "or": "county",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "2024-presidential",
-                        "kind": "query",
-                        "name": "election_id",
-                        "orig": "election_id",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "2024-presidential",
+                        "k": "query",
+                        "n": "election_id",
+                        "or": "election_id",
+                        "r": true,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "CA",
-                        "kind": "query",
-                        "name": "state",
-                        "orig": "state",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "CA",
+                        "k": "query",
+                        "n": "state",
+                        "or": "state",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/results",
-                    "json": "{\"operationId\":\"getElectionResults\",\"parameters\":[{\"description\":\"Unique identifier for the election\",\"in\":\"query\",\"name\":\"electionId\",\"required\":true,\"schema\":{\"example\":\"2024-presidential\",\"type\":\"string\"}},{\"description\":\"Filter results by state\",\"in\":\"query\",\"name\":\"state\",\"required\":false,\"schema\":{\"example\":\"CA\",\"type\":\"string\"}},{\"description\":\"Filter results by county\",\"in\":\"query\",\"name\":\"county\",\"required\":false,\"schema\":{\"example\":\"Los Angeles\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"electionId\":{\"description\":\"Election identifier\",\"type\":\"string\"},\"lastUpdated\":{\"description\":\"Timestamp of last update\",\"format\":\"date-time\",\"type\":\"string\"},\"reportingPercentage\":{\"description\":\"Percentage of precincts reporting\",\"format\":\"float\",\"type\":\"number\"},\"results\":{\"items\":{\"properties\":{\"candidate\":{\"description\":\"Candidate name\",\"type\":\"string\"},\"party\":{\"description\":\"Political party\",\"type\":\"string\"},\"percentage\":{\"description\":\"Percentage of total votes\",\"format\":\"float\",\"type\":\"number\"},\"votes\":{\"description\":\"Number of votes received\",\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response with election results\"},\"400\":{\"description\":\"Bad request - missing or invalid electionId\"},\"404\":{\"description\":\"Election not found\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/results",
+                  "q": {
+                    "exist": [
+                      "county",
+                      "election_id",
+                      "state"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/results",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -388,14 +478,7 @@
                       "lit": "results"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "county",
-                      "election_id",
-                      "state"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.results`"
                   }
@@ -824,13 +907,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -850,13 +933,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -876,13 +959,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {

@@ -114,35 +114,41 @@ class CivicapiConfig
         'election' => [
           'fields' => [
             [
-              'format' => 'date',
               'name' => 'date',
-              'short' => 'Election date',
+              'title' => 'Date',
               'type' => '`$STRING`',
+              'short' => 'Election date',
+              'format' => 'date',
             ],
             [
               'name' => 'id',
-              'short' => 'Unique election identifier',
+              'title' => 'Id',
               'type' => '`$STRING`',
+              'short' => 'Unique election identifier',
             ],
             [
               'name' => 'name',
-              'short' => 'Election name',
+              'title' => 'Name',
               'type' => '`$STRING`',
+              'short' => 'Election name',
             ],
             [
               'name' => 'state',
-              'short' => 'State or jurisdiction',
+              'title' => 'State',
               'type' => '`$STRING`',
+              'short' => 'State or jurisdiction',
             ],
             [
               'name' => 'status',
-              'short' => 'Current status of the election',
+              'title' => 'Status',
               'type' => '`$STRING`',
+              'short' => 'Current status of the election',
             ],
             [
               'name' => 'type',
-              'short' => 'Type of election',
+              'title' => 'Type',
               'type' => '`$STRING`',
+              'short' => 'Type of election',
             ],
           ],
           'id' => [
@@ -156,30 +162,6 @@ class CivicapiConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => 'CA',
-                        'kind' => 'query',
-                        'name' => 'state',
-                        'orig' => 'state',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'query',
-                        'name' => 'type',
-                        'orig' => 'type',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 2024,
-                        'kind' => 'query',
-                        'name' => 'year',
-                        'orig' => 'year',
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/elections',
@@ -191,20 +173,45 @@ class CivicapiConfig
                       'lit' => 'elections',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'elections',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body.elections`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'state',
+                        'orig' => 'state',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'CA',
+                      ],
+                      [
+                        'name' => 'type',
+                        'orig' => 'type',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                      ],
+                      [
+                        'name' => 'year',
+                        'orig' => 'year',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 2024,
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'state',
                       'type',
                       'year',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body.elections`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'elections',
                   ],
                 ],
               ],
@@ -217,41 +224,48 @@ class CivicapiConfig
         'polling' => [
           'fields' => [
             [
-              'format' => 'date',
               'name' => 'endDate',
-              'short' => 'Poll end date',
+              'title' => 'End Date',
               'type' => '`$STRING`',
+              'short' => 'Poll end date',
+              'format' => 'date',
             ],
             [
-              'format' => 'float',
               'name' => 'marginOfError',
-              'short' => 'Margin of error percentage',
+              'title' => 'Margin Of Error',
               'type' => '`$NUMBER`',
+              'short' => 'Margin of error percentage',
+              'format' => 'float',
             ],
             [
               'name' => 'pollId',
-              'short' => 'Unique poll identifier',
+              'title' => 'Poll Id',
               'type' => '`$STRING`',
+              'short' => 'Unique poll identifier',
             ],
             [
               'name' => 'pollster',
-              'short' => 'Organization conducting the poll',
+              'title' => 'Pollster',
               'type' => '`$STRING`',
+              'short' => 'Organization conducting the poll',
             ],
             [
               'name' => 'results',
+              'title' => 'Results',
               'type' => '`$ARRAY`',
             ],
             [
               'name' => 'sampleSize',
-              'short' => 'Number of respondents',
+              'title' => 'Sample Size',
               'type' => '`$INTEGER`',
+              'short' => 'Number of respondents',
             ],
             [
-              'format' => 'date',
               'name' => 'startDate',
-              'short' => 'Poll start date',
+              'title' => 'Start Date',
               'type' => '`$STRING`',
+              'short' => 'Poll start date',
+              'format' => 'date',
             ],
           ],
           'name' => 'polling',
@@ -261,38 +275,6 @@ class CivicapiConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => '2024-presidential',
-                        'kind' => 'query',
-                        'name' => 'election_id',
-                        'orig' => 'election_id',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => '2024-12-31',
-                        'kind' => 'query',
-                        'name' => 'end_date',
-                        'orig' => 'end_date',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => '2024-01-01',
-                        'kind' => 'query',
-                        'name' => 'start_date',
-                        'orig' => 'start_date',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 'CA',
-                        'kind' => 'query',
-                        'name' => 'state',
-                        'orig' => 'state',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/polling',
@@ -304,6 +286,47 @@ class CivicapiConfig
                       'lit' => 'polling',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'polling',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body.polls`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'election_id',
+                        'orig' => 'election_id',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2024-presidential',
+                      ],
+                      [
+                        'name' => 'end_date',
+                        'orig' => 'end_date',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2024-12-31',
+                      ],
+                      [
+                        'name' => 'start_date',
+                        'orig' => 'start_date',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => '2024-01-01',
+                      ],
+                      [
+                        'name' => 'state',
+                        'orig' => 'state',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'CA',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'election_id',
@@ -311,14 +334,6 @@ class CivicapiConfig
                       'start_date',
                       'state',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body.polls`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'polling',
                   ],
                 ],
               ],
@@ -332,24 +347,28 @@ class CivicapiConfig
           'fields' => [
             [
               'name' => 'candidate',
-              'short' => 'Candidate name',
+              'title' => 'Candidate',
               'type' => '`$STRING`',
+              'short' => 'Candidate name',
             ],
             [
               'name' => 'party',
-              'short' => 'Political party',
+              'title' => 'Party',
               'type' => '`$STRING`',
+              'short' => 'Political party',
             ],
             [
-              'format' => 'float',
               'name' => 'percentage',
-              'short' => 'Percentage of total votes',
+              'title' => 'Percentage',
               'type' => '`$NUMBER`',
+              'short' => 'Percentage of total votes',
+              'format' => 'float',
             ],
             [
               'name' => 'votes',
-              'short' => 'Number of votes received',
+              'title' => 'Votes',
               'type' => '`$INTEGER`',
+              'short' => 'Number of votes received',
             ],
           ],
           'name' => 'result',
@@ -359,32 +378,6 @@ class CivicapiConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => 'Los Angeles',
-                        'kind' => 'query',
-                        'name' => 'county',
-                        'orig' => 'county',
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => '2024-presidential',
-                        'kind' => 'query',
-                        'name' => 'election_id',
-                        'orig' => 'election_id',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 'CA',
-                        'kind' => 'query',
-                        'name' => 'state',
-                        'orig' => 'state',
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/results',
@@ -396,20 +389,47 @@ class CivicapiConfig
                       'lit' => 'results',
                     ],
                   ],
+                  'parts' => [
+                    'api',
+                    'results',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body.results`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'county',
+                        'orig' => 'county',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'Los Angeles',
+                      ],
+                      [
+                        'name' => 'election_id',
+                        'orig' => 'election_id',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'reqd' => true,
+                        'example' => '2024-presidential',
+                      ],
+                      [
+                        'name' => 'state',
+                        'orig' => 'state',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'example' => 'CA',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'county',
                       'election_id',
                       'state',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body.results`',
-                  ],
-                  'parts' => [
-                    'api',
-                    'results',
                   ],
                 ],
               ],

@@ -1,0 +1,124 @@
+# Entity: election
+
+main: kit: entity: election: {
+
+  alias: field: {}
+
+  fields: {
+    date: {
+      fo: "date"
+      h: "Date"
+      n: "date"
+      r: false
+      sh: "Election date"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Unique election identifier"
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Election name"
+      t: "`$STRING`"
+    }
+    state: {
+      h: "State"
+      n: "state"
+      r: false
+      sh: "State or jurisdiction"
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      sh: "Current status of the election"
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: false
+      sh: "Type of election"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "election"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/elections"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "CA"
+                k: "query"
+                n: "state"
+                or: "state"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "type"
+                or: "type"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 2024
+                k: "query"
+                n: "year"
+                or: "year"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/elections"
+          q: {
+            exist: [
+              "state"
+              "type"
+              "year"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "elections"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.elections`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}
